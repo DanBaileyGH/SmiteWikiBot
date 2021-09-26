@@ -1,0 +1,19 @@
+{
+  "name": "wikibot",
+  "version": "0.0.1",
+  "description": "smite wiki bot",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "md5": "^2.3.0",
+    "paladins-api": "^1.5.5",
+    "paladins.js": "^2.2.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DiscoFerry",
+  "license": "ISC"
+}
