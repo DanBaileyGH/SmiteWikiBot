@@ -4,7 +4,7 @@ const fetch = require('cross-fetch');
 const { createSign } = require('crypto');
 const { get } = require('http');
 const md5 = require("md5");
-const config = require('./config.json');
+const config = require('./auth.json');
 
 const devId = config.devId;
 const authKey = config.authKey;
