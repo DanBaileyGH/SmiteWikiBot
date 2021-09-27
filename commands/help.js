@@ -1,0 +1,23 @@
+const { MessageEmbed} = require('discord.js');
+
+module.exports = {
+	name: 'help',
+	description: 'Get help with bot commands',
+	execute(message, args) {
+        sendHelpMessage(message);
+	},
+};
+
+function sendHelpMessage(message) {
+    let embed = new MessageEmbed()
+    .setTitle(`Commands for SmiteWikiBot`)
+    .setTimestamp()
+    .setFooter(`Bot Written and Maintained By DiscoFerry#6038`)
+    .addField("Commands", 
+    //so sorry for this being one line it needs back ticks in it
+    "`w!god [godname]` - Shows you all stats for the chosen god.\n `w!abilities [godname]` - Shows details for all abilities of the chosen god.\n `w!item [itemname]` - Shows stats of the chosen item",
+    false)
+
+
+    message.channel.send(embed);
+}

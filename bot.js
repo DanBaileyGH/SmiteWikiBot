@@ -8,6 +8,7 @@ client.commands = new Discord.Collection();
 
 client.on('ready', function (evt) {
     console.log('ready');
+    client.user.setActivity("w!help");
 });
 
 const prefix = "w!";

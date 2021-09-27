@@ -47,13 +47,13 @@ function parseAbilityDetails(god, message){
     }
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
-    .setDescription(`For God Stats, Use Command d!god ${god.Name}`)
+    .setDescription(`For God Stats, Use Command w!god ${god.Name}`)
     .setTimestamp()
     .setFooter(`Data from the Smite API`)
     .setThumbnail(god.godIcon_URL)
     
     if(god.Name == "Merlin"){
-        embed.setDescription(`For Ability Descriptions, Use Command w!abilities ${god.Name} \n
+        embed.setDescription(`For God Stats, Use Command w!abilities ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     }
     
@@ -66,24 +66,41 @@ function parseAbilityDetails(god, message){
     god.Ability_1.Description.itemDescription.rankitems.forEach(stat => {
         embed.addField(stat.description, stat.value, true);
     });
-    embed.addField("Cooldown", god.Ability_1.Description.itemDescription.cooldown, true);
+    if(god.Ability_1.Description.itemDescription.cooldown && god.Ability_1.Description.itemDescription.cooldown != "") {
+        embed.addField("Cooldown", god.Ability_1.Description.itemDescription.cooldown, true);
+    } else {
+        embed.addField("Cooldown", "None", true);
+    }
     
     embed.addField(`Ability 2 - ${god.Ability_2.Summary}`, god.Ability_2.Description.itemDescription.description, false);
     god.Ability_2.Description.itemDescription.rankitems.forEach(stat => {
         embed.addField(stat.description, stat.value, true);
     });
-    embed.addField("Cooldown", god.Ability_2.Description.itemDescription.cooldown, true);
+    if(god.Ability_2.Description.itemDescription.cooldown && god.Ability_2.Description.itemDescription.cooldown != "") {
+        embed.addField("Cooldown", god.Ability_2.Description.itemDescription.cooldown, true);
+    } else {
+        embed.addField("Cooldown", "None", true);
+    }
 
     embed.addField(`Ability 3 - ${god.Ability_3.Summary}`, god.Ability_3.Description.itemDescription.description, false);
     god.Ability_3.Description.itemDescription.rankitems.forEach(stat => {
         embed.addField(stat.description, stat.value, true);
     });
-    embed.addField("Cooldown", god.Ability_3.Description.itemDescription.cooldown, true);
+    if(god.Ability_3.Description.itemDescription.cooldown && god.Ability_3.Description.itemDescription.cooldown != "") {
+        embed.addField("Cooldown", god.Ability_3.Description.itemDescription.cooldown, true);
+    } else {
+        embed.addField("Cooldown", "None", true);
+    }
 
     embed.addField(`Ability 4 - ${god.Ability_4.Summary}`, god.Ability_4.Description.itemDescription.description, false);
     god.Ability_4.Description.itemDescription.rankitems.forEach(stat => {
         embed.addField(stat.description, stat.value, true);
     });
-    embed.addField("Cooldown", god.Ability_4.Description.itemDescription.cooldown, true);
+    if(god.Ability_4.Description.itemDescription.cooldown && god.Ability_4.Description.itemDescription.cooldown != "") {
+        embed.addField("Cooldown", god.Ability_4.Description.itemDescription.cooldown, true);
+    } else {
+        embed.addField("Cooldown", "None", true);
+    }
+
     message.channel.send(embed);
 }
