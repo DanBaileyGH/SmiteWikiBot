@@ -30,7 +30,7 @@ client.on('message', message => {
     const args = message.content.slice(2).trim().split(' ');
     const commandName = args.shift().toLowerCase();
 
-    console.log(message.author.username + ' used command: ' + commandName);
+    //console.log(message.author.username + ' used command: ' + commandName);
 
     if (!client.commands.has(commandName)) return;
 
