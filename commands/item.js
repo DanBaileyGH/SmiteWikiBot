@@ -4,6 +4,7 @@ const { start } = require('repl');
 
 module.exports = {
 	name: 'item',
+    aliases: ["i"],
 	description: 'Get details for chosen item',
 	execute(message, args) {
         getGodDetails(message, args);
@@ -13,7 +14,6 @@ module.exports = {
 function getGodDetails(message, itemName){
     let itemFound = false;
     itemName = itemName.join(' ').toLowerCase().replace("'", "").replace(" ", "");
-    console.log("a")
     let itemList = "";
     fs.readFile('items.json', 'utf8', (err, itemsData) => {
         if (err) {
@@ -22,15 +22,12 @@ function getGodDetails(message, itemName){
         }
         try {
             itemList = JSON.parse(itemsData);
-            console.log("b")
         } catch (err) {
             console.log("error parsing json string: ", err);
             return;
         }
-        console.log("c")
         itemList.forEach(item => {
             if (item.DeviceName.toLowerCase().replace("'", "").replace(" ", "") == itemName){
-                console.log("d")
                 itemFound = true;
                 parseItemDetails(item, message, itemList);
                 return;

@@ -3,6 +3,7 @@ const { MessageEmbed} = require('discord.js');
 
 module.exports = {
 	name: 'abilities',
+    aliases: ["a", "kit"],
 	description: 'Get ability details for chosen god',
 	execute(message, args) {
         getAbilityDetails(message, args);
