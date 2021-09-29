@@ -14,8 +14,10 @@ function sendHelpMessage(message) {
     .setTimestamp()
     .setFooter(`Bot Written and Maintained By DiscoFerry#6038`)
     .addField("Commands", 
-    //so sorry for this being one line it needs back ticks in it
-    "`w!god [godname]` - Shows all stats for the chosen god.\n `w!abilities [godname]` - Shows details for all abilities of the chosen god.\n `w!lore [godname]` - Shows in game lore for the chosen god\n `w!item [itemname]` - Shows stats of the chosen item",
+    "`w!god [godname]` - Shows all stats for the chosen god.\n" +
+    "`w!abilities [godname]` - Shows details for all abilities of the chosen god.\n" +
+    "`w!lore [godname]` - Shows in game lore for the chosen god\n" +
+    "`w!item [itemname]` - Shows stats of the chosen item",
     false)
 
     message.channel.send(embed);
