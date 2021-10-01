@@ -6,6 +6,7 @@ module.exports = {
     aliases: ["a", "kit"],
 	description: 'Get ability details for chosen god',
 	execute(message, args) {
+        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
         getAbilityDetails(message, args);
 	},
 };
@@ -35,7 +36,7 @@ function getAbilityDetails(message, godName){
             }   
         });
         if (!godFound) {
-            message.channel.send("God not found, check your spelling");
+            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
         }
     });
 }

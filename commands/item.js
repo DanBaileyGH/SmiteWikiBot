@@ -7,6 +7,7 @@ module.exports = {
     aliases: ["i"],
 	description: 'Get details for chosen item',
 	execute(message, args) {
+        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter an Item")); return;}
         getGodDetails(message, args);
 	},
 };
@@ -34,7 +35,7 @@ function getGodDetails(message, itemName){
             }   
         });
         if (!itemFound) {
-            message.channel.send("Item not found, check your spelling");
+            message.channel.send(new MessageEmbed().setDescription("Item Not Found, Check Your Spelling"));
         }
     });
 }
