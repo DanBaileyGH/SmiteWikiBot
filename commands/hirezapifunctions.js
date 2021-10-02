@@ -14,6 +14,7 @@ const baseURL = "https://api.smitegame.com/smiteapi.svc/";
 const createSessionUrl = "createsessionJson/";
 const getGodsUrl = "getgodsjson/";
 const getItemsUrl = "getitemsjson/";
+const getGodSkinsUrl = "getgodskinsjson/"
 
 function getTimestamp() {
     let timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "").slice(0, -3) //funnily enough i did not write this, thanks stack overflow
@@ -44,3 +45,8 @@ exports.generateGetItemsURL=(sessionId)=>{
     return reqURL;
 }
 
+exports.generateGodSkinsUrl=(sessionId, godId)=>{
+    let timestamp = getTimestamp();
+    let reqURL = baseURL + getGodSkinsUrl + devId + "/" + createSignature("getgodskins", timestamp) + "/" + sessionId + "/" + timestamp + "/" + godId + "/1";
+    return reqURL;
+}
