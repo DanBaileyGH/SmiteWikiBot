@@ -14,7 +14,7 @@ module.exports = {
 function getGodDetails(message, godName){
 
     let godFound = false;
-    godName = godName.join(' ').toLowerCase();
+    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
     let godList = "";
     fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
@@ -29,7 +29,7 @@ function getGodDetails(message, godName){
         }
         godList.forEach(god => {
             //console.log(typeof god.Name);
-            if (god.Name.toLowerCase() == godName){
+            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 parseGodDetails(god, message);
                 return;

@@ -16,7 +16,7 @@ function sendHelpMessage(message) {
     .setFooter(`Bot Written and Maintained By DiscoFerry#6038`)
     .addField("Commands", 
     "`w!god [godname] (w!g)` - Shows all stats for the chosen god.\n" +
-    "`w!abilities [godname] (w!a)` - Shows details for all abilities of the chosen god.\n" +
+    "`w!abilities [godname] [(1,2,3,4,p,all)] (w!a)` - Shows details for abilities of the chosen god.\n" +
     "`w!lore [godname] (w!l)` - Shows in game lore for the chosen god\n" +
     "`w!item [itemname] (w!i)` - Shows stats of the chosen item\n" +
     "`w!skins [godname] (d!sk)` - Shows all skins of chosen god (link, availability, price)\n",

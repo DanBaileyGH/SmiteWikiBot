@@ -17,7 +17,7 @@ async function getSkinList(message, godName){
 
     let godId = null;
     let godFound = false;
-    godName = godName.join(' ').toLowerCase();
+    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
     let godList = "";
     fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
@@ -32,7 +32,7 @@ async function getSkinList(message, godName){
         }
         godList.forEach(god => {
             //console.log(typeof god.Name);
-            if (god.Name.toLowerCase() == godName){
+            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 godId = god.id
                 return;
