@@ -124,51 +124,33 @@ function parseOneAbilityDetails(god, message, ability) {
     if(god.Name == "Merlin"){
         embed.setDescription(`For God Stats, Use Command w!god ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
-    }
-    
-    //im not happy with the way this works but i dont know how i can edit the actual json field names im looking for with a parameter :/
-    if(ability == "p" || ability == "passive") {
-        embed.addField(`Passive - ${god.Ability_5.Summary}`, god.Ability_5.Description.itemDescription.description, false)
-        god.Ability_5.Description.itemDescription.rankitems.forEach(stat => {
-            embed.addField(stat.description, stat.value, true);
-        });
-    } else if (ability == 1) {
-        embed.addField(`Ability 1 - ${god.Ability_1.Summary}`, god.Ability_1.Description.itemDescription.description, false);
-        god.Ability_1.Description.itemDescription.rankitems.forEach(stat => {
-            embed.addField(stat.description, stat.value, true);
-        });
-        if(god.Ability_1.Description.itemDescription.cooldown && god.Ability_1.Description.itemDescription.cooldown != "") {
-            embed.addField("Cooldown", god.Ability_1.Description.itemDescription.cooldown, true);
-        } else {
-            embed.addField("Cooldown", "None", true);
+    } else {
+        console.log(ability);
+        let godAbility = 0;
+        if (ability == "p" || ability == "passive") {
+            console.log("p");
+            godAbility = god.Ability_5;
+            ability = "Passive";
+        } else if (ability == "1") {
+            godAbility = god.Ability_1;
+            ability = "Ability 1"
+        } else if (ability == "2") {
+            godAbility = god.Ability_2;
+            ability = "Ability 2"
+        } else if (ability == "3") {
+            godAbility = god.Ability_3;
+            ability = "Ability 3"
+        } else if (ability == "4") {
+            godAbility = god.Ability_4;
+            ability = "Ability 4"
         }
-    } else if (ability == 2) {
-        embed.addField(`Ability 2 - ${god.Ability_2.Summary}`, god.Ability_2.Description.itemDescription.description, false);
-        god.Ability_2.Description.itemDescription.rankitems.forEach(stat => {
+        console.log(godAbility.Summary);
+        embed.addField(`${ability} - ${godAbility.Summary}`, godAbility.Description.itemDescription.description, false)
+        godAbility.Description.itemDescription.rankitems.forEach(stat => {
             embed.addField(stat.description, stat.value, true);
         });
-        if(god.Ability_2.Description.itemDescription.cooldown && god.Ability_2.Description.itemDescription.cooldown != "") {
-            embed.addField("Cooldown", god.Ability_2.Description.itemDescription.cooldown, true);
-        } else {
-            embed.addField("Cooldown", "None", true);
-        }
-    } else if (ability == 3) {
-        embed.addField(`Ability 3 - ${god.Ability_3.Summary}`, god.Ability_3.Description.itemDescription.description, false);
-        god.Ability_3.Description.itemDescription.rankitems.forEach(stat => {
-            embed.addField(stat.description, stat.value, true);
-        });
-        if(god.Ability_3.Description.itemDescription.cooldown && god.Ability_3.Description.itemDescription.cooldown != "") {
-            embed.addField("Cooldown", god.Ability_3.Description.itemDescription.cooldown, true);
-        } else {
-            embed.addField("Cooldown", "None", true);
-        }
-    } else if (ability == 4) {
-        embed.addField(`Ability 4 - ${god.Ability_4.Summary}`, god.Ability_4.Description.itemDescription.description, false);
-        god.Ability_4.Description.itemDescription.rankitems.forEach(stat => {
-            embed.addField(stat.description, stat.value, true);
-        });
-        if(god.Ability_4.Description.itemDescription.cooldown && god.Ability_4.Description.itemDescription.cooldown != "") {
-            embed.addField("Cooldown", god.Ability_2.Description.itemDescription.cooldown, true);
+        if(godAbility.Description.itemDescription.cooldown && godAbility.Description.itemDescription.cooldown != "") {
+            embed.addField("Cooldown", godAbility.Description.itemDescription.cooldown, true);
         } else {
             embed.addField("Cooldown", "None", true);
         }
