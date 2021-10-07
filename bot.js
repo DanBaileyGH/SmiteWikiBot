@@ -1,5 +1,6 @@
 const { randomInt } = require('crypto');
 const Discord = require('discord.js');
+const { MessageEmbed} = require('discord.js');
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION']});
 const fs = require('fs');
 const { cpuUsage } = require('process');
@@ -29,18 +30,51 @@ for (const file of commandFiles) {
 client.login(config.BOT_TOKEN)
 
 client.on('message', message => {
-
     if (!message.content.startsWith(prefix)) return;
-
-    const args = message.content.slice(1).trim().split(' ');
-    const commandName = args.shift().toLowerCase();
-    const command = client.commands.get(commandName) || client.aliases.get(commandName);
-    if (command == null) return;
-
-    try {
-        command.execute(message, args);
-    } catch (error) {
-        console.error(error);
-        message.reply('error executing command');
+    
+    let args = message.content.slice(2).trim().split(' ');
+    let commandName = args.shift().toLowerCase();
+    let command = client.commands.get(commandName) || client.aliases.get(commandName);
+    if (command == null) {
+        let godFound = false;
+        let godName = message.content.slice(prefix.length).trim().replace(" ", "").replace("'", "").trim().toLowerCase();
+        let godList = "";
+        fs.readFile('gods.json', 'utf8', (err, godsData) => {
+        if (err) {
+            console.log("File read failed: ", err);
+            return;
+        }
+        try {
+            godList = JSON.parse(godsData);
+        } catch (err) {
+            console.log("error parsing json string: ", err);
+            return;
+        }
+        godList.forEach(god => {
+            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
+                godFound = true;
+                command = client.commands.get("builds");
+                try {
+                    command.execute(message, message.content.slice(prefix.length).trim().split(' '));
+                    return;
+                } catch (error) {
+                    console.error(error);
+                    message.reply('error executing command');
+                }
+                
+            }   
+        });
+        if (!godFound) {
+            message.channel.send(new MessageEmbed().setDescription("Command not recognised - did you misspell it?"));
+        }
+        });
+    } else {
+        console.log(message.author.username + ' used command: ' + commandName);
+        try {
+            command.execute(message, args);
+        } catch (error) {
+            console.error(error);
+            message.reply('error executing command');
+        }
     }
 });
