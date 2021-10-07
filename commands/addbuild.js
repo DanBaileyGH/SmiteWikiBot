@@ -3,15 +3,15 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = {
 	name: 'addbuild',
-    aliases: ["ab", "addb", "abuild"],
+    aliases: ["ab"],
 	description: 'Add a new mentor set builds for chosen god',
-	execute(message, args) {
+	execute(message, args, client) {
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
-        findGod(message, args);
+        findGod(message, args, client);
 	},
 };
 
-function findGod(message, args) {
+function findGod(message, args, client) {
     let godFound = false;
     let godName = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
     let role = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
@@ -32,7 +32,7 @@ function findGod(message, args) {
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 let items = args.join(" ");
-                addBuild(message, items, god.Name, role);
+                addBuild(message, items, god.Name, role, client);
             }   
         });
         if (!godFound) {
@@ -41,7 +41,7 @@ function findGod(message, args) {
     });
 }
 
-function addBuild(message, items, godName, role) {
+function addBuild(message, items, godName, role, client) {
     if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase;
@@ -103,9 +103,12 @@ function addBuild(message, items, godName, role) {
         fs.writeFile('builds.json', data, (err) => {
             if (err) {
                 throw err;
+            } else {
+                console.log("Builds saved to file")
+                message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nItems: ${items}`));
+                const ch = client.channels.cache.find(c => c.id == 895777081630265395);
+                ch.send({ files: ["./builds.json"] });
             }
         })
-        console.log("Builds saved to file")
-        message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nItems: ${items}`));
     });
 }

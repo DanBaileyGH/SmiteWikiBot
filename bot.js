@@ -71,7 +71,12 @@ client.on('message', message => {
     } else {
         console.log(message.author.username + ' used command: ' + commandName);
         try {
-            command.execute(message, args);
+            if(commandName == "addbuild" || commandName == "ab" ) {
+                console.log("adding build command so passing client");
+                command.execute(message, args, client);
+            } else {
+                command.execute(message, args);
+            }
         } catch (error) {
             console.error(error);
             message.reply('error executing command');
