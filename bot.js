@@ -32,7 +32,7 @@ client.login(config.BOT_TOKEN)
 client.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
     
-    let args = message.content.slice(2).trim().split(' ');
+    let args = message.content.slice(prefix.length).trim().split(' ');
     let commandName = args.shift().toLowerCase();
     let command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) {
