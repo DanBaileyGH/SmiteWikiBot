@@ -49,7 +49,7 @@ function parseGodDetails(god, message){
     }
     let embed = new MessageEmbed()
     .setTitle(`God Details For ${god.Name}`)
-    .setDescription(`For Ability Descriptions, Use Command w!abilities ${god.Name}`)
+    .setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name}`)
     .setTimestamp()
     .setFooter(`Data from the Smite API`)
     .setThumbnail(god.godIcon_URL)

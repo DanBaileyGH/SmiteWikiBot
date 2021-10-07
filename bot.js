@@ -9,10 +9,10 @@ client.aliases = new Discord.Collection();
 
 client.on('ready', function (evt) {
     console.log('ready');
-    client.user.setActivity("w!help");
+    client.user.setActivity("?help");
 });
 
-const prefix = "w!";
+const prefix = "?";
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -32,7 +32,7 @@ client.on('message', message => {
 
     if (!message.content.startsWith(prefix)) return;
 
-    const args = message.content.slice(2).trim().split(' ');
+    const args = message.content.slice(1).trim().split(' ');
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) return;

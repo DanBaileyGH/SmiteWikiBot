@@ -54,13 +54,13 @@ function parseAllAbilityDetails(god, message){
     console.log(god.Name, god.Pantheon);
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
-    .setDescription(`For God Stats, Use Command w!god ${god.Name}`)
+    .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
     .setTimestamp()
     .setFooter(`Data from the Smite API`)
     .setThumbnail(god.godIcon_URL)
     
     if(god.Name == "Merlin"){
-        embed.setDescription(`For Ability Descriptions, Use Command w!abilities ${god.Name} \n
+        embed.setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     }
     
@@ -116,13 +116,13 @@ function parseOneAbilityDetails(god, message, ability) {
     console.log(god.Name, god.Pantheon);
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
-    .setDescription(`For God Stats, Use Command w!god ${god.Name}`)
+    .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
     .setTimestamp()
     .setFooter(`Data from the Smite API`)
     .setThumbnail(god.godIcon_URL)
     
     if(god.Name == "Merlin"){
-        embed.setDescription(`For God Stats, Use Command w!god ${god.Name} \n
+        embed.setDescription(`For God Stats, Use Command ?god ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     } else {
         console.log(ability);

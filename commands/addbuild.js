@@ -42,7 +42,7 @@ function findGod(message, args) {
 }
 
 function addBuild(message, items, godName, role) {
-    if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
+    if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase;
     } else {
@@ -50,12 +50,12 @@ function addBuild(message, items, godName, role) {
     }
     console.log(role);
     if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General"].includes(role))) {
-        message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
         return;
     } else {
     }
     if (items.length == 0) {
-        message.channel.send(new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        message.channel.send(new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
         return;
     }
     //probably not an efficient way of doing ids but there shouldnt ever be more than like 4-500 builds in this bot
