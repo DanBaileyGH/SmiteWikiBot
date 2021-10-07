@@ -3,3 +3,4 @@ config.json
 commands/auth.json
 gods.json
 items.json
+builds.json
