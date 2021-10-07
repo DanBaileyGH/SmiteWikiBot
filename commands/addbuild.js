@@ -43,16 +43,16 @@ function findGod(message, args) {
 
 function addBuild(message, items, godName, role) {
     if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
-    let roleFormatted = "";
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase;
     } else {
-        roleFormatted = role.charAt(0).toUpperCase() + role.slice(1);
+        role = role.charAt(0).toUpperCase() + role.slice(1);
     }
-    console.log(roleFormatted);
-    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General"].includes(roleFormatted))) {
+    console.log(role);
+    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General"].includes(role))) {
         message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
         return;
+    } else {
     }
     if (items.length == 0) {
         message.channel.send(new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: w!ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
