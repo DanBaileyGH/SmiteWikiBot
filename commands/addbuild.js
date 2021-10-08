@@ -6,7 +6,17 @@ module.exports = {
     aliases: ["ab"],
 	description: 'Add a new mentor set builds for chosen god',
 	execute(message, args, client) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
+        if (args == "") { 
+            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            return;
+        }
+        const server = client.guilds.cache.get('733765822127800391')
+        const member = server.members.cache.get(message.author.id)
+        const hasPerms = member ? member.roles.cache.get('895713618845384724') : false
+        if (!hasPerms) {
+            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this!")); 
+            return;
+        }
         findGod(message, args, client);
 	},
 };
