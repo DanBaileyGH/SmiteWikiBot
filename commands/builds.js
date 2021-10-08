@@ -65,10 +65,19 @@ function parseGodBuilds(god, message) {
             .setTimestamp()
             .setFooter(`Builds From the Smite Server Mentors`)
             .setThumbnail(god.godIcon_URL);
-            let buildNumber = 1;
+            let guideList = [];
             godBuildList.forEach(build => {
-                embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                if (build.role != "Guide") {
+                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                } else {
+                    guideList.push(build)
+                }
             });
+            if (guideList.length > 0) {
+                guideList.forEach(build => {
+                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                })
+            }
             message.channel.send(embed);
         }
     });

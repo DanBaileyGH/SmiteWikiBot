@@ -52,15 +52,15 @@ function findGod(message, args, client) {
 }
 
 function addBuild(message, items, godName, role, client) {
-    if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
+    if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase;
     } else {
         role = role.charAt(0).toUpperCase() + role.slice(1);
     }
     console.log(role);
-    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General"].includes(role))) {
-        message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide"].includes(role))) {
+        message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
         return;
     } else {
     }
@@ -115,7 +115,7 @@ function addBuild(message, items, godName, role, client) {
                 throw err;
             } else {
                 console.log("Builds saved to file")
-                message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nItems: ${items}`));
+                message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`));
                 const ch = client.channels.cache.find(c => c.id == 895777081630265395);
                 ch.send({ files: ["./builds.json"] });
             }
