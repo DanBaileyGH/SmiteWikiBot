@@ -64,9 +64,6 @@ client.on('message', message => {
                 
             }   
         });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("Command not recognised - did you misspell it?"));
-        }
         });
     } else {
         console.log(message.author.username + ' used command: ' + commandName);
