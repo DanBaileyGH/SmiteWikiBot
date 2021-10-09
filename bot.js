@@ -7,6 +7,7 @@ const { cpuUsage } = require('process');
 const config = require('./config.json');
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
+const hirez = require('./commands/hirezapifunctions.js');
 
 client.on('ready', function (evt) {
     console.log('ready');
@@ -38,6 +39,7 @@ client.on('message', message => {
     if (command == null) {
         let godFound = false;
         let godName = message.content.slice(prefix.length).trim().replace(" ", "").replace("'", "").trim().toLowerCase();
+        godName = hirez.convertShortenedGodName(godName);
         let godList = "";
         fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
