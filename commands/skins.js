@@ -14,12 +14,11 @@ module.exports = {
 };
 
 async function getSkinList(message, godName){
-
     let godId = null;
     let godFound = false;
     godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
     let godList = "";
-    fs.readFile('gods.json', 'utf8', (err, godsData) => {
+    await fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
             console.log("File read failed: ", err);
             return;
@@ -34,26 +33,28 @@ async function getSkinList(message, godName){
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 godId = god.id
-                return;
+                fetch(hirez.generateCreateSessionUrl())
+                .then(res => res.json())
+                .then(result => {
+                    sessionId = result.session_id;
+                    fetch(hirez.generateGodSkinsUrl(sessionId, godId))
+                    .then(res => res.json())
+                    .then(result => {
+                        parseSkins(result, message);
+                    });
+                });
             }   
         });
         if (!godFound) {
             message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+            return;
         }
     });
 
-    await fetch(hirez.generateCreateSessionUrl())
-    .then(res => res.json())
-    .then(result => {
-        sessionId = result.session_id;
-        return sessionId;
-    });
 
-    await fetch(hirez.generateGodSkinsUrl(sessionId, godId))
-    .then(res => res.json())
-    .then(result => {
-        parseSkins(result, message);
-    });
+    if (godFound) {
+        
+    }
 }
 
 function parseSkins(skins, message) {
