@@ -5,7 +5,7 @@ module.exports = {
 	name: 'setmid',
     aliases: ["setmid"],
 	description: 'Set new mid guide command message',
-	execute(message, args) {
+	execute(message, args, client) {
         const server = client.guilds.cache.get('733765822127800391')
         const member = server.members.cache.get(message.author.id)
         const hasPerms = member ? member.roles.cache.get('895713618845384724') : false
