@@ -6,6 +6,8 @@ module.exports = {
     aliases: ["l", "backstory", "story"],
 	description: 'Get lore for chosen god',
 	execute(message, args) {
+        message.channel.send(new MessageEmbed().setDescription("Disabled temporarily as some gods cause bot to crash - back soon!"));
+        return;
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
         getGodDetails(message, args);
 	},
