@@ -6,8 +6,6 @@ module.exports = {
     aliases: ["l", "backstory", "story"],
 	description: 'Get lore for chosen god',
 	execute(message, args) {
-        message.channel.send(new MessageEmbed().setDescription("Disabled temporarily as some gods cause bot to crash - back soon!"));
-        return;
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
         getGodDetails(message, args);
 	},
@@ -66,7 +64,11 @@ function parseGodDetails(god, message){
         loreSectionArray = loreSection.split(".");
         loreSectionTitle = loreSectionArray[0] + ".";
         loreSectionContents = loreSectionArray.slice(1).join('.');
-        embed.addField(loreSectionTitle, loreSectionContents, false);
+        if (loreSectionContents) {
+            embed.addField(loreSectionTitle, loreSectionContents, false);
+        } else {
+            embed.addField(loreSectionTitle, ".", false);
+        }
     }
     
     message.channel.send(embed);
