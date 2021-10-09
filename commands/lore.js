@@ -28,7 +28,6 @@ function getGodDetails(message, godName){
             return;
         }
         godList.forEach(god => {
-            //console.log(typeof god.Name);
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 parseGodDetails(god, message);

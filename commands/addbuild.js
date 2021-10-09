@@ -83,7 +83,6 @@ function addBuild(message, items, godName, role, client) {
             return;
         }
         buildList.forEach(build => {
-            //console.log(typeof god.Name);
             if (build.god == godName && build.role == role && build.items == items) {
                 duplicate = true;
                 message.channel.send(new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`))
@@ -93,7 +92,6 @@ function addBuild(message, items, godName, role, client) {
             }
         });
         if (duplicate) {return;}
-        console.log(usedIds);
         let id = 1;
         while (true) { //i know i know
             if (!(usedIds.includes(id))) {
@@ -101,8 +99,6 @@ function addBuild(message, items, godName, role, client) {
             }
             id++
         }
-        //console.log(buildList);
-        console.log(usedIds);
         buildList.push({
             "id" : id,
             "god" : godName,

@@ -18,19 +18,13 @@ async function updateItemDetails(message){
     await fetch(hirez.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         sessionId = result.session_id;
-        console.log(sessionId);
         return sessionId;
     });
 
-    console.log(sessionId);
-
     fetch(hirez.generateGetItemsURL(sessionId))
-    //.then(res => console.log(res))
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         const data = JSON.stringify(result, null, 4);
         fs.writeFile('items.json', data, (err) => {
             if (err) {

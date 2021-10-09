@@ -33,7 +33,6 @@ function getAbilityDetails(message, godName, ability){
             return;
         }
         godList.forEach(god => {
-            //console.log(typeof god.Name);
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 if (ability == "all") {
@@ -51,7 +50,6 @@ function getAbilityDetails(message, godName, ability){
 }
 
 function parseAllAbilityDetails(god, message){
-    console.log(god.Name, god.Pantheon);
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
     .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
@@ -125,10 +123,8 @@ function parseOneAbilityDetails(god, message, ability) {
         embed.setDescription(`For God Stats, Use Command ?god ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     } else {
-        console.log(ability);
         let godAbility = 0;
         if (ability == "p" || ability == "passive") {
-            console.log("p");
             godAbility = god.Ability_5;
             ability = "Passive";
         } else if (ability == "1") {
@@ -144,7 +140,6 @@ function parseOneAbilityDetails(god, message, ability) {
             godAbility = god.Ability_4;
             ability = "Ability 4"
         }
-        console.log(godAbility.Summary);
         embed.addField(`${ability} - ${godAbility.Summary}`, godAbility.Description.itemDescription.description, false)
         godAbility.Description.itemDescription.rankitems.forEach(stat => {
             embed.addField(stat.description, stat.value, true);

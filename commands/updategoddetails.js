@@ -18,19 +18,13 @@ async function updateGodDetails(message){
     await fetch(hirez.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         sessionId = result.session_id;
-        console.log(sessionId);
         return sessionId;
     });
 
-    console.log(sessionId);
-
     fetch(hirez.generateGetGodsURL(sessionId))
-    //.then(res => console.log(res))
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         const data = JSON.stringify(result, null, 4);
         fs.writeFile('gods.json', data, (err) => {
             if (err) {
