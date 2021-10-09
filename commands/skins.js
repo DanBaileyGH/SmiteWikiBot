@@ -50,11 +50,6 @@ async function getSkinList(message, godName){
             return;
         }
     });
-
-
-    if (godFound) {
-        
-    }
 }
 
 function parseSkins(skins, message) {
