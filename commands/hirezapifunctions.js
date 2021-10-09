@@ -108,6 +108,12 @@ exports.convertShortenedGodName=(godName)=>{
         case "zk":
             godName = "zhongkui";
             break;
+        case "morri":
+            godName = "themorrigan"
+            break;
+        case "morrigan":
+            godName = "themorrigan"
+            break;
         default:
             return godName;
     }
