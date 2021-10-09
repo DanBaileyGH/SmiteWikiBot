@@ -31,7 +31,6 @@ async function getSkinList(message, godName){
             return;
         }
         godList.forEach(god => {
-            //console.log(typeof god.Name);
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 godId = god.id
@@ -46,26 +45,19 @@ async function getSkinList(message, godName){
     await fetch(hirez.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         sessionId = result.session_id;
-        console.log(sessionId);
         return sessionId;
     });
 
-    console.log(sessionId);
-
     await fetch(hirez.generateGodSkinsUrl(sessionId, godId))
-    //.then(res => console.log(res));
     .then(res => res.json())
     .then(result => {
-        console.log(result);
         parseSkins(result, message);
     });
 }
 
 function parseSkins(skins, message) {
     let price = "";
-    let obtainability = "";
     let link = "";
     let embed = new MessageEmbed()
     .setTitle(`All Skins For ${skins[0].god_name}`)
