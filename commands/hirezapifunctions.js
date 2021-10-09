@@ -50,3 +50,64 @@ exports.generateGodSkinsUrl=(sessionId, godId)=>{
     let reqURL = baseURL + getGodSkinsUrl + devId + "/" + createSignature("getgodskins", timestamp) + "/" + sessionId + "/" + timestamp + "/" + godId + "/1";
     return reqURL;
 }
+
+//probably better to do this with a dictionary or something but :)
+exports.convertShortenedGodName=(godName)=>{
+    switch(godName) {
+        case "ao":
+            godName = "aokuang";
+            break;
+        case "kuang":
+            godName = "aokuang";
+            break;
+        case "erlang":
+            godName = "erlangshen";
+            break;
+        case "hachi":
+            godName = "hachiman";
+            break;
+        case "gilga":
+            godName = "gilgamesh";
+            break;    
+        case "jorm":
+            godName = "jormungandr";
+            break;
+        case "arthur":
+            godName = "kingarthur";
+            break;
+        case "ka":
+            godName = "kingarthur";
+            break;
+        case "morgan":
+            godName = "morganlefay";
+            break;
+        case "mlf":
+            godName = "morganlefay";
+            break;
+        case "rat":
+            godName = "ratatoskr";
+            break;
+        case "wukong":
+            godName = "sunwukong";
+            break;
+        case "swk":
+            godName = "sunwukong";
+            break;
+        case "kuku":
+            godName = "kukulkan";
+            break;
+        case "guan":
+            godName = "guanyu";
+            break; 
+        case "zhong":
+            godName = "zhongkui";
+            break;
+        case "xt":
+            godName = "xingtian";
+            break;
+        case "zk":
+            godName = "zhongkui";
+            break;
+    }
+    return godName;
+}

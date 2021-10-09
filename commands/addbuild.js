@@ -1,5 +1,6 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
+const hirez = require('./hirezapifunctions.js');
 
 module.exports = {
 	name: 'addbuild',
@@ -24,6 +25,7 @@ module.exports = {
 function findGod(message, args, client) {
     let godFound = false;
     let godName = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
+    godName = hirez.convertShortenedGodName(godName);
     let role = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
     let godList = "";
     fs.readFile('gods.json', 'utf8', (err, godsData) => {

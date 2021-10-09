@@ -17,6 +17,7 @@ async function getSkinList(message, godName){
     let godId = null;
     let godFound = false;
     godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
+    godName = hirez.convertShortenedGodName(godName);
     let godList = "";
     await fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
