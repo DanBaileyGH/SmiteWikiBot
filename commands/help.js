@@ -15,6 +15,7 @@ function sendHelpMessage(message) {
     .setTimestamp()
     .setFooter(`Bot Written and Maintained By DiscoFerry#6038`)
     .addField("**New Build Command**", "`?build [godname] (?b)` - Shows all mentor created builds for the chosen god\n **Replaces -[god] command** - Works without spaces, capitalisation, or apostrophes\n**Example usage:** ?b king arthur", false)
+    .addField("Other Build Commands", "`?start` - Shows all current meta starting builds for each role\n `?mid` - General guide for all mid lane and mage adc gods", false)
     .addField("Wiki Commands", 
     "`?god [godname] (?g)` - Shows all stats for the chosen god.\n" +
     "`?abilities [godname] [(1,2,3,4,p,all)] (?a)` - Shows details for abilities of the chosen god.\n" +
