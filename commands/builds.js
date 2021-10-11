@@ -12,34 +12,15 @@ module.exports = {
 	},
 };
 
-function getGodForBuild(message, godName){
-    let godFound = false;
-    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = globalFunctions.convertShortenedGodName(godName);
-    let godList = "";
-    fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("Error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
-                parseGodBuilds(god, message);
-                return;
-            }   
-        });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
-        }
-    });
+async function getGodForBuild(message, godName){
+    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    if (god) {
+        parseGodBuilds(god, message)
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+    }
 }
+
 
 function parseGodBuilds(god, message) {
     let godBuildList = []

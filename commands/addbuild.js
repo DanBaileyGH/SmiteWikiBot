@@ -20,6 +20,7 @@ module.exports = {
             }
         } else {
             message.channel.send(new MessageEmbed().setDescription("You cannot edit builds in this server!")); 
+            return;
         }
         if (!hasPerms) {
             message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
@@ -33,35 +34,16 @@ module.exports = {
 	},
 };
 
-function findGod(message, args, client) {
-    let godFound = false;
-    let godName = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = globalFunctions.convertShortenedGodName(godName);
+async function findGod(message, args, client){
+    let godName = [args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase()];
     let role = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    let godList = "";
-    fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            //console.log(typeof god.Name);
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
-                let items = args.join(" ");
-                addBuild(message, items, god.Name, role, client);
-            }   
-        });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
-        }
-    });
+    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    if (god) {
+        let items = args.join(" ");
+        addBuild(message, items, god.Name, role, client);
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+    }
 }
 
 function addBuild(message, items, godName, role, client) {

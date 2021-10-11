@@ -37,24 +37,9 @@ client.on('message', message => {
     let commandName = args.shift().toLowerCase();
     let command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) {
-        let godFound = false;
-        let godName = message.content.slice(prefix.length).trim().replace(" ", "").replace("'", "").trim().toLowerCase();
-        godName = globalFunctions.convertShortenedGodName(godName);
-        let godList = "";
-        fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
+        let godName = [message.content.slice(prefix.length).trim().replace(" ", "").replace("'", "").trim().toLowerCase()];
+        globalFunctions.getJSONObjectByName(godName, "god").then (god => {
+            if (god) {
                 command = client.commands.get("builds");
                 try {
                     command.execute(message, message.content.slice(prefix.length).trim().split(' '));
@@ -63,10 +48,8 @@ client.on('message', message => {
                     console.error(error);
                     message.reply('error executing command');
                 }
-                
-            }   
-        });
-        });
+            } 
+        })
     } else {
         console.log(message.author.username + ' used command: ' + commandName);
         try {
