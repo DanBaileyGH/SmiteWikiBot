@@ -177,3 +177,22 @@ exports.getJSONObjectByName=(name, type)=>{
         });
     })
 }
+
+exports.userHasPerms=(message)=>{
+    let hasPerms = false;
+    const serverId = message.guild.id;
+    return new Promise(resolve => {
+        if (serverId == config.smiteServerId) {
+            if (message.member.roles.cache.some(role => role.id == config.smiteServerPermsRoleId)) {
+                hasPerms = true;
+            }
+        } else if (serverId == config.testServerId) {
+            if (message.member.roles.cache.some(role => role.id == config.testServerPermsRoleId)) {
+                hasPerms = true;
+            }
+        } else {
+            message.channel.send(new MessageEmbed().setDescription("You cannot edit builds in this server!")); 
+        }
+        resolve(hasPerms)
+    });
+}

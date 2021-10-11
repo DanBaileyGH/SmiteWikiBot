@@ -1,25 +1,13 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
-const config = require('./auth.json');
+const globalFunctions = require('./globalfunctions.js');
 
 module.exports = {
 	name: 'setjungle',
     aliases: ["setjungle"],
 	description: 'Set new jungle guide command message',
-	execute(message, args) {
-        let hasPerms = false;
-        const serverId = message.guild.id;
-        if (serverId == config.smiteServerId) {
-            if (message.member.roles.cache.some(role => role.id == config.smiteServerPermsRoleId)) {
-                hasPerms = true;
-            }
-        } else if (serverId == config.testServerId) {
-            if (message.member.roles.cache.some(role => role.id == config.testServerPermsRoleId)) {
-                hasPerms = true;
-            }
-        } else {
-            message.channel.send(new MessageEmbed().setDescription("You cannot edit builds in this server!")); 
-        }
+	async execute(message, args) {
+        let hasPerms = await globalFunctions.userHasPerms(message);
         if (!hasPerms) {
             message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
             return;
