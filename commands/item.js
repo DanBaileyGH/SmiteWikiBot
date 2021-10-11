@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { MessageEmbed } = require('discord.js');
-const { start } = require('repl');
+const {MessageEmbed} = require('discord.js');
 
 module.exports = {
 	name: 'item',

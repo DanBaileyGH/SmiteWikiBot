@@ -1,17 +1,31 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
+const config = require('./auth.json');
 
 module.exports = {
 	name: 'deletebuild',
     aliases: ["db", "deleteb", "dbuild", "removebuild"],
 	description: 'Delete a specific mentor set build',
-	execute(message, args, client) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a build ID to delete")); return;}
-        const server = client.guilds.cache.get('733765822127800391')
-        const member = server.members.cache.get(message.author.id)
-        const hasPerms = member ? member.roles.cache.get('895713618845384724') : false
+	execute(message, args) {
+        let hasPerms = false;
+        const serverId = message.guild.id;
+        if (serverId == config.smiteServerId) {
+            if (message.member.roles.cache.some(role => role.id == config.smiteServerPermsRoleId)) {
+                hasPerms = true;
+            }
+        } else if (serverId == config.testServerId) {
+            if (message.member.roles.cache.some(role => role.id == config.testServerPermsRoleId)) {
+                hasPerms = true;
+            }
+        } else {
+            message.channel.send(new MessageEmbed().setDescription("You cannot edit builds in this server!")); 
+        }
         if (!hasPerms) {
-            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this!")); 
+            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
+            return;
+        }
+        if (args == "") { 
+            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
             return;
         }
         findBuild(message, args);

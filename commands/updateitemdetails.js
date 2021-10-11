@@ -1,5 +1,5 @@
 const fetch = require('cross-fetch');
-const hirez = require('./hirezapifunctions.js');
+const globalFunctions = require('./globalfunctions.js');
 const fs = require('fs');
 
 module.exports = {
@@ -15,14 +15,14 @@ module.exports = {
 };
 
 async function updateItemDetails(message){
-    await fetch(hirez.generateCreateSessionUrl())
+    await fetch(globalFunctions.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
         sessionId = result.session_id;
         return sessionId;
     });
 
-    fetch(hirez.generateGetItemsURL(sessionId))
+    fetch(globalFunctions.generateGetItemsURL(sessionId))
     .then(res => res.json())
     .then(result => {
         const data = JSON.stringify(result, null, 4);

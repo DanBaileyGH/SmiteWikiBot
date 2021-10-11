@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fetch = require('cross-fetch');
-const hirez = require('./hirezapifunctions.js');
-const { MessageEmbed} = require('discord.js');
+const globalFunctions = require('./globalfunctions.js');
+const {MessageEmbed} = require('discord.js');
 
 module.exports = {
 	name: 'skins',
@@ -17,7 +17,7 @@ async function getSkinList(message, godName){
     let godId = null;
     let godFound = false;
     godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = hirez.convertShortenedGodName(godName);
+    godName = globalFunctions.convertShortenedGodName(godName);
     let godList = "";
     await fs.readFile('gods.json', 'utf8', (err, godsData) => {
         if (err) {
@@ -34,11 +34,11 @@ async function getSkinList(message, godName){
             if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
                 godFound = true;
                 godId = god.id
-                fetch(hirez.generateCreateSessionUrl())
+                fetch(globalFunctions.generateCreateSessionUrl())
                 .then(res => res.json())
                 .then(result => {
                     sessionId = result.session_id;
-                    fetch(hirez.generateGodSkinsUrl(sessionId, godId))
+                    fetch(globalFunctions.generateGodSkinsUrl(sessionId, godId))
                     .then(res => res.json())
                     .then(result => {
                         parseSkins(result, message);
