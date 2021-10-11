@@ -25,11 +25,10 @@ async function getItemDetails(message, itemName){
 
 function parseItemDetails(item, message, itemList){
     console.log(item.DeviceName);
-    let starterItem = "Yes";
-    if (!item.StartingItem) {
-        starterItem = "No";
-    }
-    let price = item.Price 
+    const starterItem = (item.StartingItem ? "Yes" : "No");
+    let price = item.Price;
+    let buildsInto = "";
+    let buildsFrom = "";
 
     let embed = new MessageEmbed()
     .setTitle(`Item Details For ${item.DeviceName}`)
@@ -41,39 +40,22 @@ function parseItemDetails(item, message, itemList){
     .addField("Starter Item?", starterItem, true)
     .addField("Item Tier", item.ItemTier, true)
 
-    if(item.ItemTier == 1) {
-        let buildsInto = "";
-        itemList.forEach(checkItem => {
-            if (checkItem.ChildItemId == item.ItemId) {
-                buildsInto += (checkItem.DeviceName + "\n");
-            }
-        });
-        if (buildsInto != "") {embed.addField("Buids Into", buildsInto, true)};
-        price = item.Price;
-    } else if (item.ItemTier == 2) {
-        let buildsInto = "";
-        let buildsFrom = "";
-        itemList.forEach(checkItem => {
-            if (checkItem.ChildItemId == item.ItemId) {
-                buildsInto += (checkItem.DeviceName + "\n");
-            }
-            if (checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) {
-                buildsFrom += (checkItem.DeviceName + "\n");
-                price += checkItem.Price;
-            }
-        })
-        if (buildsFrom != "") {embed.addField("Buids From", buildsFrom, true)};
-        if (buildsInto != "") {embed.addField("Buids Into", buildsInto, true)};
-    } else if (item.ItemTier == 3) {
-        let buildsFrom = "";
-        itemList.forEach(checkItem => {
-            if (checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) {
-                buildsFrom += (checkItem.DeviceName + "\n");
-                price += checkItem.Price;
-            }
-        })
-        if (buildsFrom != "") {embed.addField("Buids From", buildsFrom, true)};
-    }
+    itemList.forEach(checkItem => {
+        if (checkItem.ChildItemId == item.ItemId) {
+            buildsInto += (checkItem.DeviceName + "\n");
+        }
+        if (checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) {
+            buildsFrom += (checkItem.DeviceName + "\n");
+            price += checkItem.Price;
+        }
+    })
+
+    if (buildsFrom != "") {
+        embed.addField("Buids From", buildsFrom, true)
+    };
+    if (buildsInto != "") {
+        embed.addField("Buids Into", buildsInto, true)
+    };
 
     embed.addField("Price", price, true)
     
