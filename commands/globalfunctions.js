@@ -110,10 +110,19 @@ function convertShortenedGodName(godName) {
             godName = "zhongkui";
             break;
         case "morri":
-            godName = "themorrigan"
+            godName = "themorrigan";
             break;
         case "morrigan":
-            godName = "themorrigan"
+            godName = "themorrigan";
+            break;
+        case "amc":
+            godName = "ahmuzencab";
+            break;
+        case "ama":
+            godName = "amaterasu";
+            break;
+        case "aphro":
+            godName = "aphrodite";
             break;
         default:
             return godName;
@@ -127,7 +136,7 @@ exports.getJSONObjectByName=(name, type)=>{
         throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
     }
     let found = false;
-    name = name.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
+    name = name.join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
     name = convertShortenedGodName(name);
     let list = "";
     let objectName = "";
@@ -145,13 +154,13 @@ exports.getJSONObjectByName=(name, type)=>{
             }
             list.forEach(object => {
                 if (type == "god") {
-                    objectName = object.Name.replace(" ", "").replace("'", "").trim().toLowerCase()
+                    objectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase()
                     if (objectName == name){
                         found = true;  
                         resolve(object);
                     }   
                 } else if (type == "item") {
-                    objectName = object.DeviceName.replace(" ", "").replace("'", "").trim().toLowerCase();
+                    objectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
                     if (objectName == name){
                         found = true;  
                         const itemObject = {

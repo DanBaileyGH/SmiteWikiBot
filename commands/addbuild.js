@@ -35,8 +35,8 @@ module.exports = {
 };
 
 async function findGod(message, args, client){
-    let godName = [args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase()];
-    let role = args.splice(0, 1).join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
+    let godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
+    let role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
     const god = await globalFunctions.getJSONObjectByName(godName, "god");
     if (god) {
         let items = args.join(" ");
@@ -49,7 +49,7 @@ async function findGod(message, args, client){
 function addBuild(message, items, godName, role, client) {
     if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
     if (role.toLowerCase() == "adc") {
-        role = role.toUpperCase;
+        role = role.toUpperCase();
     } else {
         role = role.charAt(0).toUpperCase() + role.slice(1);
     }

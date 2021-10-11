@@ -36,7 +36,7 @@ function parseGodBuilds(god, message) {
             return;
         }
         buildList.forEach(build => {
-            if (build.god.replace(" ", "").replace("'", "").trim().toLowerCase() == god.Name.replace(" ", "").replace("'", "").trim().toLowerCase()){
+            if (build.god.replace(/ /g, "").replace("'", "").trim().toLowerCase() == god.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase()){
                 godBuildList.push(build);
             }   
         });
