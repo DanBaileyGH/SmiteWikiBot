@@ -35,11 +35,11 @@ module.exports = {
 };
 
 async function findGod(message, args, client){
-    let godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
-    let role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
+    const godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
+    const role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
     const god = await globalFunctions.getJSONObjectByName(godName, "god");
     if (god) {
-        let items = args.join(" ");
+        const items = args.join(" ");
         addBuild(message, items, god.Name, role, client);
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
@@ -53,7 +53,6 @@ function addBuild(message, items, godName, role, client) {
     } else {
         role = role.charAt(0).toUpperCase() + role.slice(1);
     }
-    console.log(role);
     if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide"].includes(role))) {
         message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
         return;

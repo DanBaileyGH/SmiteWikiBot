@@ -59,7 +59,7 @@ function parseItemDetails(item, message, itemList){
 
     embed.addField("Price", price, true)
     
-    let itemStats = item.ItemDescription.Menuitems;
+    const itemStats = item.ItemDescription.Menuitems;
     itemStats.forEach(stat => {
         embed.addField(stat.Description, stat.Value, true);
     })

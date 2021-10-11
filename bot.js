@@ -33,11 +33,11 @@ client.login(config.BOT_TOKEN)
 client.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
     
-    let args = message.content.slice(prefix.length).trim().split(' ');
-    let commandName = args.shift().toLowerCase();
-    let command = client.commands.get(commandName) || client.aliases.get(commandName);
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const commandName = args.shift().toLowerCase();
+    const command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) {
-        let godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace("'", "").trim().toLowerCase()];
+        const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace("'", "").trim().toLowerCase()];
         globalFunctions.getJSONObjectByName(godName, "god").then (god => {
             if (god) {
                 command = client.commands.get("builds");

@@ -23,10 +23,7 @@ async function getGodDetails(message, godName){
 
 function parseGodDetails(god, message){
     console.log(god.Name, god.Pantheon);
-    let onFreeRotation = "Yes";
-    if (god.onFreeRotation == "") {
-        onFreeRotation = "No";
-    }
+    const onFreeRotation = ((god.OnFreeRotation == "true") ? "Yes" : "No");
     let embed = new MessageEmbed()
     .setTitle(`God Details For ${god.Name}`)
     .setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name}`)

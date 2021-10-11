@@ -8,7 +8,7 @@ module.exports = {
 	description: 'Get ability details for chosen god',
 	execute(message, args) {
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
-        let lastArg = args.pop().toLowerCase();
+        const lastArg = args.pop().toLowerCase();
         if (["1", "2", "3", "4", "p", "passive", "all"].includes(lastArg)) {
             getAbilityDetails(message, args, lastArg)
         } else {

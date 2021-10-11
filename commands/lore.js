@@ -23,12 +23,8 @@ async function getGodDetails(message, godName){
 
 function parseGodLore(god, message){
     console.log(god.Name, god.Pantheon);
-    let onFreeRotation = "Yes";
-    if (god.onFreeRotation == "") {
-        onFreeRotation = "No";
-    }
-    let loreFormatFixed= god.Lore.replace("\\n\\n", ".\\n\\n").replace("..\\n\\n", ".\\n\\n");
-    let loreSplitArray = loreFormatFixed.split("\\n\\n");
+    const loreFormatFixed= god.Lore.replace("\\n\\n", ".\\n\\n").replace("..\\n\\n", ".\\n\\n");
+    const loreSplitArray = loreFormatFixed.split("\\n\\n");
     let loreSection = "";
     let loreSectionArray = [];
     let loreSectionTitle = "";

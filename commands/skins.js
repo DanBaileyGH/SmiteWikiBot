@@ -46,8 +46,16 @@ function parseSkins(skins, message) {
 
     skins.forEach(skin => {
         price = `${[skin.price_gems]} Gems`
-        if (skin.price_favor != 0) { price += `\nOR ${[skin.price_favor]} Favor`};
-        if (skin.godSkin_URL == "") { link = "No Link Available"} else {link = `[LINK](${skin.godSkin_URL})`};
+        if (skin.price_favor != 0) { 
+            price += `\nOR ${[skin.price_favor]} Favor`
+        };
+
+        if (skin.godSkin_URL == "") { 
+            link = "No Link Available"
+        } else {
+            link = `[LINK](${skin.godSkin_URL})`
+        };
+        
         if (skin.obtainability == "Normal") {
             embed.addField(skin.skin_name, `${link} \nPrice: ${price}`, true);
         } else if (skin.obtainability == "Exclusive") {

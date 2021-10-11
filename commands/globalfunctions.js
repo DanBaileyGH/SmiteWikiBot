@@ -18,37 +18,37 @@ const getItemsUrl = "getitemsjson/";
 const getGodSkinsUrl = "getgodskinsjson/"
 
 function getTimestamp() {
-    let timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "").slice(0, -3) //funnily enough i did not write this, thanks stack overflow
+    const timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "").slice(0, -3) //funnily enough i did not write this, thanks stack overflow
     return timestamp;
 }
 
 function createSignature(method, timestamp) {
-    let signatureToHash = devId + method + authKey + timestamp;
-    let hashedSignature = md5(signatureToHash).toString();
+    const signatureToHash = devId + method + authKey + timestamp;
+    const hashedSignature = md5(signatureToHash).toString();
     return hashedSignature;
 }
 
 exports.generateCreateSessionUrl=()=>{
-    let timestamp = getTimestamp();
-    let reqURL = baseURL + createSessionUrl + devId + "/" + createSignature("createsession", timestamp) + "/" + timestamp;
+    const timestamp = getTimestamp();
+    const reqURL = baseURL + createSessionUrl + devId + "/" + createSignature("createsession", timestamp) + "/" + timestamp;
     return reqURL;
 }
 
 exports.generateGetGodsURL=(sessionId)=>{
-    let timestamp = getTimestamp();
-    let reqURL = baseURL + getGodsUrl + devId + "/" + createSignature("getgods", timestamp) + "/" + sessionId + "/" + timestamp + "/1";
+    const timestamp = getTimestamp();
+    const reqURL = baseURL + getGodsUrl + devId + "/" + createSignature("getgods", timestamp) + "/" + sessionId + "/" + timestamp + "/1";
     return reqURL;
 }
 
 exports.generateGetItemsURL=(sessionId)=>{
-    let timestamp = getTimestamp();
-    let reqURL = baseURL + getItemsUrl + devId + "/" + createSignature("getitems", timestamp) + "/" + sessionId + "/" + timestamp + "/1";
+    const timestamp = getTimestamp();
+    const reqURL = baseURL + getItemsUrl + devId + "/" + createSignature("getitems", timestamp) + "/" + sessionId + "/" + timestamp + "/1";
     return reqURL;
 }
 
 exports.generateGodSkinsUrl=(sessionId, godId)=>{
-    let timestamp = getTimestamp();
-    let reqURL = baseURL + getGodSkinsUrl + devId + "/" + createSignature("getgodskins", timestamp) + "/" + sessionId + "/" + timestamp + "/" + godId + "/1";
+    const timestamp = getTimestamp();
+    const reqURL = baseURL + getGodSkinsUrl + devId + "/" + createSignature("getgodskins", timestamp) + "/" + sessionId + "/" + timestamp + "/" + godId + "/1";
     return reqURL;
 }
 
