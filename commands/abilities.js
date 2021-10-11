@@ -18,37 +18,17 @@ module.exports = {
 	},
 };
 
-function getAbilityDetails(message, godName, ability){
-    let godFound = false;
-    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = globalFunctions.convertShortenedGodName(godName);
-    let godList = "";
-    fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
+async function getAbilityDetails(message, godName, ability){
+    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    if (god) {
+        if (ability == "all") {
+            parseAllAbilityDetails(god, message);
+        } else {
+            parseOneAbilityDetails(god, message, ability);
         }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
-                if (ability == "all") {
-                    parseAllAbilityDetails(god, message);
-                } else {
-                    parseOneAbilityDetails(god, message, ability);
-                }
-                return;
-            }   
-        });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
-        }
-    });
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+    }
 }
 
 function parseAllAbilityDetails(god, message){

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
+const globalFunctions = require('./globalfunctions.js');
 
 module.exports = {
 	name: 'item',
@@ -7,36 +8,19 @@ module.exports = {
 	description: 'Get details for chosen item',
 	execute(message, args) {
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter an Item")); return;}
-        getGodDetails(message, args);
+        getItemDetails(message, args);
 	},
 };
 
-function getGodDetails(message, itemName){
-    let itemFound = false;
-    itemName = itemName.join(' ').toLowerCase().replace("'", "").replace(" ", "");
-    let itemList = "";
-    fs.readFile('items.json', 'utf8', (err, itemsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            itemList = JSON.parse(itemsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        itemList.forEach(item => {
-            if (item.DeviceName.toLowerCase().replace("'", "").replace(" ", "") == itemName){
-                itemFound = true;
-                parseItemDetails(item, message, itemList);
-                return;
-            }   
-        });
-        if (!itemFound) {
-            message.channel.send(new MessageEmbed().setDescription("Item Not Found, Check Your Spelling"));
-        }
-    });
+async function getItemDetails(message, itemName){
+    const itemsObject = await globalFunctions.getJSONObjectByName(itemName, "item");
+    const item = itemsObject.object;
+    const itemList = itemsObject.list;
+    if (item) {
+        parseItemDetails(item, message, itemList);
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("Item Not Found, Check Your Spelling"));
+    }
 }
 
 function parseItemDetails(item, message, itemList){

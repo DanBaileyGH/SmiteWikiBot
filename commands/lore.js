@@ -12,37 +12,16 @@ module.exports = {
 	},
 };
 
-function getGodDetails(message, godName){
-
-    let godFound = false;
-    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = globalFunctions.convertShortenedGodName(godName);
-    let godList = "";
-    fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
-                parseGodDetails(god, message);
-                return;
-            }   
-        });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
-        }
-    });
+async function getGodDetails(message, godName){
+    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    if (god) {
+        parseGodLore(god, message);
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+    }
 }
 
-function parseGodDetails(god, message){
+function parseGodLore(god, message){
     console.log(god.Name, god.Pantheon);
     let onFreeRotation = "Yes";
     if (god.onFreeRotation == "") {

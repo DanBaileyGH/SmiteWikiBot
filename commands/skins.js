@@ -9,47 +9,29 @@ module.exports = {
 	description: 'Get list of skins for chosen god',
 	execute(message, args) {
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
-        getSkinList(message, args);
+        getGodDetails(message, args);
 	},
 };
 
-async function getSkinList(message, godName){
-    let godId = null;
-    let godFound = false;
-    godName = godName.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
-    godName = globalFunctions.convertShortenedGodName(godName);
-    let godList = "";
-    await fs.readFile('gods.json', 'utf8', (err, godsData) => {
-        if (err) {
-            console.log("File read failed: ", err);
-            return;
-        }
-        try {
-            godList = JSON.parse(godsData);
-        } catch (err) {
-            console.log("error parsing json string: ", err);
-            return;
-        }
-        godList.forEach(god => {
-            if (god.Name.replace(" ", "").replace("'", "").trim().toLowerCase() == godName){
-                godFound = true;
-                godId = god.id
-                fetch(globalFunctions.generateCreateSessionUrl())
-                .then(res => res.json())
-                .then(result => {
-                    sessionId = result.session_id;
-                    fetch(globalFunctions.generateGodSkinsUrl(sessionId, godId))
-                    .then(res => res.json())
-                    .then(result => {
-                        parseSkins(result, message);
-                    });
-                });
-            }   
+async function getGodDetails(message, godName){
+    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    if (god) {
+        getSkinList(god, message);
+    } else {
+        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+    }
+}
+
+async function getSkinList(god, message){
+    fetch(globalFunctions.generateCreateSessionUrl())
+    .then(res => res.json())
+    .then(result => {
+        sessionId = result.session_id;
+        fetch(globalFunctions.generateGodSkinsUrl(sessionId, god.id))
+        .then(res => res.json())
+        .then(result => {
+            parseSkins(result, message);
         });
-        if (!godFound) {
-            message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
-            return;
-        }
     });
 }
 

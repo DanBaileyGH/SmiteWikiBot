@@ -5,6 +5,7 @@ const { createSign } = require('crypto');
 const { get } = require('http');
 const md5 = require("md5");
 const config = require('./auth.json');
+const fs = require('fs');
 
 const devId = config.devId;
 const authKey = config.authKey;
@@ -52,7 +53,7 @@ exports.generateGodSkinsUrl=(sessionId, godId)=>{
 }
 
 //probably better to do this with a dictionary or something but :)
-exports.convertShortenedGodName=(godName)=>{
+function convertShortenedGodName(godName) {
     switch(godName) {
         case "ao":
             godName = "aokuang";
@@ -118,4 +119,52 @@ exports.convertShortenedGodName=(godName)=>{
             return godName;
     }
     return godName;
+}
+
+exports.getJSONObjectByName=(name, type)=>{
+    const validTypes = ["god", "item"];
+    if (!validTypes.includes(type)) {
+        throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
+    }
+    let found = false;
+    name = name.join(' ').replace(" ", "").replace("'", "").trim().toLowerCase();
+    name = convertShortenedGodName(name);
+    let list = "";
+    let objectName = "";
+    return new Promise(resolve => {
+        fs.readFile(`${type}s.json`, 'utf8', (err, data) => {
+            if (err) {
+                console.log("File read failed: ", err);
+                return;
+            }
+            try {
+                list = JSON.parse(data);
+            } catch (err) {
+                console.log("error parsing json string: ", err);
+                return;
+            }
+            list.forEach(object => {
+                if (type == "god") {
+                    objectName = object.Name.replace(" ", "").replace("'", "").trim().toLowerCase()
+                    if (objectName == name){
+                        found = true;  
+                        resolve(object);
+                    }   
+                } else if (type == "item") {
+                    objectName = object.DeviceName.replace(" ", "").replace("'", "").trim().toLowerCase();
+                    if (objectName == name){
+                        found = true;  
+                        const itemObject = {
+                            object,
+                            list
+                        };
+                        resolve(itemObject);
+                    }   
+                }
+            });
+            if (!found) {
+                resolve(false);
+            }
+        });
+    })
 }
