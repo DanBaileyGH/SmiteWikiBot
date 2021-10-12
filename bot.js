@@ -50,7 +50,7 @@ client.on('message', message => {
                     message.reply('error executing command');
                 }
             } 
-        })
+        });
     } else {
         console.log(message.author.username + ' used command: ' + commandName);
         try {

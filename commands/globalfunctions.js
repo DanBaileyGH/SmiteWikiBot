@@ -88,12 +88,12 @@ async function findObjectWithShortenedName(name, type) {
         objectList.forEach(object => {
             if (type == "god") {
                 currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
-                if (currentObjectName.includes(name)) {
+                if (currentObjectName == name) {
                     resolve(object);
                 }
             } else if (type == "item") {
                 currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
-                if (currentObjectName.includes(name)) {
+                if (currentObjectName == name) {
                     let itemObject = {
                         object,
                         objectList
