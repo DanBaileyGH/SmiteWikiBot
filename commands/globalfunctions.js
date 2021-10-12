@@ -52,94 +52,9 @@ exports.generateGodSkinsUrl=(sessionId, godId)=>{
     return reqURL;
 }
 
-//probably better to do this with a dictionary or something but :)
-function convertShortenedGodName(godName) {
-    switch(godName) {
-        case "ao":
-            godName = "aokuang";
-            break;
-        case "kuang":
-            godName = "aokuang";
-            break;
-        case "erlang":
-            godName = "erlangshen";
-            break;
-        case "hachi":
-            godName = "hachiman";
-            break;
-        case "gilga":
-            godName = "gilgamesh";
-            break;    
-        case "jorm":
-            godName = "jormungandr";
-            break;
-        case "arthur":
-            godName = "kingarthur";
-            break;
-        case "ka":
-            godName = "kingarthur";
-            break;
-        case "morgan":
-            godName = "morganlefay";
-            break;
-        case "mlf":
-            godName = "morganlefay";
-            break;
-        case "rat":
-            godName = "ratatoskr";
-            break;
-        case "wukong":
-            godName = "sunwukong";
-            break;
-        case "swk":
-            godName = "sunwukong";
-            break;
-        case "kuku":
-            godName = "kukulkan";
-            break;
-        case "guan":
-            godName = "guanyu";
-            break; 
-        case "zhong":
-            godName = "zhongkui";
-            break;
-        case "xt":
-            godName = "xingtian";
-            break;
-        case "zk":
-            godName = "zhongkui";
-            break;
-        case "morri":
-            godName = "themorrigan";
-            break;
-        case "morrigan":
-            godName = "themorrigan";
-            break;
-        case "amc":
-            godName = "ahmuzencab";
-            break;
-        case "ama":
-            godName = "amaterasu";
-            break;
-        case "aphro":
-            godName = "aphrodite";
-            break;
-        default:
-            return godName;
-    }
-    return godName;
-}
-
-exports.getJSONObjectByName=(name, type)=>{
-    const validTypes = ["god", "item"];
-    if (!validTypes.includes(type)) {
-        throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
-    }
-    let found = false;
-    name = name.join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
-    name = convertShortenedGodName(name);
-    let list = "";
-    let objectName = "";
+//valid types: god, item
+function getAllObjectsOfType(type) {
+    let objectsList = [];
     return new Promise(resolve => {
         fs.readFile(`${type}s.json`, 'utf8', (err, data) => {
             if (err) {
@@ -147,36 +62,49 @@ exports.getJSONObjectByName=(name, type)=>{
                 return;
             }
             try {
-                list = JSON.parse(data);
+                dataList = JSON.parse(data);
             } catch (err) {
                 console.log("error parsing json string: ", err);
                 return;
             }
-            list.forEach(object => {
-                if (type == "god") {
-                    objectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase()
-                    if (objectName == name){
-                        found = true;  
-                        resolve(object);
-                    }   
-                } else if (type == "item") {
-                    objectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
-                    if (objectName == name){
-                        found = true;  
-                        const itemObject = {
-                            object,
-                            list
-                        };
-                        resolve(itemObject);
-                    }   
-                }
+            dataList.forEach(object => {
+                objectsList.push(object);
             });
-            if (!found) {
-                resolve(false);
-            }
+            resolve(objectsList);
         });
+    });
+}
+
+//valid types: god, item
+async function findObjectWithShortenedName(name, type) {
+    const validTypes = ["god", "item"];
+    if (!validTypes.includes(type)) {
+        throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
+    }
+    let objectList = await getAllObjectsOfType(type);
+    return new Promise(resolve => {
+        let currentObjectName = "";
+        objectList.forEach(object => {
+            if (type == "god") {
+                currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                if (currentObjectName.includes(name)) {
+                    resolve(object);
+                }
+            } else if (type == "item") {
+                currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                if (currentObjectName.includes(name)) {
+                    let itemObject = {
+                        object,
+                        objectList
+                    }
+                    resolve(itemObject);
+                }
+            }
+        })
+        resolve(false);
     })
 }
+module.exports.findObjectWithShortenedName = findObjectWithShortenedName;
 
 exports.userHasPerms=(message)=>{
     let hasPerms = false;

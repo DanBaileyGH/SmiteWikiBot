@@ -13,14 +13,13 @@ module.exports = {
 };
 
 async function getGodForBuild(message, godName){
-    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    const god = await globalFunctions.findObjectWithShortenedName(godName, "god")
     if (god) {
         parseGodBuilds(god, message)
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
-
 
 function parseGodBuilds(god, message) {
     let godBuildList = []

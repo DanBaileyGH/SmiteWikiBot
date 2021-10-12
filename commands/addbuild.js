@@ -23,7 +23,7 @@ module.exports = {
 async function findGod(message, args, client){
     const godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
     const role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
-    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
     if (god) {
         const items = args.join(" ");
         addBuild(message, items, god.Name, role, client);

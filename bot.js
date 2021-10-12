@@ -38,7 +38,7 @@ client.on('message', message => {
     let command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) {
         const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace("'", "").trim().toLowerCase()];
-        globalFunctions.getJSONObjectByName(godName, "god").then (god => {
+        globalFunctions.findObjectWithShortenedName(godName, "god").then (god => {
             if (god) {
                 command = client.commands.get("builds");
                 try {

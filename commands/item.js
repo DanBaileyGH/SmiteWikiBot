@@ -13,9 +13,9 @@ module.exports = {
 };
 
 async function getItemDetails(message, itemName){
-    const itemsObject = await globalFunctions.getJSONObjectByName(itemName, "item");
+    const itemsObject = await globalFunctions.findObjectWithShortenedName(itemName, "item");
     const item = itemsObject.object;
-    const itemList = itemsObject.list;
+    const itemList = itemsObject.objectList;
     if (item) {
         parseItemDetails(item, message, itemList);
     } else {

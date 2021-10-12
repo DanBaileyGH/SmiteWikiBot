@@ -13,7 +13,7 @@ module.exports = {
 };
 
 async function getGodDetails(message, godName){
-    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
     if (god) {
         parseGodDetails(god, message);
     } else {

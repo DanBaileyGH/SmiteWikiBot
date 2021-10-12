@@ -19,7 +19,7 @@ module.exports = {
 };
 
 async function getAbilityDetails(message, godName, ability){
-    const god = await globalFunctions.getJSONObjectByName(godName, "god");
+    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
     if (god) {
         if (ability == "all") {
             parseAllAbilityDetails(god, message);
