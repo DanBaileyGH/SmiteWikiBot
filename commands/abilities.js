@@ -19,19 +19,21 @@ module.exports = {
 };
 
 async function getAbilityDetails(message, godName, ability){
-    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object;
+    const exactMatch = godObject.exact;
     if (god) {
         if (ability == "all") {
-            parseAllAbilityDetails(god, message);
+            parseAllAbilityDetails(god, message, exactMatch);
         } else {
-            parseOneAbilityDetails(god, message, ability);
+            parseOneAbilityDetails(god, message, ability, exactMatch);
         }
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-function parseAllAbilityDetails(god, message){
+function parseAllAbilityDetails(god, message, exactMatch){
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
     .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
@@ -88,11 +90,15 @@ function parseAllAbilityDetails(god, message){
     } else {
         embed.addField("Cooldown", "None", true);
     }
-    
-    message.channel.send(embed);
+
+    if (exactMatch) {
+        message.channel.send(embed);
+    } else {
+        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+    }
 }
 
-function parseOneAbilityDetails(god, message, ability) {
+function parseOneAbilityDetails(god, message, ability, exactMatch) {
     console.log(god.Name, god.Pantheon);
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
@@ -132,5 +138,10 @@ function parseOneAbilityDetails(god, message, ability) {
             embed.addField("Cooldown", "None", true);
         }
     }
-    message.channel.send(embed);
+
+    if (exactMatch) {
+        message.channel.send(embed);
+    } else {
+        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+    }
 }

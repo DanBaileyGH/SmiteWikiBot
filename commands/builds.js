@@ -13,15 +13,17 @@ module.exports = {
 };
 
 async function getGodForBuild(message, godName){
-    const god = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object;
+    const exactMatch = godObject.exact;
     if (god) {
-        parseGodBuilds(god, message)
+        parseGodBuilds(god, message, exactMatch)
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-function parseGodBuilds(god, message) {
+function parseGodBuilds(god, message, exactMatch) {
     let godBuildList = []
     fs.readFile('builds.json', 'utf8', (err, buildsData) => {
         if (err) {
@@ -60,7 +62,11 @@ function parseGodBuilds(god, message) {
                     embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
                 })
             }
-            message.channel.send(embed);
+            if (exactMatch) {
+                message.channel.send(embed);
+            } else {
+                message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+            }
         }
     });
 }

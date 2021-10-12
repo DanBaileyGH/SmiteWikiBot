@@ -89,19 +89,47 @@ async function findObjectWithShortenedName(name, type) {
             if (type == "god") {
                 currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
                 if (currentObjectName == name) {
-                    resolve(object);
+                    let godObject = {
+                        object: object,
+                        exact: true
+                    }
+                    resolve(godObject);
                 }
             } else if (type == "item") {
                 currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
                 if (currentObjectName == name) {
                     let itemObject = {
-                        object,
-                        objectList
+                        object: object,
+                        objectList: objectList,
+                        exact: true
                     }
                     resolve(itemObject);
                 }
             }
-        })
+        });
+        //didnt find exact match, now looking for abbreviations
+        objectList.forEach(object => {
+            if (type == "god") {
+                currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                if (currentObjectName.includes(name)) {
+                    let godObject = {
+                        object: object,
+                        exact: false
+                    }
+                    resolve(godObject);
+                }
+            } else if (type == "item") {
+                currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                if (currentObjectName.includes(name)) {
+                    let itemObject = {
+                        object: object,
+                        objectList: objectList,
+                        exact: false
+                    }
+                    resolve(itemObject);
+                }
+            }
+        });
         resolve(false);
     })
 }

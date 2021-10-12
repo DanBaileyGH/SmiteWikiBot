@@ -14,15 +14,17 @@ module.exports = {
 };
 
 async function getGodDetails(message, godName){
-    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object;
+    const exactMatch = godObject.exact;
     if (god) {
-        getSkinList(god, message);
+        getSkinList(god, message, exactMatch);
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-async function getSkinList(god, message){
+async function getSkinList(god, message, exactMatch){
     fetch(globalFunctions.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
@@ -30,12 +32,12 @@ async function getSkinList(god, message){
         fetch(globalFunctions.generateGodSkinsUrl(sessionId, god.id))
         .then(res => res.json())
         .then(result => {
-            parseSkins(result, message);
+            parseSkins(result, message, exactMatch);
         });
     });
 }
 
-function parseSkins(skins, message) {
+function parseSkins(skins, message, exactMatch) {
     let price = "";
     let link = "";
     let embed = new MessageEmbed()
@@ -64,5 +66,10 @@ function parseSkins(skins, message) {
             embed.addField(skin.skin_name, `${link} \nLimited Time Only`, true);
         }
     });
-    message.channel.send(embed);
+    
+    if (exactMatch) {
+        message.channel.send(embed);
+    } else {
+        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+    }
 }

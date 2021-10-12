@@ -16,14 +16,15 @@ async function getItemDetails(message, itemName){
     const itemsObject = await globalFunctions.findObjectWithShortenedName(itemName, "item");
     const item = itemsObject.object;
     const itemList = itemsObject.objectList;
+    const exactMatch = itemsObject.exact;
     if (item) {
-        parseItemDetails(item, message, itemList);
+        parseItemDetails(item, message, itemList, exactMatch);
     } else {
         message.channel.send(new MessageEmbed().setDescription("Item Not Found, Check Your Spelling"));
     }
 }
 
-function parseItemDetails(item, message, itemList){
+function parseItemDetails(item, message, itemList, exactMatch){
     console.log(item.DeviceName);
     const starterItem = (item.StartingItem ? "Yes" : "No");
     let price = item.Price;
@@ -51,10 +52,10 @@ function parseItemDetails(item, message, itemList){
     })
 
     if (buildsFrom != "") {
-        embed.addField("Buids From", buildsFrom, true)
+        embed.addField("Builds From", buildsFrom, true)
     };
     if (buildsInto != "") {
-        embed.addField("Buids Into", buildsInto, true)
+        embed.addField("Builds Into", buildsInto, true)
     };
 
     embed.addField("Price", price, true)
@@ -66,5 +67,10 @@ function parseItemDetails(item, message, itemList){
     if(item.ItemDescription.SecondaryDescription != null && item.ItemDescription.SecondaryDescription != "") {
         embed.addField("Passive", item.ItemDescription.SecondaryDescription, false);
     }
-    message.channel.send(embed);
+
+    if (exactMatch) {
+        message.channel.send(embed);
+    } else {
+        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+    }
 }

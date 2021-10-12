@@ -13,15 +13,17 @@ module.exports = {
 };
 
 async function getGodDetails(message, godName){
-    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object;
+    const exactMatch = godObject.exact;
     if (god) {
-        parseGodLore(god, message);
+        parseGodLore(god, message, exactMatch);
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-function parseGodLore(god, message){
+function parseGodLore(god, message, exactMatch){
     console.log(god.Name, god.Pantheon);
     const loreFormatFixed= god.Lore.replace("\\n\\n", ".\\n\\n").replace("..\\n\\n", ".\\n\\n");
     const loreSplitArray = loreFormatFixed.split("\\n\\n");
@@ -48,5 +50,9 @@ function parseGodLore(god, message){
         }
     }
     
-    message.channel.send(embed);
+    if (exactMatch) {
+        message.channel.send(embed);
+    } else {
+        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+    }
 }
