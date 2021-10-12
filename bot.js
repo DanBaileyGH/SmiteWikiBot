@@ -42,6 +42,7 @@ client.on('message', message => {
             if (god) {
                 command = client.commands.get("builds");
                 try {
+                    console.log(message.author.username + ' used command: ' + commandName);
                     command.execute(message, message.content.slice(prefix.length).trim().split(' '));
                     return;
                 } catch (error) {
