@@ -108,6 +108,8 @@ async function findObjectWithShortenedName(name, type) {
             }
         });
         //didnt find exact match, now looking for abbreviations
+        if (name.length < 2) return;
+        
         objectList.forEach(object => {
             if (type == "god") {
                 currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
