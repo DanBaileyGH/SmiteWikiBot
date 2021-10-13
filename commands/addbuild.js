@@ -23,16 +23,18 @@ module.exports = {
 async function findGod(message, args, client){
     const godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
     const role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
-    const god = await globalFunctions.findObjectWithShortenedName(godName, "god");
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object;
+    const exactMatch = godObject.exact;
     if (god) {
         const items = args.join(" ");
-        addBuild(message, items, god.Name, role, client);
+        addBuild(message, items, god.Name, role, client, exactMatch);
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-function addBuild(message, items, godName, role, client) {
+function addBuild(message, items, godName, role, client, exactMatch) {
     if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase();
@@ -90,8 +92,12 @@ function addBuild(message, items, godName, role, client) {
             if (err) {
                 throw err;
             } else {
-                console.log("Builds saved to file")
-                message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`));
+                console.log("Builds saved to file");
+                if (exactMatch) {
+                    message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`));
+                } else {
+                    message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`));
+                }
                 const ch = client.channels.cache.find(c => c.id == 895777081630265395);
                 ch.send({ files: ["./builds.json"] });
             }
