@@ -82,6 +82,7 @@ async function findObjectWithShortenedName(name, type) {
     if (!validTypes.includes(type)) {
         throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
     }
+    if (name == "amc") name = "ahmuzencab"; 
     let objectList = await getAllObjectsOfType(type);
     return new Promise(resolve => {
         let currentObjectName = "";
