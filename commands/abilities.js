@@ -23,17 +23,13 @@ async function getAbilityDetails(message, godName, ability){
     const god = godObject.object;
     const exactMatch = godObject.exact;
     if (god) {
-        if (ability == "all") {
-            parseAllAbilityDetails(god, message, exactMatch);
-        } else {
-            parseOneAbilityDetails(god, message, ability, exactMatch);
-        }
+        parseAbilityDetails(god, message, exactMatch, ability);
     } else {
         message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
     }
 }
 
-function parseAllAbilityDetails(god, message, exactMatch){
+function parseAbilityDetails(god, message, exactMatch, abilityNum){
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
     .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
@@ -45,52 +41,18 @@ function parseAllAbilityDetails(god, message, exactMatch){
         embed.setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     }
-    
-    embed.addField(`Passive - ${god.Ability_5.Summary}`, god.Ability_5.Description.itemDescription.description, false)
-    god.Ability_5.Description.itemDescription.rankitems.forEach(stat => {
-        embed.addField(stat.description, stat.value, true);
-    });
-    
-    embed.addField(`Ability 1 - ${god.Ability_1.Summary}`, god.Ability_1.Description.itemDescription.description, false);
-    god.Ability_1.Description.itemDescription.rankitems.forEach(stat => {
-        embed.addField(stat.description, stat.value, true);
-    });
-    if(god.Ability_1.Description.itemDescription.cooldown && god.Ability_1.Description.itemDescription.cooldown != "") {
-        embed.addField("Cooldown", god.Ability_1.Description.itemDescription.cooldown, true);
+
+    //TODO: turn repeated section into its own function so not repeated
+    if (abilityNum == "all") {
+        for(i = 0; i < 5; i++) {
+            let ability = parseOneAbilityDetails(god, i);
+            embed = addAbilityEmbedField(ability, i, embed);
+        }
     } else {
-        embed.addField("Cooldown", "None", true);
+        let ability = parseOneAbilityDetails(god, abilityNum);
+        embed = addAbilityEmbedField(ability, abilityNum, embed);       
     }
     
-    embed.addField(`Ability 2 - ${god.Ability_2.Summary}`, god.Ability_2.Description.itemDescription.description, false);
-    god.Ability_2.Description.itemDescription.rankitems.forEach(stat => {
-        embed.addField(stat.description, stat.value, true);
-    });
-    if(god.Ability_2.Description.itemDescription.cooldown && god.Ability_2.Description.itemDescription.cooldown != "") {
-        embed.addField("Cooldown", god.Ability_2.Description.itemDescription.cooldown, true);
-    } else {
-        embed.addField("Cooldown", "None", true);
-    }
-
-    embed.addField(`Ability 3 - ${god.Ability_3.Summary}`, god.Ability_3.Description.itemDescription.description, false);
-    god.Ability_3.Description.itemDescription.rankitems.forEach(stat => {
-        embed.addField(stat.description, stat.value, true);
-    });
-    if(god.Ability_3.Description.itemDescription.cooldown && god.Ability_3.Description.itemDescription.cooldown != "") {
-        embed.addField("Cooldown", god.Ability_3.Description.itemDescription.cooldown, true);
-    } else {
-        embed.addField("Cooldown", "None", true);
-    }
-
-    embed.addField(`Ability 4 - ${god.Ability_4.Summary}`, god.Ability_4.Description.itemDescription.description, false);
-    god.Ability_4.Description.itemDescription.rankitems.forEach(stat => {
-        embed.addField(stat.description, stat.value, true);
-    });
-    if(god.Ability_4.Description.itemDescription.cooldown && god.Ability_4.Description.itemDescription.cooldown != "") {
-        embed.addField("Cooldown", god.Ability_4.Description.itemDescription.cooldown, true);
-    } else {
-        embed.addField("Cooldown", "None", true);
-    }
-
     if (exactMatch) {
         message.channel.send(embed);
     } else {
@@ -98,50 +60,48 @@ function parseAllAbilityDetails(god, message, exactMatch){
     }
 }
 
-function parseOneAbilityDetails(god, message, ability, exactMatch) {
-    console.log(god.Name, god.Pantheon);
-    let embed = new MessageEmbed()
-    .setTitle(`Ability Details For ${god.Name}`)
-    .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
-    .setTimestamp()
-    .setFooter(`Data from the Smite API`)
-    .setThumbnail(god.godIcon_URL)
+function parseOneAbilityDetails(god, ability) {
+    console.log(ability);
+    let godAbility = 0;
+    if ([0, "0", "p", "passive"].includes(ability)) {
+        godAbility = god.Ability_5;
+        ability = "Passive";
+    } else if (ability == "1") {
+        godAbility = god.Ability_1;
+        ability = "Ability 1"
+    } else if (ability == "2") {
+        godAbility = god.Ability_2;
+        ability = "Ability 2"
+    } else if (ability == "3") {
+        godAbility = god.Ability_3;
+        ability = "Ability 3"
+    } else if (ability == "4") {
+        godAbility = god.Ability_4;
+        ability = "Ability 4"
+    }
     
-    if(god.Name == "Merlin"){
-        embed.setDescription(`For God Stats, Use Command ?god ${god.Name} \n
-        NOTE: Merlin only has his arcane stance abilities on the API`);
-    } else {
-        let godAbility = 0;
-        if (ability == "p" || ability == "passive") {
-            godAbility = god.Ability_5;
-            ability = "Passive";
-        } else if (ability == "1") {
-            godAbility = god.Ability_1;
-            ability = "Ability 1"
-        } else if (ability == "2") {
-            godAbility = god.Ability_2;
-            ability = "Ability 2"
-        } else if (ability == "3") {
-            godAbility = god.Ability_3;
-            ability = "Ability 3"
-        } else if (ability == "4") {
-            godAbility = god.Ability_4;
-            ability = "Ability 4"
-        }
-        embed.addField(`${ability} - ${godAbility.Summary}`, godAbility.Description.itemDescription.description, false)
-        godAbility.Description.itemDescription.rankitems.forEach(stat => {
+    let abilityObject = {
+        abilityName: ability,
+        summary: godAbility.Summary,
+        description: godAbility.Description.itemDescription.description,
+        stats: godAbility.Description.itemDescription.rankitems,
+        cooldown: godAbility.Description.itemDescription.cooldown
+    }
+
+    return abilityObject;
+}
+
+function addAbilityEmbedField(ability, abilityNum, embed) {
+    embed.addField(`Ability ${abilityNum} - ${ability.summary}`, ability.description, false);
+    ability.stats.forEach(stat => {
             embed.addField(stat.description, stat.value, true);
-        });
-        if(godAbility.Description.itemDescription.cooldown && godAbility.Description.itemDescription.cooldown != "") {
-            embed.addField("Cooldown", godAbility.Description.itemDescription.cooldown, true);
+    });
+    if (!["0", "p", "passive"].includes(abilityNum)) {
+        if(ability.cooldown && ability.cooldown != "") {
+            embed.addField("Cooldown", ability.cooldown, true);
         } else {
             embed.addField("Cooldown", "None", true);
         }
     }
-
-    if (exactMatch) {
-        message.channel.send(embed);
-    } else {
-        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
-    }
+    return embed;
 }
