@@ -35,7 +35,10 @@ async function findGod(message, args, client){
 }
 
 function addBuild(message, items, godName, role, client, exactMatch) {
-    if (role == "") {message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); return;}
+    if (role == "") {
+        message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        return;
+    }
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase();
     } else {
@@ -67,26 +70,26 @@ function addBuild(message, items, godName, role, client, exactMatch) {
         buildList.forEach(build => {
             if (build.god == godName && build.role == role && build.items == items) {
                 duplicate = true;
-                message.channel.send(new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`))
+                message.channel.send(new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`));
                 return;
             } else {
                 usedIds.push(build.id);
             }
         });
-        if (duplicate) {return;}
+        if (duplicate) return;
         let id = 1;
         while (true) { //i know i know
             if (!(usedIds.includes(id))) {
                 break;
             }
-            id++
+            id++;
         }
         buildList.push({
             "id" : id,
             "god" : godName,
             "role" : role,
             "items" : items
-        })
+        });
         const data = JSON.stringify(buildList, null, 4);
         fs.writeFile('builds.json', data, (err) => {
             if (err) {

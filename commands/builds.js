@@ -1,13 +1,21 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
+const config = require('./auth.json');
 
 module.exports = {
 	name: 'builds',
     aliases: ["build", "b"],
 	description: 'Get mentor set builds for chosen god',
 	execute(message, args) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
+        if (args == "") { 
+            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            return;
+        }
+        if (message.guild.id == config.smiteServerId && message.channel.id != 733765823075713111) {
+            message.channel.send(new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`)); 
+            return;
+        }
         getGodForBuild(message, args);
 	},
 };
