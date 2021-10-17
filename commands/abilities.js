@@ -42,11 +42,10 @@ function parseAbilityDetails(god, message, exactMatch, abilityNum){
         NOTE: Merlin only has his arcane stance abilities on the API`);
     }
 
-    //TODO: turn repeated section into its own function so not repeated
     if (abilityNum == "all") {
         for(i = 0; i < 5; i++) {
             let ability = parseOneAbilityDetails(god, i);
-            embed = addAbilityEmbedField(ability, i, embed);
+            embed = addAbilityEmbedField(ability, ability.abilityName, embed);
         }
     } else {
         let ability = parseOneAbilityDetails(god, abilityNum);
@@ -92,7 +91,7 @@ function parseOneAbilityDetails(god, ability) {
 }
 
 function addAbilityEmbedField(ability, abilityNum, embed) {
-    embed.addField(`Ability ${abilityNum} - ${ability.summary}`, ability.description, false);
+    embed.addField(`${abilityNum} - ${ability.summary}`, ability.description, false);
     ability.stats.forEach(stat => {
             embed.addField(stat.description, stat.value, true);
     });
