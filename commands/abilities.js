@@ -1,4 +1,3 @@
-const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
 
@@ -60,7 +59,6 @@ function parseAbilityDetails(god, message, exactMatch, abilityNum){
 }
 
 function parseOneAbilityDetails(god, ability) {
-    console.log(ability);
     let godAbility = 0;
     if ([0, "0", "p", "passive"].includes(ability)) {
         godAbility = god.Ability_5;

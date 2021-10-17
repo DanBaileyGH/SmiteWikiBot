@@ -30,7 +30,7 @@ async function updateGodDetails(message){
             if (err) {
                 throw err;
             }
+            console.log("God details saved to file");
         })
-        console.log("God details saved to file")
     })
 }

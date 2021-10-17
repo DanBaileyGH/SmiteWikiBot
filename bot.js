@@ -55,7 +55,6 @@ client.on('message', message => {
         console.log(message.author.username + ' used command: ' + commandName);
         try {
             if(commandName == "addbuild" || commandName == "ab") {
-                console.log("adding build so passing client");
                 command.execute(message, args, client);
             } else {
                 command.execute(message, args);
