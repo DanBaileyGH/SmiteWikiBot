@@ -3,7 +3,7 @@ const globalFunctions = require('./globalfunctions.js');
 
 module.exports = {
 	name: 'abilities',
-    aliases: ["a", "kit"],
+    aliases: ["a", "ability"],
 	description: 'Get ability details for chosen god',
 	execute(message, args) {
         if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
@@ -17,7 +17,15 @@ module.exports = {
 	},
 };
 
-async function getAbilityDetails(message, godName, ability){
+
+/**
+ * Validates the selected god matches a god found in the API and passes the god object to the parsing function.
+ * @async
+ * @param {object} message - Discord message object that contains the original command.
+ * @param {string[]} godName - Array containing the command args that make up the entered god's name.
+ * @param {string} ability - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
+ */
+async function getAbilityDetails(message, godName, ability) {
     const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
     const god = godObject.object;
     const exactMatch = godObject.exact;
@@ -28,6 +36,13 @@ async function getAbilityDetails(message, godName, ability){
     }
 }
 
+/**
+ * Turns the chosen god's chosen abilities data into a discord embed and sends it in the original message's channel.
+ * @param {object} god - Object containing the chosen gods data from the API.
+ * @param {object} message - Discord message object that contains the original command.
+ * @param {boolean} exactMatch - Did the user enter the exact god's name (true) or a shortened version (false).
+ * @param {string} abilityNum - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
+ */
 function parseAbilityDetails(god, message, exactMatch, abilityNum){
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
@@ -89,7 +104,8 @@ function parseOneAbilityDetails(god, ability) {
 }
 
 function addAbilityEmbedField(ability, abilityNum, embed) {
-    embed.addField(`${abilityNum} - ${ability.summary}`, ability.description, false);
+    let abilityName = (["p", "passive"].includes(abilityNum) ? "Passive" : `Ability ${abilityNum}`);
+    embed.addField(`${abilityName} - ${ability.summary}`, ability.description, false);
     ability.stats.forEach(stat => {
             embed.addField(stat.description, stat.value, true);
     });
