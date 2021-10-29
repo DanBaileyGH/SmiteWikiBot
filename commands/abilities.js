@@ -52,7 +52,7 @@ function parseAbilityDetails(god, message, exactMatch, abilityNum){
     .setThumbnail(god.godIcon_URL)
     
     if(god.Name == "Merlin"){
-        embed.setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name} \n
+        embed.setDescription(`For God Stats, Use Command ?god ${god.Name} \n
         NOTE: Merlin only has his arcane stance abilities on the API`);
     }
 
