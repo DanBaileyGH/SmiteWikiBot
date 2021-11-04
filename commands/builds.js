@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["build", "b"],
 	description: 'Get mentor set builds for chosen god',
 	execute(message, args) {
-        if (message.guild.id == config.smiteServerId && message.channel.id != 733765823075713111) {
+        if (message.guild.id == config.smiteServerId && (message.channel.id != 733765823075713111 && message.channel.id != 759221910990094356)) {
             message.channel.send(new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`)); 
             return;
         }
