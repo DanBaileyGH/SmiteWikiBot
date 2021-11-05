@@ -88,7 +88,8 @@ function addBuild(message, items, godName, role, client, exactMatch) {
             "id" : id,
             "god" : godName,
             "role" : role,
-            "items" : items
+            "items" : items,
+            "author" : message.author.username
         });
         const data = JSON.stringify(buildList, null, 4);
         fs.writeFile('builds.json', data, (err) => {
