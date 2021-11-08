@@ -14,7 +14,7 @@ function sendHelpMessage(message) {
     .setTitle(`Commands for SmiteWikiBot`)
     .setTimestamp()
     .setFooter(`Bot Written and Maintained By DiscoFerry#6038`)
-    .addField("**New Build Command**", "`?build [godname] (?b)` - Shows all mentor created builds for the chosen god\n **Replaces -[god] command** - Works without spaces, capitalisation, or apostrophes\n**Example usage:** ?b king arthur", false)
+    .addField("**New Build Command**", "`?build [godname] (?b)` - Shows all mentor created builds for the chosen god\n Works without spaces, capitalisation, or apostrophes\n**Example usage:** ?b king arthur, ?arthur, ?chang, ?b zhong", false)
     .addField("Other Build Commands", "`?start` - Shows all current meta starting builds for each role\n `?mid` - General guide for all mid lane and mage adc gods\n `?jungle` - General guide for all jungle gods", false)
     .addField("Wiki Commands", 
     "`?god [godname] (?g)` - Shows all stats for the chosen god.\n" +
