@@ -11,7 +11,7 @@ const globalFunctions = require('./commands/globalfunctions.js');
 
 client.on('ready', function (evt) {
     console.log('ready');
-    client.user.setActivity("?help");
+    client.user.setActivity("?invite | ?help");
 });
 
 const prefix = "?";
@@ -37,6 +37,7 @@ client.on('message', message => {
     const commandName = args.shift().toLowerCase();
     let command = client.commands.get(commandName) || client.aliases.get(commandName);
     if (command == null) {
+        //checking if user used ?godname command as shorthand for build
         const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace("'", "").trim().toLowerCase()];
         globalFunctions.findObjectWithShortenedName(godName, "god").then (god => {
             if (god) {
