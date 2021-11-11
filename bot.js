@@ -55,7 +55,7 @@ client.on('message', message => {
     } else {
         console.log(message.author.username + ' used command: ' + commandName);
         try {
-            if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info") {
+            if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info" || commandName == "feedback") {
                 command.execute(message, args, client);
             } else {
                 command.execute(message, args);

@@ -24,7 +24,8 @@ function sendHelpMessage(message) {
     "`?skins [godname] (?sk)` - Shows all skins of chosen god (link, availability, price)\n", false)
     .addField("General Bot Commands",
     "`?invite (?inv)` - Invite SmiteWikiBot to your server!\n" +
-    "`?botinfo (?info)` - General information about SmiteWikiBot.", false);
+    "`?botinfo (?info)` - General information about SmiteWikiBot.\n" +
+    "`?feedback [feedback message]` - Give the bot author feedback!", false);
 
     message.channel.send(embed);
 }
