@@ -151,7 +151,8 @@ exports.userHasPerms=(message)=>{
                 hasPerms = true;
             }
         } else {
-            message.channel.send(new MessageEmbed().setDescription("You cannot edit builds in this server!")); 
+            const embed = new MessageEmbed().setDescription("You cannot edit builds in this server!");
+            message.channel.send({embeds: [embed]}); 
         }
         resolve(hasPerms)
     });

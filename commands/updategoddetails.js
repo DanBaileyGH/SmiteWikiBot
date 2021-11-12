@@ -9,7 +9,7 @@ module.exports = {
         if (message.author.id == 220922320938729472) {
             updateGodDetails(message);
         } else {
-            message.channel.send("command only usable by author");
+            message.channel.send({content: "command only usable by author"});
         }
 	},
 };
@@ -31,6 +31,7 @@ async function updateGodDetails(message){
                 throw err;
             }
             console.log("God details saved to file");
+            message.channel.send({content: "God details saved to file"});
         })
     })
 }

@@ -9,11 +9,13 @@ module.exports = {
 	async execute(message, args) {
         let hasPerms = await globalFunctions.userHasPerms(message);
         if (!hasPerms) {
-            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
+            const embed = new MessageEmbed().setDescription("You do not have permission to do this here!");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         if (args == "") { 
-            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         setStartsMessage(message, args);
@@ -26,5 +28,6 @@ function setStartsMessage(message, args){
             throw err;
         }
     })
-    message.channel.send(new MessageEmbed().setDescription("Mid guide message saved to file"));
+    const embed = new MessageEmbed().setDescription("Mid guide message saved to file");
+    message.channel.send({embeds: [embed]});
 }

@@ -16,6 +16,7 @@ function getMidMessage(message){
             console.log("File read failed: ", err);
             return;
         }
-        message.channel.send(new MessageEmbed().setDescription(midMessage));
+        const embed = new MessageEmbed().setDescription(midMessage);
+        message.channel.send({embeds: [embed]});
     });
 }

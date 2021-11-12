@@ -16,6 +16,7 @@ function getJungleMessage(message){
             console.log("File read failed: ", err);
             return;
         }
-        message.channel.send(new MessageEmbed().setDescription(jungleMessage));
+        const embed = new MessageEmbed().setDescription(jungleMessage);
+        message.channel.send({embeds: [embed]});
     });
 }

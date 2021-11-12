@@ -9,11 +9,13 @@ module.exports = {
 	description: 'Get mentor set builds for chosen god',
 	execute(message, args) {
         if (message.guild.id == config.smiteServerId && (message.channel.id != 733765823075713111 && message.channel.id != 759221910990094356)) {
-            message.channel.send(new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`)); 
+            const embed = new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`);
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         if (args == "") { 
-            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         getGodForBuild(message, args);
@@ -27,7 +29,8 @@ async function getGodForBuild(message, godName){
     if (god) {
         parseGodBuilds(god, message, exactMatch)
     } else {
-        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling");
+        message.channel.send({embeds: [embed]});
     }
 }
 
@@ -50,7 +53,8 @@ function parseGodBuilds(god, message, exactMatch) {
             }   
         });
         if (godBuildList.length == 0) {
-            message.channel.send(new MessageEmbed().setDescription("Couldnt find any builds for that god - ask a smite server mod to add one?"));
+            const embed = new MessageEmbed().setDescription("Couldnt find any builds for that god - ask a smite server mod to add one?");
+            message.channel.send({embeds: [embed]});
         } else {
             let embed = new MessageEmbed()
             .setTitle(`Mentor Builds for ${god.Name}`)
@@ -71,9 +75,9 @@ function parseGodBuilds(god, message, exactMatch) {
                 })
             }
             if (exactMatch) {
-                message.channel.send(embed);
+                message.channel.send({embeds: [embed]});
             } else {
-                message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+                message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
             }
         }
     });

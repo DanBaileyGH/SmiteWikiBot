@@ -7,7 +7,11 @@ module.exports = {
     aliases: ["i"],
 	description: 'Get details for chosen item',
 	execute(message, args) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter an Item")); return;}
+        if (args == "") { 
+            const embed = new MessageEmbed().setDescription("Please Enter an Item");
+            message.channel.send({embeds: [embed]}); 
+            return;
+        }
         getItemDetails(message, args);
 	},
 };
@@ -20,7 +24,8 @@ async function getItemDetails(message, itemName){
     if (item) {
         parseItemDetails(item, message, itemList, exactMatch);
     } else {
-        message.channel.send(new MessageEmbed().setDescription("Item Not Found, Check Your Spelling"));
+        const embed = new MessageEmbed().setDescription("Item Not Found, Check Your Spelling");
+        message.channel.send({embeds: [embed]});
     }
 }
 
@@ -39,7 +44,7 @@ function parseItemDetails(item, message, itemList, exactMatch){
         
     .addField(item.DeviceName, item.ShortDesc, false)
     .addField("Starter Item?", starterItem, true)
-    .addField("Item Tier", item.ItemTier, true)
+    .addField("Item Tier", item.ItemTier.toString(), true);
 
     itemList.forEach(checkItem => {
         if (checkItem.ChildItemId == item.ItemId) {
@@ -52,13 +57,13 @@ function parseItemDetails(item, message, itemList, exactMatch){
     })
 
     if (buildsFrom != "") {
-        embed.addField("Builds From", buildsFrom, true)
+        embed.addField("Builds From", buildsFrom, true);
     };
     if (buildsInto != "") {
-        embed.addField("Builds Into", buildsInto, true)
+        embed.addField("Builds Into", buildsInto, true);
     };
 
-    embed.addField("Price", price, true)
+    embed.addField("Price", price.toString(), true);
     
     const itemStats = item.ItemDescription.Menuitems;
     itemStats.forEach(stat => {
@@ -69,8 +74,8 @@ function parseItemDetails(item, message, itemList, exactMatch){
     }
 
     if (exactMatch) {
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
     } else {
-        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
     }
 }

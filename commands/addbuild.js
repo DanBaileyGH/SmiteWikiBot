@@ -9,11 +9,13 @@ module.exports = {
 	async execute(message, args, client) {
         let hasPerms = await globalFunctions.userHasPerms(message);
         if (!hasPerms) {
-            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
+            const embed = new MessageEmbed().setDescription("You do not have permission to do this here!");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         if (args == "") { 
-            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         findGod(message, args, client);
@@ -23,20 +25,22 @@ module.exports = {
 async function findGod(message, args, client){
     const godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
     const role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god");
     const god = godObject.object;
     const exactMatch = godObject.exact;
     if (god) {
         const items = args.join(" ");
         addBuild(message, items, god.Name, role, client, exactMatch);
     } else {
-        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling");
+        message.channel.send({embeds: [embed]});
     }
 }
 
 function addBuild(message, items, godName, role, client, exactMatch) {
     if (role == "") {
-        message.channel.send(new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        const embed = new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)");
+        message.channel.send({embeds: [embed]}); 
         return;
     }
     if (role.toLowerCase() == "adc") {
@@ -45,12 +49,13 @@ function addBuild(message, items, godName, role, client, exactMatch) {
         role = role.charAt(0).toUpperCase() + role.slice(1);
     }
     if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide"].includes(role))) {
-        message.channel.send(new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        const embed = new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)");
+        message.channel.send({embeds: [embed]}); 
         return;
-    } else {
-    }
+    } 
     if (items.length == 0) {
-        message.channel.send(new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")); 
+        const embed = new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)");
+        message.channel.send({embeds: [embed]}); 
         return;
     }
     //probably not an efficient way of doing ids but there shouldnt ever be more than like 4-500 builds in this bot
@@ -70,7 +75,8 @@ function addBuild(message, items, godName, role, client, exactMatch) {
         buildList.forEach(build => {
             if (build.god == godName && build.role == role && build.items == items) {
                 duplicate = true;
-                message.channel.send(new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`));
+                const embed = new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`);
+                message.channel.send({embeds: [embed]});
                 return;
             } else {
                 usedIds.push(build.id);
@@ -98,12 +104,14 @@ function addBuild(message, items, godName, role, client, exactMatch) {
             } else {
                 console.log("Builds saved to file");
                 if (exactMatch) {
-                    message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`));
+                    const embed = new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`);
+                    message.channel.send({embeds: [embed]});
                 } else {
-                    message.channel.send(new MessageEmbed().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`));
+                    const embed = new MessageEmbed().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`);
+                    message.channel.send({embeds: [embed]});
                 }
                 const ch = client.channels.cache.find(c => c.id == 895777081630265395);
-                ch.send({ files: ["./builds.json"] });
+                ch.send({files: ["./builds.json"]});
             }
         })
     });

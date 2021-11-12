@@ -16,6 +16,7 @@ function getStartsMessage(message){
             console.log("File read failed: ", err);
             return;
         }
-        message.channel.send(new MessageEmbed().setDescription(startMessage));
+        const embed = new MessageEmbed().setDescription(startMessage);
+        message.channel.send({embeds: [embed]});
     });
 }

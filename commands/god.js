@@ -7,7 +7,11 @@ module.exports = {
     aliases: ["g", "champ", "champion", "hero"],
 	description: 'Get details for chosen god',
 	execute(message, args) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
+        if (args == "") { 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
+            return;
+        }
         getGodDetails(message, args);
 	},
 };
@@ -19,7 +23,8 @@ async function getGodDetails(message, godName){
     if (god) {
         parseGodDetails(god, message, exactMatch);
     } else {
-        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling");
+        message.channel.send({embeds: [embed]});
     }
 }
 
@@ -48,16 +53,16 @@ function parseGodDetails(god, message, exactMatch){
     embed.addField("Attack Progression", god.basicAttack.itemDescription.menuitems[1].value, true)
     .addField("Health", `${god.Health} (+${god.HealthPerLevel})`, true)
     .addField("Mana", `${god.Mana} (+${god.ManaPerLevel})`, true)
-    .addField("Movement Speed", god.Speed, true)
+    .addField("Movement Speed", god.Speed.toString(), true)
     .addField("Physical Protections", `${god.PhysicalProtection} (+ ${god.PhysicalProtectionPerLevel})`, true)
     .addField("Magical Protections", `${god.MagicProtection} (+ ${god.MagicProtectionPerLevel})`, true)
-    .addField("‏‏‎ ‎‎", "‏‏‎ ‎", true)
+    .addField("\u200b", "\u200b", true)
     .addField("Pros", god.Pros.replace(",", ",\n"), true)
     .addField("On Free Rotation", onFreeRotation, true)
-    
+
     if (exactMatch) {
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
     } else {
-        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
     }
 }

@@ -27,5 +27,5 @@ function sendHelpMessage(message) {
     "`?botinfo (?info)` - General information about SmiteWikiBot.\n" +
     "`?feedback [feedback message]` - Give the bot author feedback!", false);
 
-    message.channel.send(embed);
+    message.channel.send({embeds: [embed]});
 }

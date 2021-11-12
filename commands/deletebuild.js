@@ -9,11 +9,13 @@ module.exports = {
 	async execute(message, args) {
         let hasPerms = await globalFunctions.userHasPerms(message);
         if (!hasPerms) {
-            message.channel.send(new MessageEmbed().setDescription("You do not have permission to do this here!")); 
+            const embed = new MessageEmbed().setDescription("You do not have permission to do this here!");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         if (args == "") { 
-            message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
             return;
         }
         findBuild(message, args);
@@ -43,11 +45,13 @@ function findBuild(message, buildId) {
                         throw err;
                     }
                 })
-                message.channel.send(new MessageEmbed().setDescription(`Build id ${build.id} deleted \nid ${build.id} was: ${build.role} ${build.god} build with items: ${build.items}`));
+                const embed = new MessageEmbed().setDescription(`Build id ${build.id} deleted \nid ${build.id} was: ${build.role} ${build.god} build with items: ${build.items}`);
+                message.channel.send({embeds: [embed]});
             }
         });
         if (!buildFound) {
-            message.channel.send(new MessageEmbed().setDescription("Couldnt find a build with that id"));
+            const embed = new MessageEmbed().setDescription("Couldnt find a build with that id");
+            message.channel.send({embeds: [embed]});
         }
     });
 }

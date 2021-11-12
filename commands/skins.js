@@ -8,19 +8,24 @@ module.exports = {
     aliases: ["skin", "sk"],
 	description: 'Get list of skins for chosen god',
 	execute(message, args) {
-        if (args == "") { message.channel.send(new MessageEmbed().setDescription("Please Enter a God")); return;}
+        if (args == "") { 
+            const embed = new MessageEmbed().setDescription("Please Enter a God");
+            message.channel.send({embeds: [embed]}); 
+            return;
+        }
         getGodDetails(message, args);
 	},
 };
 
 async function getGodDetails(message, godName){
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god");
     const god = godObject.object;
     const exactMatch = godObject.exact;
     if (god) {
         getSkinList(god, message, exactMatch);
     } else {
-        message.channel.send(new MessageEmbed().setDescription("God Not Found, Check Your Spelling"));
+        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling");
+        message.channel.send({embeds: [embed]});
     }
 }
 
@@ -68,8 +73,8 @@ function parseSkins(skins, message, exactMatch) {
     });
     
     if (exactMatch) {
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
     } else {
-        message.channel.send("Couldnt find exact match for what you entered, partial match found:", embed)
+        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
     }
 }
