@@ -77,7 +77,7 @@ function getAllObjectsOfType(type) {
 
 //valid types: god, item
 async function findObjectWithShortenedName(name, type) {
-    name = name.join(" ").replace(/ /g, "").replace(/'/, "").replace(/’/g, "").trim().toLowerCase();
+    name = name.join(" ").replace(/ /g, "").replace(/'/g, "").replace(/’/g, "").trim().toLowerCase();
     const validTypes = ["god", "item"];
     if (!validTypes.includes(type)) {
         throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
