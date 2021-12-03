@@ -88,7 +88,7 @@ async function findObjectWithShortenedName(name, type) {
         let currentObjectName = "";
         objectList.forEach(object => {
             if (type == "god") {
-                currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                currentObjectName = object.Name.replace(/ /g, "").replace(/'/g, "").trim().toLowerCase();
                 if (currentObjectName == name) {
                     let godObject = {
                         object: object,
@@ -97,7 +97,7 @@ async function findObjectWithShortenedName(name, type) {
                     resolve(godObject);
                 }
             } else if (type == "item") {
-                currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                currentObjectName = object.DeviceName.replace(/ /g, "").replace(/'/g, "").trim().toLowerCase();
                 if (currentObjectName == name) {
                     let itemObject = {
                         object: object,
@@ -113,7 +113,7 @@ async function findObjectWithShortenedName(name, type) {
         
         objectList.forEach(object => {
             if (type == "god") {
-                currentObjectName = object.Name.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                currentObjectName = object.Name.replace(/ /g, "").replace(/'/g, "").trim().toLowerCase();
                 if (currentObjectName.includes(name)) {
                     let godObject = {
                         object: object,
@@ -122,7 +122,7 @@ async function findObjectWithShortenedName(name, type) {
                     resolve(godObject);
                 }
             } else if (type == "item") {
-                currentObjectName = object.DeviceName.replace(/ /g, "").replace("'", "").trim().toLowerCase();
+                currentObjectName = object.DeviceName.replace(/ /g, "").replace(/'/g, "").trim().toLowerCase();
                 if (currentObjectName.includes(name)) {
                     let itemObject = {
                         object: object,

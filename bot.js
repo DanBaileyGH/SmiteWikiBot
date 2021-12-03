@@ -59,7 +59,7 @@ client.on('messageCreate', async message => {
                 command.execute(message, args, client);
             } else if (["a", "ability", "abilities"].includes(commandName)) {
                 const messageObject = await command.execute(args);
-                message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds, components: messageObject.components});
+                message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null});
             } else {
                 command.execute(message, args);
             }
