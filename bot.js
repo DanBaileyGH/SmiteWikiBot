@@ -38,7 +38,7 @@ client.on('messageCreate', async message => {
 
     if (command == null) {
         //checking if user used ?godname command as shorthand for build
-        const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace(/’/g, "").replace(/'/, "").trim().toLowerCase()];
+        const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace(/’/g, "").replace(/'/g, "").trim().toLowerCase()];
         globalFunctions.findObjectWithShortenedName(godName, "god").then (god => {
             if (god) {
                 command = client.commands.get("builds");
