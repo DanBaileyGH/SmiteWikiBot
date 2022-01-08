@@ -2,6 +2,10 @@ const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
 
+/*
+ * Command that takes a new build entered by a user with permission, breaks it down into god, role, and item list, 
+ * and enters it into the builds list in the builds.json file.
+ */
 module.exports = {
 	name: 'addbuild',
     aliases: ["ab"],
@@ -22,6 +26,12 @@ module.exports = {
 	},
 };
 
+/**
+ * Uses the gods list in gods.json to check if the entered god name for the new build matches an existing god in the game.
+ * @param {object} message - The discord message with the original command, passed here for use later.
+ * @param {array} args - The list of arguments for the current command, this contains the new build's god, role, and items.
+ * @param {object} client = The discord API client the bot is using, passed here for use later.
+ */
 async function findGod(message, args, client){
     const godName = [args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase()];
     const role = args.splice(0, 1).join(' ').replace(/ /g, "").replace("'", "").trim().toLowerCase();
@@ -37,6 +47,7 @@ async function findGod(message, args, client){
     }
 }
 
+//TODO: split this into 2-3 functions and then come back and do jsdoc.
 function addBuild(message, items, godName, role, client, exactMatch) {
     if (role == "") {
         const embed = new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)");
