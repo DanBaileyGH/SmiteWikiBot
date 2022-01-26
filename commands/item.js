@@ -42,7 +42,7 @@ function parseItemDetails(item, message, itemList, exactMatch){
     .setFooter(`Data from the Smite API`)
     .setThumbnail(item.itemIcon_URL)
         
-    .addField(item.DeviceName, item.ShortDesc, false)
+    .addField(item.DeviceName, item.ShortDesc || "no description", false)
     .addField("Starter Item?", starterItem, true)
     .addField("Item Tier", item.ItemTier.toString(), true);
 
