@@ -26,7 +26,11 @@ module.exports = {
                     lastArg = "1";
                 }
             }
-            resolve(getAbilityDetails(args, lastArg));
+            try {
+                resolve(getAbilityDetails(args, lastArg));
+            } catch (err) {
+                console.log(err);
+            }
         });
 	},
 };

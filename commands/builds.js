@@ -22,7 +22,11 @@ module.exports = {
             message.channel.send({embeds: [embed]}); 
             return;
         }
-        getGodForBuild(message, args);
+        try {
+            getGodForBuild(message, args);
+        } catch (err) {
+            console.log(err);
+        }
 	},
 };
 

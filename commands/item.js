@@ -12,7 +12,11 @@ module.exports = {
             message.channel.send({embeds: [embed]}); 
             return;
         }
-        getItemDetails(message, args);
+        try {
+            getItemDetails(message, args);
+        } catch(err) {
+            console.log(err);
+        }
 	},
 };
 

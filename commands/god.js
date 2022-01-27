@@ -12,7 +12,11 @@ module.exports = {
             message.channel.send({embeds: [embed]}); 
             return;
         }
-        getGodDetails(message, args);
+        try {
+            getGodDetails(message, args);
+        } catch(err) {
+            console.log(err);
+        }
 	},
 };
 

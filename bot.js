@@ -47,7 +47,7 @@ client.on('messageCreate', async message => {
                     command.execute(message, message.content.slice(prefix.length).trim().split(' '));
                     return;
                 } catch (error) {
-                    console.error(error);
+                    console.log(error);
                     message.reply('error executing command');
                 }
             } 
@@ -64,7 +64,7 @@ client.on('messageCreate', async message => {
                 command.execute(message, args);
             }
         } catch (error) {
-            console.error(error);
+            console.log(error);
             message.reply('error executing command');
         }
     }
@@ -82,7 +82,7 @@ client.on('interactionCreate', async interaction => {
             interaction.update({content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components});
         } catch (err) {
             console.log("you messed up abilities button interaction! error: \n");
-            throw err;
+            console.log(err);
         }
     } else {
         console.log("recieved interaction you havent sorted you idiot");
