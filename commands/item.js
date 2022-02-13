@@ -54,11 +54,21 @@ function parseItemDetails(item, message, itemList, exactMatch){
         if (checkItem.ChildItemId == item.ItemId) {
             buildsInto += (checkItem.DeviceName + "\n");
         }
-        if (checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) {
+        if ((checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) && checkItem.ItemId != item.ItemId) {
             buildsFrom += (checkItem.DeviceName + "\n");
             price += checkItem.Price;
+            if(checkItem.ItemId == item.RootItemId && checkItem.ItemTier != 1) {
+                itemList.forEach(newRootItem => {
+                    if(newRootItem.ItemId == checkItem.RootItemId && newRootItem.ItemId != checkItem.ItemId) {
+                        price += newRootItem.Price;
+                        buildsFrom += (newRootItem.DeviceName + "\n");
+                    }
+                });
+            }
         }
-    })
+    });
+
+    
 
     if (buildsFrom != "") {
         embed.addField("Builds From", buildsFrom, true);
