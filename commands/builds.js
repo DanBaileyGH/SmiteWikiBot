@@ -82,10 +82,15 @@ function parseGodBuilds(god, message, exactMatch) {
                     embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
                 })
             }
+            
+            const catchErr = err => {
+                console.log(err)
+            }
+
             if (exactMatch) {
-                message.channel.send({embeds: [embed]});
+                message.channel.send({embeds: [embed]}).catch(catchErr);
             } else {
-                message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
+                message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]}).catch(catchErr);
             }
         }
     });

@@ -9,6 +9,11 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("Invite SmiteWikiBot To Your Server")
         .setURL("https://discord.com/api/oauth2/authorize?client_id=839866838305210368&permissions=274878286912&scope=bot");
-        message.channel.send({embeds: [embed]}); 
+        
+        const catchErr = err => {
+            console.log(err)
+        }
+
+        message.channel.send({embeds: [embed]}).catch(catchErr); 
 	},
 };

@@ -27,6 +27,10 @@ for (const file of commandFiles) {
     };
 }
 
+const catchErr = err => {
+    console.log(err)
+}
+
 client.login(config.BOT_TOKEN)
 
 client.on('messageCreate', async message => {
@@ -59,7 +63,7 @@ client.on('messageCreate', async message => {
                 command.execute(message, args, client);
             } else if (["a", "ability", "abilities"].includes(commandName)) {
                 const messageObject = await command.execute(args);
-                message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null});
+                message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null}).catch(catchErr);
             } else {
                 command.execute(message, args);
             }

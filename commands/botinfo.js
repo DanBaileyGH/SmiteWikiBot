@@ -18,6 +18,11 @@ module.exports = {
     Source Code at https://github.com/DiscoFerry/SmiteWikiBot.
     Invite Me To Your Server With ?invite`)
         .setFooter("Bot Still a WIP Currently.");
-        message.channel.send({embeds: [embed]});
+        
+        const catchErr = err => {
+            console.log(err)
+        }
+        
+        message.channel.send({embeds: [embed]}).catch(catchErr);
 	},
 };

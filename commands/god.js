@@ -64,9 +64,13 @@ function parseGodDetails(god, message, exactMatch){
     .addField("Pros", god.Pros.replace(",", ",\n"), true)
     .addField("On Free Rotation", onFreeRotation, true)
 
+    const catchErr = err => {
+        console.log(err)
+    }
+
     if (exactMatch) {
-        message.channel.send({embeds: [embed]});
+        message.channel.send({embeds: [embed]}).catch(catchErr);
     } else {
-        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]});
+        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]}).catch(catchErr);
     }
 }

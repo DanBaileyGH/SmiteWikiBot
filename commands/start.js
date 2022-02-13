@@ -17,6 +17,11 @@ function getStartsMessage(message){
             return;
         }
         const embed = new MessageEmbed().setDescription(startMessage);
-        message.channel.send({embeds: [embed]});
+
+        const catchErr = err => {
+            console.log(err)
+        }
+
+        message.channel.send({embeds: [embed]}).catch(catchErr);
     });
 }
