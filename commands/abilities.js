@@ -169,7 +169,7 @@ function addAbilityEmbedField(ability, abilityNum, embed) {
     let abilityName = (["p", "passive"].includes(abilityNum) ? "Passive" : `Ability ${abilityNum}`);
     embed.addField(`${abilityName} - ${ability.summary}`, ability.description, false);
     ability.stats.forEach(stat => {
-        if (stat.description != " " && stat.value != " ") {
+        if (stat.description.length > 2 && stat.value.length > 2) {
             embed.addField(stat.description, stat.value, true);
         }
         
