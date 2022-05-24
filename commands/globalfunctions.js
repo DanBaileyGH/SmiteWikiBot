@@ -6,6 +6,7 @@ const { get } = require('http');
 const md5 = require("md5");
 const config = require('./auth.json');
 const fs = require('fs');
+const {MessageEmbed} = require('discord.js');
 
 const devId = config.devId;
 const authKey = config.authKey;

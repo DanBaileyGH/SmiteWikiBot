@@ -8,13 +8,6 @@ module.exports = {
     aliases: ["skin", "sk"],
 	description: 'Get list of skins for chosen god',
 	execute(message, args) {
-
-        //temp until hirez fixes the api
-        const embed = new MessageEmbed().setDescription("Command disabled until hirez fixes the api sorry");
-        message.channel.send({embeds: [embed]}); 
-        return;
-
-
         if (args == "") { 
             const embed = new MessageEmbed().setDescription("Please Enter a God");
             message.channel.send({embeds: [embed]}); 
