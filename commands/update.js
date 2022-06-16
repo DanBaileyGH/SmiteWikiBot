@@ -3,24 +3,38 @@ const globalFunctions = require('./globalfunctions.js');
 const fs = require('fs');
 
 module.exports = {
-	name: 'updateitemdetails',
-	description: 'updates the item data in items.json file from api',
-	execute(message, args) {
+	name: 'update',
+	description: 'updates the data in gods.json and items.json files from api',
+	aliases: ["u"],
+    execute(message, args) {
         if (message.author.id == 220922320938729472) {
-            updateItemDetails(message);
+            updateGodDetails(message);
         } else {
             message.channel.send({content: "command only usable by author"});
         }
 	},
 };
 
-async function updateItemDetails(message){
+async function updateGodDetails(message){
     await fetch(globalFunctions.generateCreateSessionUrl())
     .then(res => res.json())
     .then(result => {
         sessionId = result.session_id;
         return sessionId;
     });
+
+    await fetch(globalFunctions.generateGetGodsURL(sessionId))
+    .then(res => res.json())
+    .then(result => {
+        const data = JSON.stringify(result, null, 4);
+        fs.writeFile('gods.json', data, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("God details saved to file");
+            message.channel.send({content: "God details saved to file"});
+        })
+    })
 
     fetch(globalFunctions.generateGetItemsURL(sessionId))
     .then(res => res.json())
