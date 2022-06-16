@@ -89,6 +89,6 @@ client.on('interactionCreate', async interaction => {
             console.log(err);
         }
     } else {
-        console.log("recieved interaction you havent sorted you idiot");
+        console.log("recieved unexpected button interaction");
     }
 });

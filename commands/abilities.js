@@ -18,11 +18,10 @@ module.exports = {
                 resolve({embeds: [embed], components: null});
             } 
             if (args.length == 1) {
-                console.log("No ability number entered");
             } else {
                 lastArg = args.pop().toLowerCase();
                 if (!["1", "2", "3", "4", "p", "passive", "all"].includes(lastArg)) {
-                    console.log("invalid ability number entered");
+                    args.push(lastArg);
                     lastArg = "1";
                 }
             }
