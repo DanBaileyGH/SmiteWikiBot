@@ -15,7 +15,6 @@ module.exports = {
     All Builds from the Official Smite Server Mentor Team.
     Server Count: ${serverCount}.
     Invite Me To Your Server With ?invite`)
-        .setFooter("Bot Still a WIP Currently.");
         
         const catchErr = err => {
             console.log(err)
