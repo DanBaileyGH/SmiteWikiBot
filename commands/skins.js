@@ -1,4 +1,3 @@
-const fs = require('fs');
 const fetch = require('cross-fetch');
 const globalFunctions = require('./globalfunctions.js');
 const {MessageEmbed} = require('discord.js');

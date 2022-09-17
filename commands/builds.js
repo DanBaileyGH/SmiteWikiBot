@@ -1,7 +1,8 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
-const config = require('./auth.json');
+const config = require('./auth.json');;
+const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"];
 
 /*
  * Command that fetches all builds from the builds.json file for the user's chosen god, and send them in a discord embed.
@@ -12,8 +13,8 @@ module.exports = {
 	description: 'Get mentor set builds for chosen god',
 	execute(message, args) {
         //official smite server wanted to limit the build command to a couple of channels, so doing that here.
-        if (message.guild.id == config.smiteServerId && (message.channel.id != 733765823075713111 && message.channel.id != 759221910990094356)) {
-            const embed = new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`);
+        if (message.guild.id == config.smiteServerId && !(allowedSmiteServerChannels.includes(message.channel.id))) {
+            const embed = new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`); //smite server use a bot channel
             message.channel.send({embeds: [embed]}); 
             return;
         }

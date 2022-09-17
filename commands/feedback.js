@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const fs = require('fs');
+const feedbackChannelID = 908205929969897544;
 
 module.exports = {
 	name: 'feedback',
@@ -13,7 +13,7 @@ module.exports = {
         } else {
             const feedback = args.join(" ");
             const feedbackMessage = message.author.username + " sent feedback: \n" + feedback;
-            const ch = client.channels.cache.find(c => c.id == 908205929969897544);
+            const ch = client.channels.cache.find(channel => channel.id == feedbackChannelID);
             ch.send(feedbackMessage);
             message.reply({content: "Thanks for your feedback!"});
         }

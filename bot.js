@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 const { Intents } = require('discord.js')
 const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION']});
 const fs = require('fs');
@@ -57,6 +56,7 @@ client.on('messageCreate', async message => {
             } 
         });
     } else {
+        //user used actual command
         console.log(message.author.username + ' used command: ' + commandName);
         try {
             if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info" || commandName == "feedback") {
@@ -76,7 +76,8 @@ client.on('messageCreate', async message => {
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
-    //console.log(interaction);
+    
+    //user clicked a button
     if (interaction.customId.startsWith("abilities")) {
         let interactionArgs = interaction.customId.split("-");
         interactionArgs.shift();

@@ -1,8 +1,3 @@
-const { time } = require('console');
-const { SSL_OP_EPHEMERAL_RSA } = require('constants');
-const fetch = require('cross-fetch');
-const { createSign } = require('crypto');
-const { get } = require('http');
 const md5 = require("md5");
 const config = require('./auth.json');
 const fs = require('fs');
@@ -75,6 +70,7 @@ function getAllObjectsOfType(type) {
         });
     });
 }
+module.exports.getAllObjectsOfType = getAllObjectsOfType;
 
 //valid types: god, item
 async function findObjectWithShortenedName(name, type) {
