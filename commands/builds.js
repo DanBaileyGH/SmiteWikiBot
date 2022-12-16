@@ -6,6 +6,7 @@ const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"];
 
 /*
  * Command that fetches all builds from the builds.json file for the user's chosen god, and send them in a discord embed.
+ * Level order and role sorting - Kayaya#3081/jdaniel6
  */
 module.exports = {
 	name: 'builds',
@@ -71,21 +72,43 @@ function parseGodBuilds(god, message, exactMatch) {
             .setFooter(`Builds From the Smite Server Mentors`)
             .setThumbnail(god.godIcon_URL);
             let guideList = [];
+            let levelList = [];
+            let embedList = [];
             godBuildList.forEach(build => {
                 if (build.role != "Guide") {
-                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                    if(build.role == "Levels") {
+                        levelList.push(build);
+                    } else {
+                        embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`});
+                    }
                 } else {
-                    guideList.push(build)
+                    guideList.push(build);
                 }
             });
+
+            //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle Mid, Solo, Support)
+            embedList = embedList.sort((a, b) => {
+                if(a.role < b.role) return -1;
+            });
+
             if (guideList.length > 0) {
                 guideList.forEach(build => {
-                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
-                })
+                    embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`});
+                });
             }
+
+            if (levelList.length > 0){
+                levelList.forEach(build => {
+                    embedList.push({"role" : `Leveling order : `, "data" : `${build.items} \nID [${build.id}]`});
+                });
+            }
+
+            embedList.forEach(build => {
+                embed.addField(`${build.role}`, `${build.data}`, false);
+            });
             
             const catchErr = err => {
-                console.log(err)
+                console.log(err);
             }
 
             if (exactMatch) {
