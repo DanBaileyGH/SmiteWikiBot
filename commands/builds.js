@@ -86,7 +86,7 @@ function parseGodBuilds(god, message, exactMatch) {
                 }
             });
 
-            //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle Mid, Solo, Support)
+            //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle, Mid, Solo, Support)
             embedList = embedList.sort((a, b) => {
                 if(a.role < b.role) return -1;
             });
@@ -99,7 +99,7 @@ function parseGodBuilds(god, message, exactMatch) {
 
             if (levelList.length > 0){
                 levelList.forEach(build => {
-                    embedList.push({"role" : `Leveling order : `, "data" : `${build.items} \nID [${build.id}]`});
+                    embedList.push({"role" : `Leveling order`, "data" : `${build.items} \nID [${build.id}]`});
                 });
             }
 
