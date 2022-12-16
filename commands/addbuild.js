@@ -59,7 +59,7 @@ function addBuild(message, items, godName, role, client, exactMatch) {
     } else {
         role = role.charAt(0).toUpperCase() + role.slice(1);
     }
-    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide"].includes(role))) {
+    if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide", "Levels"].includes(role))) {
         const embed = new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)");
         message.channel.send({embeds: [embed]}); 
         return;

@@ -1,5 +1,5 @@
 const md5 = require("md5");
-const config = require('./auth.json');
+const config = require("../auth.json");
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 
@@ -143,10 +143,10 @@ exports.userHasPerms=(message)=>{
             if (message.member.roles.cache.some(role => role.id == config.smiteServerPermsRoleId)) {
                 hasPerms = true;
             }
-        } else if (serverId == config.testServerId) {
-            if (message.member.roles.cache.some(role => role.id == config.testServerPermsRoleId)) {
+        } else if (serverId == config.testServerId || serverId == "1001337915391082506") {
+            //if (message.member.roles.cache.some(role => role.id == config.testServerPermsRoleId)) {
                 hasPerms = true;
-            }
+            //}
         } else {
             const embed = new MessageEmbed().setDescription("You cannot edit builds in this server!");
             message.channel.send({embeds: [embed]}); 

@@ -7,7 +7,7 @@ module.exports = {
 	description: 'updates the data in gods.json and items.json files from api',
 	aliases: ["u"],
     execute(message) {
-        if (message.author.id == 220922320938729472) {
+        if (message.author.id == 220922320938729472 || message.author.id == 459999054517108738) {
             updateGodDetails(message);
         } else {
             message.channel.send({content: "command only usable by author"});

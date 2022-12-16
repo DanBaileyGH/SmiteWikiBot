@@ -1,7 +1,7 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
-const config = require('./auth.json');;
+const config = require('../auth.json');;
 const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"];
 
 /*
@@ -71,18 +71,40 @@ function parseGodBuilds(god, message, exactMatch) {
             .setFooter(`Builds From the Smite Server Mentors`)
             .setThumbnail(god.godIcon_URL);
             let guideList = [];
+            let levelList = [];
+            let embedList = [];
             godBuildList.forEach(build => {
                 if (build.role != "Guide") {
-                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                    if(build.role == "Levels")
+                        levelList.push(build)
+                    else
+                        embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`});
                 } else {
                     guideList.push(build)
                 }
             });
+
+            //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle Mid, Solo, Support)
+            embedList = embedList.sort((a, b) => {
+                if(a.role < b.role)
+                    return -1;
+            });
+
+
             if (guideList.length > 0) {
                 guideList.forEach(build => {
-                    embed.addField(`${build.role}`, `${build.items} \nID [${build.id}]`, false);
+                    embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`});
                 })
             }
+            if (levelList.length > 0){
+                levelList.forEach(build => {
+                    embedList.push({"role" : `Levelling order : `, "data" : `${build.items} \nID [${build.id}]`});
+                })
+            }
+
+            embedList.forEach(build => {
+                embed.addField(`${build.role}`, `${build.data}`, false);
+            });
             
             const catchErr = err => {
                 console.log(err)

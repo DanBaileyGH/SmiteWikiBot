@@ -12,7 +12,7 @@ client.on('ready', function (evt) {
     client.user.setActivity("?invite | ?help");
 });
 
-const prefix = "?";
+const prefix = "^";
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -30,7 +30,7 @@ const catchErr = err => {
     console.log(err)
 }
 
-client.login(config.BOT_TOKEN)
+
 
 client.on('messageCreate', async message => {
     if (!message.content.startsWith(prefix)) return;
@@ -93,3 +93,6 @@ client.on('interactionCreate', async interaction => {
         console.log("recieved unexpected button interaction");
     }
 });
+
+
+client.login(config.BOT_TOKEN)
