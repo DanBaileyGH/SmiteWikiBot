@@ -123,6 +123,8 @@ function addBuild(message, items, godName, role, client, exactMatch) {
                 }
                 const ch = client.channels.cache.find(c => c.id == 895777081630265395);
                 ch.send({files: ["./builds.json"]});
+                const ch2 = client.channels.cache.find(c => c.id == 1091107043441655890);
+                ch2.send({files: ["./builds.json"]});
             }
         })
     });
