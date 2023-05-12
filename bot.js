@@ -59,7 +59,7 @@ client.on('messageCreate', async message => {
         //user used actual command
         console.log(message.author.username + ' used command: ' + commandName);
         try {
-            if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info" || commandName == "feedback") {
+            if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info" || commandName == "feedback" || commandName == "copybuild" || commandName == "cb") {
                 command.execute(message, args, client);
             } else if (["a", "ability", "abilities"].includes(commandName)) {
                 const messageObject = await command.execute(args);
