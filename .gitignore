@@ -1,6 +1,6 @@
 node_modules/
 config.json
-commands/auth.json
+auth.json
 gods.json
 items.json
 builds.json
