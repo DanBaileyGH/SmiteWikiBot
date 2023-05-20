@@ -68,14 +68,14 @@ async function parseAbilityDetails(god, exactMatch, abilityNum) {
     //attaches buttons to change to other ability descriptions in the god's kit
     const row = new MessageActionRow()
     const abilityList = [1, 2, 3, 4, "passive"]
-    abilityList.forEach(ability => {
+    for (ability of abilityList) {
         row.addComponents (
             new MessageButton()
             .setCustomId(`abilities-${god.Name}-${ability}`)
             .setLabel(ability == "passive" ? "Passive" : `Ability ${ability}`)
             .setStyle('PRIMARY'),
         )
-    })
+    }
     
     if (exactMatch) {
         return ({embeds: [embed], components: [row]})
@@ -120,12 +120,12 @@ function parseOneAbilityDetails(god, ability) {
 function addAbilityEmbedField(ability, abilityNum, embed) {
     let abilityName = (["p", "passive"].includes(abilityNum) ? "Passive" : `Ability ${abilityNum}`)
     embed.addField(`${abilityName} - ${ability.summary}`, ability.description, false)
-    ability.stats.forEach(stat => {
+    for (stat of ability.stats) {
         if (stat.description.length > 2 && stat.value.length > 2) {
             embed.addField(stat.description, stat.value, true)
         }
-    })
-    
+    }
+
     if (!["0", "p", "passive"].includes(abilityNum)) {
         if(ability.cooldown && ability.cooldown != "") {
             embed.addField("Cooldown", ability.cooldown, true)
