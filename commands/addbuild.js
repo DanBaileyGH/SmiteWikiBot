@@ -16,7 +16,7 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("You do not have permission to do this here!")
             return ({embeds: [embed]}) 
         }
-        if (args == "") { 
+        if (args.length === 0) { 
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
@@ -25,7 +25,7 @@ module.exports = {
 	}
 }
 
-async function findGod(args, author){
+async function findGod(args, author) {
     const godName = [processNameString(args.shift())]
     const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
