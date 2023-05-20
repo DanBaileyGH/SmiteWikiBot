@@ -1,7 +1,7 @@
 const fs = require('fs');
 const {MessageEmbed} = require('discord.js');
 const globalFunctions = require('./globalfunctions.js');
-const config = require('./auth.json');;
+const config = require('../auth.json');;
 const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"];
 
 /*
