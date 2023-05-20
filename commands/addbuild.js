@@ -1,5 +1,5 @@
 const fs = require('fs')
-const {MessageEmbed} = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const { userHasPerms, processNameString, findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
@@ -25,10 +25,6 @@ module.exports = {
 	}
 }
 
-/**
- * Uses the gods list in gods.json to check if the entered god name for the new build matches an existing god in the game.
- * @param {array} args - The list of arguments for the current command, this contains the new build's god, role, and items.
- */
 async function findGod(args, author){
     const godName = [processNameString(args.shift())]
     const godObject = await findObjectWithShortenedName(godName, "god")
