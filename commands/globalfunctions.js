@@ -154,3 +154,8 @@ exports.userHasPerms=(message)=>{
         resolve(hasPerms)
     });
 }
+
+exports.processNameString = (name) => {
+    const processedString = name.replace(/ /g, "").replace("'", "").trim().toLowerCase()
+    return processedString
+}
