@@ -21,7 +21,7 @@ module.exports = {
             return ({embeds: [embed]}) 
         }
         findGod(args)
-	},
+	}
 }
 
 /**

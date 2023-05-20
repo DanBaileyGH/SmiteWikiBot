@@ -20,7 +20,7 @@ module.exports = {
             ability = args.pop()
         }
         return (await getAbilityDetails(args, ability))
-	},
+	}
 }
 
 /**
