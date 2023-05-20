@@ -1,5 +1,5 @@
 const {MessageEmbed, MessageActionRow, MessageButton} = require('discord.js')
-const globalFunctions = require('./globalfunctions.js')
+const { findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
  * Command that finds the details of a chosen god's ability, adds the details of that ability
@@ -23,15 +23,8 @@ module.exports = {
 	}
 }
 
-/**
- * Validates the selected god matches a god found in the API and passes the god object to the parsing function.
- * @async
- * @param {string[]} godName - Array containing the command args that make up the entered god's name.
- * @param {string} ability - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
- * @returns {Promise} - Promise that resolves with either the data for the found god, or an error message.
- */
 async function getAbilityDetails(godName, ability) {
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
     const exactMatch = godObject.exact
     //if no god object found matching the user's inputted name
@@ -42,13 +35,6 @@ async function getAbilityDetails(godName, ability) {
     return (await parseAbilityDetails(god, exactMatch, ability))
 }
 
-/**
- * Turns the chosen god's chosen abilities data into a discord embed and sends it in the original message's channel.
- * @param {object} god - Object containing the chosen gods data from the API.
- * @param {boolean} exactMatch - Did the user enter the exact god's name (true) or a shortened version (false).
- * @param {string} abilityNum - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
- * @returns {Promise} - Promise that resolves with either a discord embed of the ability details to send, or an error message.
- */
 async function parseAbilityDetails(god, exactMatch, abilityNum) {
     let embed = new MessageEmbed()
     .setTitle(`Ability Details For ${god.Name}`)
@@ -83,12 +69,6 @@ async function parseAbilityDetails(god, exactMatch, abilityNum) {
     return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: [row]})
 }
 
-/**
- * Retrieves the particular chosen ability from the gods overall data.
- * @param {object} god - Object containing the chosen gods data from the API.
- * @param {string} ability - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
- * @returns {object} - Object containing just the details of the chosen ability of the god.
- */
 function parseOneAbilityDetails(god, ability) {
     let godAbility
     if ([0, "p", "passive"].includes(ability)) {
@@ -110,13 +90,6 @@ function parseOneAbilityDetails(god, ability) {
     return abilityObject
 }
 
-/**
- * Turns the chosen god's chosen abilities data into a discord embed
- * @param {object} ability - Object with all details of chosen ability.
- * @param {string} abilityNum - Name of the chosen ability, at this point will be one of [1, 2, 3, 4, p, passive].
- * @param {object} embed - The discord embed that needs to have the ability details added to it to send.
- * @returns {object} - The embed given as a parameter, now containing all the ability details as fields.
- */
 function addAbilityEmbedField(ability, abilityNum, embed) {
     let abilityName = (["p", "passive"].includes(abilityNum) ? "Passive" : `Ability ${abilityNum}`)
     embed.addField(`${abilityName} - ${ability.summary}`, ability.description, false)

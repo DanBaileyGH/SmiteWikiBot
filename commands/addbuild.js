@@ -1,6 +1,6 @@
 const fs = require('fs')
 const {MessageEmbed} = require('discord.js')
-const globalFunctions = require('./globalfunctions.js')
+const { userHasPerms, processNameString, findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
  * Command that takes a new build entered by a user with permission, breaks it down into god, role, and item list, 
@@ -11,7 +11,7 @@ module.exports = {
     aliases: ["ab"],
 	description: 'Add a new mentor set build for chosen god',
 	async execute(message, args) {
-        let hasPerms = await globalFunctions.userHasPerms(message)
+        const hasPerms = await userHasPerms(message)
         if (!hasPerms) {
             const embed = new MessageEmbed().setDescription("You do not have permission to do this here!")
             return ({embeds: [embed]}) 
@@ -20,7 +20,8 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
-        findGod(args)
+        const author = message.author.username
+        findGod(args, author)
 	}
 }
 
@@ -28,12 +29,12 @@ module.exports = {
  * Uses the gods list in gods.json to check if the entered god name for the new build matches an existing god in the game.
  * @param {array} args - The list of arguments for the current command, this contains the new build's god, role, and items.
  */
-async function findGod(args){
-    const godName = [globalFunctions.processNameString(args.shift())]
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+async function findGod(args, author){
+    const godName = [processNameString(args.shift())]
+    const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
     const exactMatch = godObject.exact
-    let role = globalFunctions.processNameString(args.shift())
+    let role = processNameString(args.shift())
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase()
     } else {
@@ -59,10 +60,10 @@ async function findGod(args){
         return ({embeds: [embed]}) 
     }
 
-    addBuild(items, god.Name, role, exactMatch)
+    addBuild(items, god.Name, role, exactMatch, author)
 }
 
-async function addBuild(items, godName, role, exactMatch) {
+async function addBuild(items, godName, role, exactMatch, author) {
     //probably not an efficient way of doing ids but there shouldnt ever be more than like 4-500 builds in this bot
     let usedIds = []
     const buildsData = await fs.readFileSync('builds.json')
@@ -89,7 +90,7 @@ async function addBuild(items, godName, role, exactMatch) {
         "god" : godName,
         "role" : role,
         "items" : items,
-        "author" : message.author.username
+        "author" : author
     })
 
     await fs.writeFileSync('builds.json', JSON.stringify(buildList, null, 4))
