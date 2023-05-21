@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { MessageEmbed} = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const globalFunctions = require('./globalfunctions.js')
 
 module.exports = {
