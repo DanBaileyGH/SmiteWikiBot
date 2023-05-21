@@ -48,6 +48,7 @@ async function addBuild(buildId, godName, exactMatch) {
     const buildsData = await fs.readFileSync('builds.json')
     const buildList = JSON.parse(buildsData)
     for (checkingBuild of buildList) {
+        usedIds.push(checkingBuild.id)
         if (checkingBuild.id == buildId) {
             console.log("found build")
             role = checkingBuild.role
