@@ -23,8 +23,7 @@ function sendHelpMessage() {
     "`?skins [godname] (?sk)` - Shows all skins of chosen god (link, availability, price)\n", false)
     .addField("General Bot Commands",
     "`?invite (?inv)` - Invite SmiteWikiBot to your server!\n" +
-    "`?botinfo (?info)` - General information about SmiteWikiBot.\n" +
-    "`?feedback [feedback message]` - Give the bot author feedback!", false)
+    "`?botinfo (?info)` - General information about SmiteWikiBot.\n")
 
     return ({embeds: [embed]})
 }

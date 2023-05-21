@@ -10,10 +10,10 @@ module.exports = {
 	name: 'abilities',
     aliases: ["a", "ability"],
 	description: 'Get ability details for chosen god',
-	async execute(args) {
+	async execute(message, args) {
         if (args.length === 0) { 
             const embed = new MessageEmbed().setDescription("Please Enter a God")
-            resolve({embeds: [embed], components: null})
+            return ({embeds: [embed], components: null})
         } 
         let ability = 1
         if (["1", "2", "3", "4", "p", "passive", "all"].includes(args[args.length - 1])) {

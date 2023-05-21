@@ -31,7 +31,7 @@ async function getSkinList(god, exactMatch) {
     sessionId = sessionData.session_id
     const skinRes = await fetch(generateGodSkinsUrl(sessionId, god.id))
     const skinData = await skinRes.json()
-    parseSkins(skinData, exactMatch)
+    return (await parseSkins(skinData, exactMatch))
 }
 
 function parseSkins(skins, exactMatch) {

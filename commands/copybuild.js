@@ -17,7 +17,7 @@ module.exports = {
             return ({embeds: [embed]}) 
         }
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
+            const embed = new MessageEmbed().setDescription("Please Enter a Build ID")
             return ({embeds: [embed]}) 
         }
         return (await findGod(args))
@@ -26,6 +26,12 @@ module.exports = {
 
 async function findGod(args) {
     const buildId = args.shift()
+
+    if (args.length === 0) { 
+        const embed = new MessageEmbed().setDescription("Please Enter a God")
+        return ({embeds: [embed]}) 
+    }
+
     const godName = [processNameString(args.shift())]
     const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
@@ -38,7 +44,6 @@ async function findGod(args) {
 }
 
 async function addBuild(buildId, godName, exactMatch) {
-    console.log(buildId, godName)
     let role
     let items
     let author
@@ -49,7 +54,6 @@ async function addBuild(buildId, godName, exactMatch) {
     for (checkingBuild of buildList) {
         usedIds.push(checkingBuild.id)
         if (checkingBuild.id == buildId) {
-            console.log("found build")
             role = checkingBuild.role
             items = checkingBuild.items
             author = checkingBuild.author

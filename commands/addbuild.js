@@ -26,11 +26,19 @@ module.exports = {
 }
 
 async function findGod(args, author) {
-    const godName = [processNameString(args.shift())]
+    const unprocessedGodName = args.shift()
+    const godName = [processNameString(unprocessedGodName)]
     const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
     const exactMatch = godObject.exact
-    let role = processNameString(args.shift())
+
+    if (args.length === 0) { 
+        const embed = new MessageEmbed().setDescription("Please Enter a Role")
+        return ({embeds: [embed]}) 
+    }
+
+    const unprocessedRoleName = args.shift()
+    let role = processNameString(unprocessedRoleName)
     if (role.toLowerCase() == "adc") {
         role = role.toUpperCase()
     } else {

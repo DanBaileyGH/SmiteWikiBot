@@ -1,95 +1,77 @@
-const Discord = require('discord.js');
-const { Intents } = require('discord.js')
-const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION']});
-const fs = require('fs');
-const config = require('./config.json');
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-const globalFunctions = require('./commands/globalfunctions.js');
+const { Intents, Client, Collection } = require('discord.js')
+const fs = require('fs')
+const config = require('./config.json')
+const { findObjectWithShortenedName, processNameString } = require('./commands/globalfunctions.js')
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
+client.commands = new Collection()
+client.aliases = new Collection()
+
+const prefix = "?"
 
 client.on('ready', function (evt) {
-    console.log('ready');
-    client.user.setActivity("?invite | ?help");
-});
+    console.log('ready')
+    client.user.setActivity("?invite | ?help")
+})
 
-const prefix = "?";
-
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
+    const command = require(`./commands/${file}`)
+    client.commands.set(command.name, command)
     if (command.aliases) {
-        command.aliases.forEach(alias => {
-            client.aliases.set(alias, command);
-        });
-    };
-}
-
-const catchErr = err => {
-    console.log(err)
+        for (alias of command.aliases) {
+            client.aliases.set(alias, command)
+        }
+    }
 }
 
 client.login(config.BOT_TOKEN)
 
 client.on('messageCreate', async message => {
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix)) return
     
-    const args = message.content.slice(prefix.length).trim().split(' ');
-    const commandName = args.shift().toLowerCase();
-    let command = client.commands.get(commandName) || client.aliases.get(commandName);
+    let args = message.content.slice(prefix.length).trim().split(' ')
+    const commandName = args.shift().toLowerCase()
+    let command = client.commands.get(commandName) || client.aliases.get(commandName)
 
-    if (command == null) {
+    if (!command) {
         //checking if user used ?godname command as shorthand for build
-        const godName = [message.content.slice(prefix.length).trim().replace(/ /g, "").replace(/’/g, "").replace(/'/g, "").trim().toLowerCase()];
-        globalFunctions.findObjectWithShortenedName(godName, "god").then (god => {
-            if (god) {
-                command = client.commands.get("builds");
-                try {
-                    console.log(message.author.username + ' used command: ' + commandName);
-                    command.execute(message, message.content.slice(prefix.length).trim().split(' '));
-                    return;
-                } catch (error) {
-                    console.log(error);
-                    message.reply('error executing command');
-                }
-            } 
-        });
+        const godName = [processNameString(message.content.slice(prefix.length).trim())]
+        const god = await findObjectWithShortenedName(godName, "god")
+        if (god) {
+            command = client.commands.get("builds")
+            console.log(message.author.username + ' used command: ' + command.name)
+            const messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
+            message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null})
+        }
     } else {
         //user used actual command
-        console.log(message.author.username + ' used command: ' + commandName);
-        try {
-            if(commandName == "addbuild" || commandName == "ab" || commandName == "botinfo" || commandName == "info" || commandName == "feedback" || commandName == "copybuild" || commandName == "cb") {
-                command.execute(message, args, client);
-            } else if (["a", "ability", "abilities"].includes(commandName)) {
-                const messageObject = await command.execute(args);
-                message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null}).catch(catchErr);
-            } else {
-                command.execute(message, args);
-            }
-        } catch (error) {
-            console.log(error);
-            message.reply('error executing command');
+        console.log(message.author.username + ' used command: ' + command.name)
+        if (command.name == "botinfo") {
+            args = [await client.guilds.cache.size]
         }
+        const messageObject = await command.execute(message, args)
+        message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null})
     }
-});
+})
 
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isButton()) return;
+    if (!interaction.isButton()) return
     
     //user clicked a button
     if (interaction.customId.startsWith("abilities")) {
-        let interactionArgs = interaction.customId.split("-");
-        interactionArgs.shift();
+        let interactionArgs = interaction.customId.split("-")
+        interactionArgs.shift()
         try {
-            let command = client.commands.get("abilities");
-            const messageObject = await command.execute(interactionArgs);
-            interaction.update({content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components});
+            let command = client.commands.get("abilities")
+            const messageObject = await command.execute(interactionArgs)
+            interaction.update({content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components})
         } catch (err) {
-            console.log("you messed up abilities button interaction! error: \n");
-            console.log(err);
+            console.log("you messed up abilities button interaction! error: \n")
+            console.log(err)
         }
     } else {
-        console.log("recieved unexpected button interaction");
+        console.log("recieved unexpected button interaction")
     }
-});
+})

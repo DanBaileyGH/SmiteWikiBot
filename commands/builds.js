@@ -62,7 +62,6 @@ async function parseGodBuilds(god, exactMatch) {
     for (build of godBuildList) {
         embedList.push({"role" : build.role == "Levels" ? `Leveling order` : build.role, "data" : `${build.items} \nID [${build.id}]`})
     }
-    console.log(embedList)
     //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle, Mid, Solo, Support)
     embedList = embedList.sort((a, b) => {
         if (a.role === 'Guide' && b.role !== 'Guide') {
@@ -85,7 +84,6 @@ async function parseGodBuilds(god, exactMatch) {
     for (build of embedList) {
         embed.addField(`${build.role}`, `${build.data}`, false)
     }
-    console.log(embed)
     if (exactMatch) {
         return ({embeds: [embed]})
     }

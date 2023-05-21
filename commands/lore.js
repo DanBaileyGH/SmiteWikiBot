@@ -10,7 +10,7 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]})  
         }
-        await getGodDetails(args)
+        return (await getGodDetails(args))
 	}
 }
 
@@ -26,7 +26,6 @@ async function getGodDetails(godName){
 }
 
 function parseGodLore(god, exactMatch){
-    console.log(god.Name, god.Pantheon)
     const loreFormatFixed = god.Lore.replace("\\n\\n", ".\\n\\n").replace("..\\n\\n", ".\\n\\n")
     const loreSplitArray = loreFormatFixed.split("\\n\\n")
     let loreSection = ""

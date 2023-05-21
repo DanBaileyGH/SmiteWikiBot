@@ -5,7 +5,7 @@ module.exports = {
 	name: 'update',
 	description: 'updates the data in gods.json and items.json files from api',
 	aliases: ["u"],
-    async execute(message) {
+    async execute(message, args) {
         if (!message.author.id == 220922320938729472) {
             return ({content: "command only usable by author"}) 
         }
@@ -25,6 +25,8 @@ async function updateGodDetails() {
     const itemsRes = await fetch(globalFunctions.generateGetItemsURL(sessionId))
     const itemsData = await itemsRes.json()
     await fs.writeFileSync('items.json', JSON.stringify(itemsData, null, 4))
+
+    console.log("update completed")
     return ({content: "Item and God details saved to file"})
 
     /* TODO - skins.json 
@@ -45,7 +47,6 @@ async function updateGodDetails() {
             if (err) {
                 throw err
             }
-        console.log("Skin details saved to file")
         message.channel.send({content: "Skin details saved to file"})
         })
     })

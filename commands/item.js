@@ -27,7 +27,6 @@ async function getItemDetails(itemName) {
 }
 
 function parseItemDetails(item, itemList, exactMatch) {
-    console.log(item.DeviceName)
     const starterItem = (item.StartingItem ? "Yes" : "No")
     let price = item.Price
     let buildsInto = ""

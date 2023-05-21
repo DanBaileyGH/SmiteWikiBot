@@ -13,7 +13,7 @@ module.exports = {
             return ({embeds: [embed]}) 
         }
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
+            const embed = new MessageEmbed().setDescription("Please Enter a Build ID")
             return ({embeds: [embed]}) 
         }
         return (await findBuild(args))
