@@ -1,40 +1,33 @@
-const fs = require('fs');
-const { MessageEmbed} = require('discord.js');
-const globalFunctions = require('./globalfunctions.js');
+const fs = require('fs')
+const { MessageEmbed} = require('discord.js')
+const globalFunctions = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'god',
     aliases: ["g", "champ", "champion", "hero"],
 	description: 'Get details for chosen god',
-	execute(message, args) {
+	async execute(message, args) {
         if (args == "") { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God");
-            message.channel.send({embeds: [embed]}); 
-            return;
+            const embed = new MessageEmbed().setDescription("Please Enter a God")
+            return ({embeds: [embed]}) 
         }
-        try {
-            getGodDetails(message, args);
-        } catch(err) {
-            console.log(err);
-        }
-	},
-};
-
-async function getGodDetails(message, godName){
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
-    const god = godObject.object;
-    const exactMatch = godObject.exact;
-    if (god) {
-        parseGodDetails(god, message, exactMatch);
-    } else {
-        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling");
-        message.channel.send({embeds: [embed]});
-    }
+        return (await getGodDetails(args))
+	}
 }
 
-function parseGodDetails(god, message, exactMatch){
-    console.log(god.Name, god.Pantheon);
-    const onFreeRotation = ((god.OnFreeRotation == "true") ? "Yes" : "No");
+async function getGodDetails(godName) {
+    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const god = godObject.object
+    const exactMatch = godObject.exact
+    if (!god) {
+        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
+        return ({embeds: [embed]})
+    }    
+    return (await parseGodDetails(god, exactMatch))
+}
+
+function parseGodDetails(god, exactMatch) {
+    const onFreeRotation = ((god.OnFreeRotation == "true") ? "Yes" : "No")
     let embed = new MessageEmbed()
     .setTitle(`God Details For ${god.Name}`)
     .setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name}`)
@@ -49,10 +42,10 @@ function parseGodDetails(god, message, exactMatch){
     .addField("Attack Speed", `${god.AttackSpeed} (+${((god.AttackSpeedPerLevel / god.AttackSpeed) * 100).toFixed(2)}%)`, true)
     if(god.MagicalPower == 0) {
         embed.addField("Attack Damage", `${god.PhysicalPower} (+${god.PhysicalPowerPerLevel}) 
-        + 100% Power`, true);
+        + 100% Power`, true)
     } else {
         embed.addField("Attack Damage", `${god.MagicalPower} (+${god.MagicalPowerPerLevel}) 
-        + 20% Power\n`, true);
+        + 20% Power\n`, true)
     }
     embed.addField("Attack Progression", god.basicAttack.itemDescription.menuitems[1].value, true)
     .addField("Health", `${god.Health} (+${god.HealthPerLevel})`, true)
@@ -64,13 +57,8 @@ function parseGodDetails(god, message, exactMatch){
     .addField("Pros", god.Pros.replace(",", ",\n"), true)
     .addField("On Free Rotation", onFreeRotation, true)
 
-    const catchErr = err => {
-        console.log(err)
-    }
-
     if (exactMatch) {
-        message.channel.send({embeds: [embed]}).catch(catchErr);
-    } else {
-        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]}).catch(catchErr);
+        return ({embeds: [embed]})
     }
+    return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]})
 }
