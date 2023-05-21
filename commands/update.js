@@ -1,75 +1,53 @@
-const fetch = require('cross-fetch');
-const globalFunctions = require('./globalfunctions.js');
-const fs = require('fs');
+const fs = require('fs')
+const globalFunctions = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'update',
 	description: 'updates the data in gods.json and items.json files from api',
 	aliases: ["u"],
-    execute(message) {
-        if (message.author.id == 220922320938729472) {
-            updateGodDetails(message);
-        } else {
-            message.channel.send({content: "command only usable by author"});
+    async execute(message) {
+        if (!message.author.id == 220922320938729472) {
+            return ({content: "command only usable by author"}) 
         }
-	},
-};
+        return (await updateGodDetails(message))
+	}
+}
 
-async function updateGodDetails(message){
-    await fetch(globalFunctions.generateCreateSessionUrl())
-    .then(res => res.json())
-    .then(result => {
-        sessionId = result.session_id;
-        return sessionId;
-    });
+async function updateGodDetails() {
+    const sessionRes = await fetch(globalFunctions.generateCreateSessionUrl())
+    const sessionData = await sessionRes.json()
+    const sessionId = sessionData.session_id
 
-    await fetch(globalFunctions.generateGetGodsURL(sessionId))
-    .then(res => res.json())
-    .then(result => {
-        const data = JSON.stringify(result, null, 4);
-        fs.writeFile('gods.json', data, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log("God details saved to file");
-            message.channel.send({content: "God details saved to file"});
-        })
-    })
+    const godsRes = await fetch(globalFunctions.generateGetGodsURL(sessionId))
+    const godsData = await godsRes.json()
+    await fs.writeFileSync('gods.json', JSON.stringify(godsData, null, 4))        
 
-    await fetch(globalFunctions.generateGetItemsURL(sessionId))
-    .then(res => res.json())
-    .then(result => {
-        const data = JSON.stringify(result, null, 4);
-        fs.writeFile('items.json', data, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log("Item details saved to file");
-            message.channel.send({content: "Item details saved to file"});
-        })
-    });
+    const itemsRes = await fetch(globalFunctions.generateGetItemsURL(sessionId))
+    const itemsData = await itemsRes.json()
+    await fs.writeFileSync('items.json', JSON.stringify(itemsData, null, 4))
+    return ({content: "Item and God details saved to file"})
 
     /* TODO - skins.json 
-    let skinList = [];
-    let godList = await globalFunctions.getAllObjectsOfType("god");
+    let skinList = []
+    let godList = await globalFunctions.getAllObjectsOfType("god")
     await godList.forEach(god => {
         fetch(globalFunctions.generateGodSkinsUrl(sessionId, god.id))
         .then(res => res.json())
         .then(result => {
-            const data = JSON.stringify(result, null, 4);
-            skinList.push(god.Name, [data]);
+            const data = JSON.stringify(result, null, 4)
+            skinList.push(god.Name, [data])
         })
-        return skinList;
+        return skinList
     })
     .then(skinList => {
-        const data = JSON.stringify(skinList, null, 4);
+        const data = JSON.stringify(skinList, null, 4)
         fs.writeFile('skins.json', data, (err) => {
             if (err) {
-                throw err;
+                throw err
             }
-        console.log("Skin details saved to file");
-        message.channel.send({content: "Skin details saved to file"});
-        });
-    });
+        console.log("Skin details saved to file")
+        message.channel.send({content: "Skin details saved to file"})
+        })
+    })
     */
 }
