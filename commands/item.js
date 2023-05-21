@@ -79,7 +79,7 @@ function parseItemDetails(item, itemList, exactMatch) {
     }
 
     if (exactMatch) {
-        return ({embeds: [embed]}).catch(catchErr)
+        return ({embeds: [embed]})
     }
     return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]})
 }
