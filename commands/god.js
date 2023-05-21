@@ -6,7 +6,7 @@ module.exports = {
     aliases: ["g", "champ", "champion", "hero"],
 	description: 'Get details for chosen god',
 	async execute(message, args) {
-        if (args == "") { 
+        if (args.length === 0) { 
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
