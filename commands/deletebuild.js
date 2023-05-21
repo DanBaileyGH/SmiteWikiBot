@@ -16,7 +16,7 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
-        findBuild(args)
+        return (await findBuild(args))
 	}
 }
 

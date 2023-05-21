@@ -21,7 +21,7 @@ module.exports = {
             return ({embeds: [embed]}) 
         }
         const author = message.author.username
-        findGod(args, author)
+        return (await findGod(args, author))
 	}
 }
 
@@ -56,7 +56,7 @@ async function findGod(args, author) {
         return ({embeds: [embed]}) 
     }
 
-    addBuild(items, god.Name, role, exactMatch, author)
+    return (await addBuild(items, god.Name, role, exactMatch, author))
 }
 
 async function addBuild(items, godName, role, exactMatch, author) {

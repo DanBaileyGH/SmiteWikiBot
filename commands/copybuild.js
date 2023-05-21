@@ -20,12 +20,11 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
-        const author = message.author.username
-        findGod(args, author)
+        return (await findGod(args))
 	}
 }
 
-async function findGod(args, author) {
+async function findGod(args) {
     const buildId = args.shift()
     const godName = [processNameString(args.shift())]
     const godObject = await findObjectWithShortenedName(godName, "god")
@@ -35,7 +34,7 @@ async function findGod(args, author) {
         const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
         return ({embeds: [embed]})
     }
-    addBuild(buildId, god.Name, exactMatch)
+    return (await addBuild(buildId, god.Name, exactMatch))
 }
 
 async function addBuild(buildId, godName, exactMatch) {

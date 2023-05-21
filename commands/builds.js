@@ -12,7 +12,7 @@ module.exports = {
 	name: 'builds',
     aliases: ["build", "b"],
 	description: 'Get mentor set builds for chosen god',
-	execute(message, args) {
+	async execute(message, args) {
         //official smite server wanted to limit the build command to a couple of channels, so doing that here.
         if (message.guild.id == config.smiteServerId && !(allowedSmiteServerChannels.includes(message.channel.id))) {
             const embed = new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`) //smite server use a bot channel
@@ -22,7 +22,7 @@ module.exports = {
             const embed = new MessageEmbed().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
-        getGodForBuild(args)
+        return (await getGodForBuild(args))
 	}
 }
 
@@ -34,7 +34,7 @@ async function getGodForBuild(godName) {
         const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
         return ({embeds: [embed]})
     }   
-    parseGodBuilds(god, exactMatch)
+    return (await parseGodBuilds(god, exactMatch))
 }
 
 async function parseGodBuilds(god, exactMatch) {
