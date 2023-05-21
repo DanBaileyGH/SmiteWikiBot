@@ -1,15 +1,15 @@
-const {MessageEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
 	name: 'help',
     aliases: ["h", "commands"],
 	description: 'Get help with bot commands',
-	execute(message, args) {
-        sendHelpMessage(message);
-	},
-};
+	async execute(message, args) {
+        return (await sendHelpMessage())	
+    }
+}
 
-function sendHelpMessage(message) {
+function sendHelpMessage() {
     let embed = new MessageEmbed()
     .setTitle(`Commands for SmiteWikiBot`)
     .setTimestamp()
@@ -24,11 +24,7 @@ function sendHelpMessage(message) {
     .addField("General Bot Commands",
     "`?invite (?inv)` - Invite SmiteWikiBot to your server!\n" +
     "`?botinfo (?info)` - General information about SmiteWikiBot.\n" +
-    "`?feedback [feedback message]` - Give the bot author feedback!", false);
+    "`?feedback [feedback message]` - Give the bot author feedback!", false)
 
-    const catchErr = err => {
-        console.log(err)
-    }
-
-    message.channel.send({embeds: [embed]}).catch(catchErr);
+    return ({embeds: [embed]})
 }
