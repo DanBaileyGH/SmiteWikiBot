@@ -1,44 +1,37 @@
-const fs = require('fs');
-const {MessageEmbed} = require('discord.js');
-const globalFunctions = require('./globalfunctions.js');
+const { MessageEmbed } = require('discord.js')
+const { findObjectWithShortenedName } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'item',
     aliases: ["i"],
 	description: 'Get details for chosen item',
-	execute(message, args) {
-        if (args == "") { 
-            const embed = new MessageEmbed().setDescription("Please Enter an Item");
-            message.channel.send({embeds: [embed]}); 
-            return;
+	async execute(message, args) {
+        if (args.length === 0) { 
+            const embed = new MessageEmbed().setDescription("Please Enter an Item")
+            return ({embeds: [embed]}) 
         }
-        try {
-            getItemDetails(message, args);
-        } catch(err) {
-            console.log(err);
-        }
-	},
-};
-
-async function getItemDetails(message, itemName){
-    const itemsObject = await globalFunctions.findObjectWithShortenedName(itemName, "item");
-    const item = itemsObject.object;
-    const itemList = itemsObject.objectList;
-    const exactMatch = itemsObject.exact;
-    if (item) {
-        parseItemDetails(item, message, itemList, exactMatch);
-    } else {
-        const embed = new MessageEmbed().setDescription("Item Not Found, Check Your Spelling");
-        message.channel.send({embeds: [embed]});
-    }
+        return (await getItemDetails(args))
+	}
 }
 
-function parseItemDetails(item, message, itemList, exactMatch){
-    console.log(item.DeviceName);
-    const starterItem = (item.StartingItem ? "Yes" : "No");
-    let price = item.Price;
-    let buildsInto = "";
-    let buildsFrom = "";
+async function getItemDetails(itemName) {
+    const itemsObject = await findObjectWithShortenedName(itemName, "item")
+    const item = itemsObject.object
+    const itemList = itemsObject.objectList
+    const exactMatch = itemsObject.exact
+    if (!item) {
+        const embed = new MessageEmbed().setDescription("Item Not Found, Check Your Spelling")
+        return ({embeds: [embed]})
+    }
+    return (await parseItemDetails(item, itemList, exactMatch))
+}
+
+function parseItemDetails(item, itemList, exactMatch) {
+    console.log(item.DeviceName)
+    const starterItem = (item.StartingItem ? "Yes" : "No")
+    let price = item.Price
+    let buildsInto = ""
+    let buildsFrom = ""
 
     let embed = new MessageEmbed()
     .setTitle(`Item Details For ${item.DeviceName}`)
@@ -48,52 +41,45 @@ function parseItemDetails(item, message, itemList, exactMatch){
         
     .addField(item.DeviceName, item.ShortDesc || "no description", false)
     .addField("Starter Item?", starterItem, true)
-    .addField("Item Tier", item.ItemTier.toString(), true);
+    .addField("Item Tier", item.ItemTier.toString(), true)
 
-    itemList.forEach(checkItem => {
+    for (checkItem of itemList) {
         if (checkItem.ChildItemId == item.ItemId) {
-            buildsInto += (checkItem.DeviceName + "\n");
+            buildsInto += (checkItem.DeviceName + "\n")
         }
         if ((checkItem.ItemId == item.ChildItemId || checkItem.ItemId == item.RootItemId) && checkItem.ItemId != item.ItemId) {
-            buildsFrom += (checkItem.DeviceName + "\n");
-            price += checkItem.Price;
+            buildsFrom += (checkItem.DeviceName + "\n")
+            price += checkItem.Price
             if(checkItem.ItemId == item.RootItemId && checkItem.ItemTier != 1) {
                 itemList.forEach(newRootItem => {
                     if(newRootItem.ItemId == checkItem.RootItemId && newRootItem.ItemId != checkItem.ItemId) {
-                        price += newRootItem.Price;
-                        buildsFrom += (newRootItem.DeviceName + "\n");
+                        price += newRootItem.Price
+                        buildsFrom += (newRootItem.DeviceName + "\n")
                     }
-                });
+                })
             }
         }
-    });
-
-    
-
-    if (buildsFrom != "") {
-        embed.addField("Builds From", buildsFrom, true);
-    };
-    if (buildsInto != "") {
-        embed.addField("Builds Into", buildsInto, true);
-    };
-
-    embed.addField("Price", price.toString(), true);
-    
-    const itemStats = item.ItemDescription.Menuitems;
-    itemStats.forEach(stat => {
-        embed.addField(stat.Description, stat.Value, true);
-    })
-    if(item.ItemDescription.SecondaryDescription != null && item.ItemDescription.SecondaryDescription != "") {
-        embed.addField("Passive", item.ItemDescription.SecondaryDescription, false);
     }
 
-    const catchErr = err => {
-        console.log(err)
+    if (buildsFrom) {
+        embed.addField("Builds From", buildsFrom, true)
+    }
+    if (buildsInto) {
+        embed.addField("Builds Into", buildsInto, true)
+    }
+
+    embed.addField("Price", price.toString(), true)
+    
+    const itemStats = item.ItemDescription.Menuitems
+    for (stat of itemStats) {
+        embed.addField(stat.Description, stat.Value, true)
+    }
+    if(item.ItemDescription.SecondaryDescription) {
+        embed.addField("Passive", item.ItemDescription.SecondaryDescription, false)
     }
 
     if (exactMatch) {
-        message.channel.send({embeds: [embed]}).catch(catchErr);
-    } else {
-        message.channel.send({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]}).catch(catchErr);
+        return ({embeds: [embed]}).catch(catchErr)
     }
+    return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]})
 }
