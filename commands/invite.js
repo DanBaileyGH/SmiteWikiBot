@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js')
-const globalFunctions = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'invite',

@@ -1,13 +1,13 @@
 const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
-const globalFunctions = require('./globalfunctions.js')
+const { userHasPerms } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'deletebuild',
     aliases: ["db", "deleteb", "dbuild", "removebuild"],
 	description: 'Delete a specific mentor set build',
 	async execute(message, args) {
-        const hasPerms = await globalFunctions.userHasPerms(message)
+        const hasPerms = await userHasPerms(message)
         if (!hasPerms) {
             const embed = new MessageEmbed().setDescription("You do not have permission to do this here!")
             return ({embeds: [embed]}) 

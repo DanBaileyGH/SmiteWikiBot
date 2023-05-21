@@ -1,6 +1,5 @@
-const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
-const globalFunctions = require('./globalfunctions.js')
+const { findObjectWithShortenedName } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'god',
@@ -16,7 +15,7 @@ module.exports = {
 }
 
 async function getGodDetails(godName) {
-    const godObject = await globalFunctions.findObjectWithShortenedName(godName, "god")
+    const godObject = await findObjectWithShortenedName(godName, "god")
     const god = godObject.object
     const exactMatch = godObject.exact
     if (!god) {
