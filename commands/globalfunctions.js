@@ -2,6 +2,7 @@ const md5 = require("md5")
 const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
 const { devId, authKey } = require('../auth.json')
+const config = require('../auth.json')
 
 const baseURL = "https://api.smitegame.com/smiteapi.svc/"
 
@@ -45,7 +46,7 @@ exports.generateGodSkinsUrl = (sessionId, godId) => {
     return reqURL
 }
 
-exports.getAllObjectsOfType = async (type) => {
+const getAllObjectsOfType = async (type) => {
     const validTypes = ["god", "item"]
     if (!validTypes.includes(type)) {
         throw new Error(`Not a valid type of object - valid types: ${validTypes}`)
@@ -54,6 +55,7 @@ exports.getAllObjectsOfType = async (type) => {
     const objectsList = await JSON.parse(objectsData)
     return(objectsList)
 }
+module.exports.getAllObjectsOfType = getAllObjectsOfType
 
 exports.findObjectWithShortenedName = async (name, type) => {
     name = processNameString(name.join(" "))
@@ -66,7 +68,8 @@ exports.findObjectWithShortenedName = async (name, type) => {
 
     let objectList = await getAllObjectsOfType(type)
     for (object of objectList) {
-        const currentObjectName = processNameString(object.Name)
+        const objectName = type == "god" ? object.Name : object.DeviceName
+        const currentObjectName = processNameString(objectName)
         if (currentObjectName == name) {
             let returningObject = {
                 object: object,
@@ -81,8 +84,9 @@ exports.findObjectWithShortenedName = async (name, type) => {
     
     //didnt find exact match, now looking for abbreviations
     for (object of objectList) {
-        const currentObjectName = processNameString(object.Name)
-        if (currentObjectName == name) {
+        const objectName = type == "god" ? object.Name : object.DeviceName
+        const currentObjectName = processNameString(objectName)
+        if (currentObjectName.includes(name)) {
             let returningObject = {
                 object: object,
                 exact: false
@@ -98,6 +102,7 @@ exports.findObjectWithShortenedName = async (name, type) => {
 
 exports.userHasPerms = (message) => {
     let hasPerms = false
+    let serverId = message.guild.id
     if (serverId == config.smiteServerId) {
         if (message.member.roles.cache.some(role => role.id == config.smiteServerPermsRoleId)) {
             hasPerms = true
@@ -113,7 +118,8 @@ exports.userHasPerms = (message) => {
     return (hasPerms)
 }
 
-exports.processNameString = (name) => {
+const processNameString = (name) => {
     const processedString = name.replace(/ /g, "").replace(/'/g, "").replace(/’/g, "").trim().toLowerCase()
     return processedString
 }
+module.exports.processNameString = processNameString

@@ -20,7 +20,7 @@ async function getGodDetails(godName){
     const exactMatch = godObject.exact
     if (!god) {
         const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
-        message.channel.send({embeds: [embed]})
+        return ({embeds: [embed]})
     }
     return (await parseGodLore(god, exactMatch))
 }
