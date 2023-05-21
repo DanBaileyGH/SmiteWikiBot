@@ -60,19 +60,26 @@ async function parseGodBuilds(god, exactMatch) {
 
     let embedList = []
     for (build of godBuildList) {
-        if (build.role == "Guide") {
-            embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`})
-        } else if(build.role == "Levels") {
-            embedList.push({"role" : `Leveling order`, "data" : `${build.items} \nID [${build.id}]`})
-        } 
-        embedList.push({"role" : `${build.role}`, "data" : `${build.items} \nID [${build.id}]`})
+        embedList.push({"role" : build.role == "Levels" ? `Leveling order` : build.role, "data" : `${build.items} \nID [${build.id}]`})
     }
-
+    console.log(embedList)
     //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle, Mid, Solo, Support)
     embedList = embedList.sort((a, b) => {
-        if(a.role == "Levels") return -1
-        if(a.role == "Guide") return -1
-        if(a.role < b.role) return -1
+        if (a.role === 'Guide' && b.role !== 'Guide') {
+            return -1
+        }
+        if (a.role !== 'Guide' && b.role === 'Guide') {
+            return 1
+        }
+        
+        if (a.role === 'Leveling order' && b.role !== 'Leveling order') {
+            return 1
+        }
+        if (a.role !== 'Leveling order' && b.role === 'Leveling order') {
+            return -1
+        }
+            
+        return a.role.localeCompare(b.role)
     })
 
     for (build of embedList) {
