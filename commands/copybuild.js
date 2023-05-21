@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { userHasPerms, processNameString, findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
@@ -13,12 +13,12 @@ module.exports = {
 	async execute(message, args) {
         const hasPerms = await userHasPerms(message)
         if (!hasPerms) {
-            const embed = new MessageEmbed().setDescription("You do not have permission to do this here!")
-            return ({embeds: [embed]}) 
+            const embed = new EmbedBuilder().setDescription("You do not have permission to do this here!")
+            return ({ embeds: [embed] }) 
         }
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a Build ID")
-            return ({embeds: [embed]}) 
+            const embed = new EmbedBuilder().setDescription("Please Enter a Build ID")
+            return ({ embeds: [embed] }) 
         }
         return (await findGod(args))
 	}
@@ -28,8 +28,8 @@ async function findGod(args) {
     const buildId = args.shift()
 
     if (args.length === 0) { 
-        const embed = new MessageEmbed().setDescription("Please Enter a God")
-        return ({embeds: [embed]}) 
+        const embed = new EmbedBuilder().setDescription("Please Enter a God")
+        return ({ embeds: [embed] }) 
     }
 
     const godName = [processNameString(args.shift())]
@@ -37,8 +37,8 @@ async function findGod(args) {
     const god = godObject.object
     const exactMatch = godObject.exact 
     if (!god) {
-        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription("God Not Found, Check Your Spelling")
+        return ({ embeds: [embed] })
     }
     return (await addBuild(buildId, god.Name, exactMatch))
 }
@@ -60,8 +60,8 @@ async function addBuild(buildId, godName, exactMatch) {
         }   
     }
     if(!role || !items) {
-        const embed = new MessageEmbed().setDescription("Build with that id not found")
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription("Build with that id not found")
+        return ({ embeds: [embed] })
     }
 
     let id = 1
@@ -83,9 +83,9 @@ async function addBuild(buildId, godName, exactMatch) {
     await fs.writeFileSync('builds.json', JSON.stringify(buildList, null, 4))
     console.log("Builds saved to file")
     if (exactMatch) {
-        const embed = new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`)
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`)
+        return ({ embeds: [embed] })
     }
-    const embed = new MessageEmbed().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`)
-    return ({embeds: [embed]})
+    const embed = new EmbedBuilder().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`)
+    return ({ embeds: [embed] })
 }

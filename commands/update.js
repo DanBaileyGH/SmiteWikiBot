@@ -7,7 +7,7 @@ module.exports = {
 	aliases: ["u"],
     async execute(message, args) {
         if (!message.author.id == 220922320938729472) {
-            return ({content: "command only usable by author"}) 
+            return ({ content: "command only usable by author" }) 
         }
         return (await updateGodDetails(message))
 	}
@@ -27,7 +27,7 @@ async function updateGodDetails() {
     await fs.writeFileSync('items.json', JSON.stringify(itemsData, null, 4))
 
     console.log("update completed")
-    return ({content: "Item and God details saved to file"})
+    return ({ content: "Item and God details saved to file" })
 
     /* TODO - skins.json 
     let skinList = []

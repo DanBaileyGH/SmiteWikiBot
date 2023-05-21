@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { findObjectWithShortenedName } = require('./globalfunctions.js')
 
 module.exports = {
@@ -7,8 +7,8 @@ module.exports = {
 	description: 'Get lore for chosen god',
 	async execute(message, args) {
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
-            return ({embeds: [embed]})  
+            const embed = new EmbedBuilder().setDescription("Please Enter a God")
+            return ({ embeds: [embed] })  
         }
         return (await getGodDetails(args))
 	}
@@ -19,8 +19,8 @@ async function getGodDetails(godName){
     const god = godObject.object
     const exactMatch = godObject.exact
     if (!god) {
-        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription("God Not Found, Check Your Spelling")
+        return ({ embeds: [embed] })
     }
     return (await parseGodLore(god, exactMatch))
 }
@@ -32,25 +32,25 @@ function parseGodLore(god, exactMatch){
     let loreSectionArray = []
     let loreSectionTitle = ""
     let loreSectionContents = ""
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
     .setTitle(`Lore For ${god.Name}`)
     .setTimestamp()
-    .setFooter(`Data from the Smite API`)
+    .setFooter({ text: `Data from the Smite API` })
     .setThumbnail(god.godIcon_URL)
-    .addField(`Lore for ${god.Name}`, loreSplitArray[0], false)
+    .addFields({ name: `Lore for ${god.Name}`, value: loreSplitArray[0], inline: false })
 
     for (loreSection of loreSplitArray) {
         loreSectionArray = loreSection.split(".")
         loreSectionTitle = loreSectionArray[0] + "."
         loreSectionContents = loreSectionArray.slice(1).join('.')
         if (loreSectionContents) {
-            embed.addField(loreSectionTitle, loreSectionContents, false)
+            embed.addFields({ name: loreSectionTitle, value: loreSectionContents, inline: false })
         } else {
-            embed.addField(loreSectionTitle, ".", false)
+            embed.addFields({ name: loreSectionTitle, value: "\u200b", inline: false })
         }
     }
     if (exactMatch) {
-        return ({embeds: [embed]})
+        return ({ embeds: [embed] })
     }
-    return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]})
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
 }

@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { userHasPerms, processNameString, findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
@@ -13,12 +13,12 @@ module.exports = {
 	async execute(message, args) {
         const hasPerms = await userHasPerms(message)
         if (!hasPerms) {
-            const embed = new MessageEmbed().setDescription("You do not have permission to do this here!")
-            return ({embeds: [embed]}) 
+            const embed = new EmbedBuilder().setDescription("You do not have permission to do this here!")
+            return ({ embeds: [embed] }) 
         }
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
-            return ({embeds: [embed]}) 
+            const embed = new EmbedBuilder().setDescription("Please Enter a God")
+            return ({ embeds: [embed] }) 
         }
         const author = message.author.username
         return (await findGod(args, author))
@@ -33,7 +33,7 @@ async function findGod(args, author) {
     const exactMatch = godObject.exact
 
     if (args.length === 0) { 
-        const embed = new MessageEmbed().setDescription("Please Enter a Role")
+        const embed = new EmbedBuilder().setDescription("Please Enter a Role")
         return ({embeds: [embed]}) 
     }
 
@@ -48,20 +48,20 @@ async function findGod(args, author) {
 
     //lots of input checking
     if (!role) {
-        const embed = new MessageEmbed().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide, Levels\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
-        return ({embeds: [embed]}) 
+        const embed = new EmbedBuilder().setDescription("Enter a role!\nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide, Levels\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
+        return ({ embeds: [embed] }) 
     }
     if (!god) {
-        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription("God Not Found, Check Your Spelling")
+        return ({ embeds: [embed] })
     }
     if (!(["Jungle", "Solo", "Mid", "ADC", "Support", "General", "Guide", "Levels"].includes(role))) {
-        const embed = new MessageEmbed().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide, Levels\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
-        return ({embeds: [embed]}) 
+        const embed = new EmbedBuilder().setDescription("Invalid role entered \nValid roles: Jungle, Solo, Mid, ADC, Support, General, Guide, Levels\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
+        return ({ embeds: [embed] }) 
     } 
     if (items.length == 0) {
-        const embed = new MessageEmbed().setDescription("Forget to enter a build?\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
-        return ({embeds: [embed]}) 
+        const embed = new EmbedBuilder().setDescription("Forget to enter a build?\nExample full command: ?ab thor jungle build, here, (can use) any, [punctuation] or, (format)")
+        return ({ embeds: [embed] }) 
     }
 
     return (await addBuild(items, god.Name, role, exactMatch, author))
@@ -74,8 +74,8 @@ async function addBuild(items, godName, role, exactMatch, author) {
     const buildList = JSON.parse(buildsData)
     for (build of buildList) {
         if (build.god == godName && build.role == role && build.items == items) {
-            const embed = new MessageEmbed().setDescription(`Build already exactly matches current build with id ${build.id}`)
-            return ({embeds: [embed]})
+            const embed = new EmbedBuilder().setDescription(`Build already exactly matches current build with id ${build.id}`)
+            return ({ embeds: [embed] })
         } else {
             usedIds.push(build.id)
         }
@@ -100,9 +100,9 @@ async function addBuild(items, godName, role, exactMatch, author) {
     await fs.writeFileSync('builds.json', JSON.stringify(buildList, null, 4))
     console.log("Builds saved to file")
     if (exactMatch) {
-        const embed = new MessageEmbed().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`)
-        return ({embeds: [embed]})
+        const embed = new EmbedBuilder().setDescription(`Added new build for ${godName} in role ${role} (id ${id})\nBuild: ${items}`)
+        return ({ embeds: [embed] })
     }
-    const embed = new MessageEmbed().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`)
-    return ({embeds: [embed]})
+    const embed = new EmbedBuilder().setDescription(`Added new build for ${godName} (partial match for god entered) in role ${role} (id ${id})\nBuild: ${items}`)
+    return ({ embeds: [embed] })
 }

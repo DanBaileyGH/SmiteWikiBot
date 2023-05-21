@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const { findObjectWithShortenedName } = require('./globalfunctions.js')
 
 /*
@@ -11,16 +11,20 @@ module.exports = {
     aliases: ["a", "ability"],
 	description: 'Get ability details for chosen god',
 	async execute(message, args) {
-        if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
-            return ({embeds: [embed], components: null})
-        } 
-        let ability = 1
-        if (["1", "2", "3", "4", "p", "passive", "all"].includes(args[args.length - 1])) {
-            ability = args.pop()
-        }
-        return (await getAbilityDetails(args, ability))
+        return (await validateInput(args))
 	}
+}
+
+async function validateInput(args) {
+    if (args.length === 0) { 
+        const embed = new EmbedBuilder().setDescription("Please Enter a God")
+        return ({ embeds: [embed], components: null })
+    } 
+    let ability = 1
+    if (["1", "2", "3", "4", "p", "passive", "all"].includes(args[args.length - 1])) {
+        ability = args.pop()
+    }
+    return (await getAbilityDetails(args, ability))
 }
 
 async function getAbilityDetails(godName, ability) {
@@ -29,18 +33,18 @@ async function getAbilityDetails(godName, ability) {
     const exactMatch = godObject.exact
     //if no god object found matching the user's inputted name
     if (!god) {
-        const embed = new MessageEmbed().setDescription(`God "${godName}" Not Found, Check Your Spelling`)
-        return ({embeds: [embed], components: null})
+        const embed = new EmbedBuilder().setDescription(`God "${godName}" Not Found, Check Your Spelling`)
+        return ({ embeds: [embed], components: null })
     } 
     return (await parseAbilityDetails(god, exactMatch, ability))
 }
 
 async function parseAbilityDetails(god, exactMatch, abilityNum) {
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
     .setTitle(`Ability Details For ${god.Name}`)
     .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
     .setTimestamp()
-    .setFooter(`Data from the Smite API`)
+    .setFooter({ text: `Data from the Smite API` })
     .setThumbnail(god.godIcon_URL)
     
     if(god.Name == "Merlin"){
@@ -52,21 +56,21 @@ async function parseAbilityDetails(god, exactMatch, abilityNum) {
     embed = addAbilityEmbedField(ability, abilityNum, embed)       
     
     //attaches buttons to change to other ability descriptions in the god's kit
-    const row = new MessageActionRow()
+    const row = new ActionRowBuilder()
     const abilityList = [1, 2, 3, 4, "passive"]
     for (ability of abilityList) {
         row.addComponents (
-            new MessageButton()
+            new ButtonBuilder()
             .setCustomId(`abilities-${god.Name}-${ability}`)
             .setLabel(ability == "passive" ? "Passive" : `Ability ${ability}`)
-            .setStyle('PRIMARY'),
+            .setStyle(ButtonStyle.Primary),
         )
     }
     
     if (exactMatch) {
-        return ({embeds: [embed], components: [row]})
+        return ({ embeds: [embed], components: [row] })
     } 
-    return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: [row]})
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: [row] })
 }
 
 function parseOneAbilityDetails(god, ability) {
@@ -92,18 +96,18 @@ function parseOneAbilityDetails(god, ability) {
 
 function addAbilityEmbedField(ability, abilityNum, embed) {
     let abilityName = (["p", "passive"].includes(abilityNum) ? "Passive" : `Ability ${abilityNum}`)
-    embed.addField(`${abilityName} - ${ability.summary}`, ability.description, false)
+    embed.addFields({ name: `${abilityName} - ${ability.summary}`, value: ability.description, inline: false })
     for (stat of ability.stats) {
         if (stat.description.length > 2 && stat.value.length > 2) {
-            embed.addField(stat.description, stat.value, true)
+            embed.addFields({ name: stat.description, value: stat.value, inline: true })
         }
     }
 
     if (!["0", "p", "passive"].includes(abilityNum)) {
         if(ability.cooldown && ability.cooldown != "") {
-            embed.addField("Cooldown", ability.cooldown, true)
+            embed.addFields({ name: "Cooldown", value: ability.cooldown, inline: true })
         } else {
-            embed.addField("Cooldown", "None", true)
+            embed.addFields({ name: "Cooldown", value: "None", inline: true })
         }
     }
     return embed

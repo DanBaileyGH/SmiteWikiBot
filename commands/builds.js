@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { findObjectWithShortenedName, processNameString } = require('./globalfunctions.js')
 const config = require('../auth.json')
 const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"]
@@ -15,11 +15,11 @@ module.exports = {
 	async execute(message, args) {
         //official smite server wanted to limit the build command to a couple of channels, so doing that here.
         if (message.guild.id == config.smiteServerId && !(allowedSmiteServerChannels.includes(message.channel.id))) {
-            const embed = new MessageEmbed().setDescription(`Build Command Only Usable in <#733765823075713111>`) //smite server use a bot channel
+            const embed = new EmbedBuilder().setDescription(`Build Command Only Usable in <#733765823075713111>`) //smite server use a bot channel
             return ({embeds: [embed]}) 
         }
         if (args.length === 0) { 
-            const embed = new MessageEmbed().setDescription("Please Enter a God")
+            const embed = new EmbedBuilder().setDescription("Please Enter a God")
             return ({embeds: [embed]}) 
         }
         return (await getGodForBuild(args))
@@ -31,7 +31,7 @@ async function getGodForBuild(godName) {
     const god = godObject.object
     const exactMatch = godObject.exact
     if (!god) {
-        const embed = new MessageEmbed().setDescription("God Not Found, Check Your Spelling")
+        const embed = new EmbedBuilder().setDescription("God Not Found, Check Your Spelling")
         return ({embeds: [embed]})
     }   
     return (await parseGodBuilds(god, exactMatch))
@@ -48,14 +48,14 @@ async function parseGodBuilds(god, exactMatch) {
         }   
     }
     if (godBuildList.length == 0) {
-        const embed = new MessageEmbed().setDescription("Couldnt find any builds for that god - we will add one soon!")
+        const embed = new EmbedBuilder().setDescription("Couldnt find any builds for that god - we will add one soon!")
         return ({embeds: [embed]})
     }
 
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
     .setTitle(`Mentor Builds for ${god.Name}`)
     .setTimestamp()
-    .setFooter(`Builds From the Smite Server Mentors`)
+    .setFooter({ text: `Builds From the Smite Server Mentors` })
     .setThumbnail(god.godIcon_URL)
 
     let embedList = []
@@ -82,10 +82,10 @@ async function parseGodBuilds(god, exactMatch) {
     })
 
     for (build of embedList) {
-        embed.addField(`${build.role}`, `${build.data}`, false)
+        embed.addFields({ name: `${build.role}`, value: `${build.data}`, inline: false })
     }
     if (exactMatch) {
-        return ({embeds: [embed]})
+        return ({ embeds: [embed] })
     }
-    return ({content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed]})
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
 }

@@ -4,13 +4,8 @@
   "description": "smite wiki bot",
   "main": "bot.js",
   "dependencies": {
-    "cross-fetch": "^3.1.4",
-    "discord.js": "^13.6.0",
-    "jsdoc": "^3.6.7",
-    "md5": "^2.3.0",
-    "paladins-api": "^1.5.5",
-    "paladins.js": "^2.2.2",
-    "request": "^2.88.2"
+    "discord.js": "^14.11.0",
+    "md5": "^2.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

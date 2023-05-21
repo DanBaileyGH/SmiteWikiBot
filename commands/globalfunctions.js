@@ -1,6 +1,6 @@
 const md5 = require("md5")
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { devId, authKey } = require('../auth.json')
 const config = require('../auth.json')
 
@@ -112,8 +112,8 @@ exports.userHasPerms = (message) => {
             hasPerms = true
         }
     } else {
-        const embed = new MessageEmbed().setDescription("You cannot edit builds in this server!")
-        return ({embeds: [embed]}) 
+        const embed = new EmbedBuilder().setDescription("You cannot edit builds in this server!")
+        return ({ embeds: [embed] }) 
     }
     return (hasPerms)
 }

@@ -1,13 +1,13 @@
-const { Intents, Client, Collection } = require('discord.js')
+const { GatewayIntentBits, Client, Collection } = require('discord.js')
 const fs = require('fs')
 const config = require('./config.json')
 const { findObjectWithShortenedName, processNameString } = require('./commands/globalfunctions.js')
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
 client.commands = new Collection()
 client.aliases = new Collection()
 
-const prefix = "?"
+const prefix = ">"
 
 client.on('ready', function (evt) {
     console.log('ready')
@@ -34,7 +34,6 @@ client.on('messageCreate', async message => {
     let args = message.content.slice(prefix.length).trim().split(' ')
     const commandName = args.shift().toLowerCase()
     let command = client.commands.get(commandName) || client.aliases.get(commandName)
-
     if (!command) {
         //checking if user used ?godname command as shorthand for build
         const godName = [processNameString(message.content.slice(prefix.length).trim())]
@@ -65,7 +64,7 @@ client.on('interactionCreate', async interaction => {
         interactionArgs.shift()
         try {
             let command = client.commands.get("abilities")
-            const messageObject = await command.execute(interactionArgs)
+            const messageObject = await command.execute(null, interactionArgs)
             interaction.update({content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components})
         } catch (err) {
             console.log("you messed up abilities button interaction! error: \n")
