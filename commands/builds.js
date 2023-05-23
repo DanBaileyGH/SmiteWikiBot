@@ -16,11 +16,11 @@ module.exports = {
         //official smite server wanted to limit the build command to a couple of channels, so doing that here.
         if (message.guild.id == config.smiteServerId && !(allowedSmiteServerChannels.includes(message.channel.id))) {
             const embed = new EmbedBuilder().setDescription(`Build Command Only Usable in <#733765823075713111>`) //smite server use a bot channel
-            return ({embeds: [embed]}) 
+            return ({ embeds: [embed] }) 
         }
         if (args.length === 0) { 
             const embed = new EmbedBuilder().setDescription("Please Enter a God")
-            return ({embeds: [embed]}) 
+            return ({ embeds: [embed] }) 
         }
         return (await getGodForBuild(args))
 	}
@@ -32,7 +32,7 @@ async function getGodForBuild(godName) {
     const exactMatch = godObject.exact
     if (!god) {
         const embed = new EmbedBuilder().setDescription("God Not Found, Check Your Spelling")
-        return ({embeds: [embed]})
+        return ({ embeds: [embed] })
     }   
     return (await parseGodBuilds(god, exactMatch))
 }
@@ -49,7 +49,7 @@ async function parseGodBuilds(god, exactMatch) {
     }
     if (godBuildList.length == 0) {
         const embed = new EmbedBuilder().setDescription("Couldnt find any builds for that god - we will add one soon!")
-        return ({embeds: [embed]})
+        return ({ embeds: [embed] })
     }
 
     let embed = new EmbedBuilder()
@@ -60,7 +60,7 @@ async function parseGodBuilds(god, exactMatch) {
 
     let embedList = []
     for (build of godBuildList) {
-        embedList.push({"role" : build.role == "Levels" ? `Leveling order` : build.role, "data" : `${build.items} \nID [${build.id}]`})
+        embedList.push({ "role" : build.role == "Levels" ? `Leveling order` : build.role, "data" : `${build.items} \nID [${build.id}]` })
     }
     //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle, Mid, Solo, Support)
     embedList = embedList.sort((a, b) => {

@@ -34,7 +34,7 @@ async function findGod(args, author) {
 
     if (args.length === 0) { 
         const embed = new EmbedBuilder().setDescription("Please Enter a Role")
-        return ({embeds: [embed]}) 
+        return ({ embeds: [embed] }) 
     }
 
     const unprocessedRoleName = args.shift()
