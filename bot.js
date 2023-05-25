@@ -34,25 +34,25 @@ client.on('messageCreate', async message => {
     let args = message.content.slice(prefix.length).trim().split(' ')
     const commandName = args.shift().toLowerCase()
     let command = client.commands.get(commandName) || client.aliases.get(commandName)
+    let messageObject
     if (!command) {
         //checking if user used ?godname command as shorthand for build
         const godName = [processNameString(message.content.slice(prefix.length).trim())]
         const god = await findObjectWithShortenedName(godName, "god")
-        if (god) {
-            command = client.commands.get("builds")
-            console.log(message.author.username + ' used command: ' + command.name)
-            const messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
-            message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null})
-        }
+        if (!god) return
+        command = client.commands.get("builds")
+        console.log(message.author.username + ' used command: ' + command.name)
+        messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
     } else {
         //user used actual command
         console.log(message.author.username + ' used command: ' + command.name)
         if (command.name == "botinfo") {
             args = [await client.guilds.cache.size]
         }
-        const messageObject = await command.execute(message, args)
-        message.channel.send({content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null})
+        messageObject = await command.execute(message, args)
     }
+    message.channel.send({ content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null })
+        .catch(error => console.log(error)) 
 })
 
 client.on('interactionCreate', async interaction => {
