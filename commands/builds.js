@@ -1,6 +1,6 @@
 const fs = require('fs')
 const { EmbedBuilder } = require('discord.js')
-const { findObjectWithShortenedName, processNameString } = require('./globalfunctions.js')
+const { findObjectWithShortenedName, processNameString, getButtonRows } = require('./globalfunctions.js')
 const config = require('../auth.json')
 const allowedSmiteServerChannels = ["733765823075713111","759221910990094356"]
 
@@ -84,8 +84,9 @@ async function parseGodBuilds(god, exactMatch) {
     for (build of embedList) {
         embed.addFields({ name: `${build.role}`, value: `${build.data}`, inline: false })
     }
+
     if (exactMatch) {
-        return ({ embeds: [embed] })
+        return ({ embeds: [embed], components:await getButtonRows(god.Name) })
     }
-    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components:await getButtonRows(god.Name) })
 }

@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js')
-const { findObjectWithShortenedName } = require('./globalfunctions.js')
+const { findObjectWithShortenedName, getButtonRows } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'god',
@@ -25,7 +25,7 @@ async function getGodDetails(godName) {
     return (await parseGodDetails(god, exactMatch))
 }
 
-function parseGodDetails(god, exactMatch) {
+async function parseGodDetails(god, exactMatch) {
     const onFreeRotation = ((god.OnFreeRotation == "true") ? "Yes" : "No")
     let embed = new EmbedBuilder()
     .setTitle(`God Details For ${god.Name}`)
@@ -60,7 +60,7 @@ function parseGodDetails(god, exactMatch) {
     )
 
     if (exactMatch) {
-        return ({ embeds: [embed] })
+        return ({ embeds: [embed], components: await getButtonRows(god.Name) })
     }
-    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: await getButtonRows(god.Name)  })
 }

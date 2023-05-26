@@ -1,5 +1,5 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { findObjectWithShortenedName } = require('./globalfunctions.js')
+const { EmbedBuilder } = require('discord.js')
+const { findObjectWithShortenedName, getButtonRows } = require('./globalfunctions.js')
 
 /*
  * Command that finds the details of a chosen god's ability, adds the details of that ability
@@ -53,24 +53,12 @@ async function parseAbilityDetails(god, exactMatch, abilityNum) {
     }
 
     let ability = parseOneAbilityDetails(god, abilityNum)
-    embed = addAbilityEmbedField(ability, abilityNum, embed)       
-    
-    //attaches buttons to change to other ability descriptions in the god's kit
-    const row = new ActionRowBuilder()
-    const abilityList = [1, 2, 3, 4, "passive"]
-    for (ability of abilityList) {
-        row.addComponents (
-            new ButtonBuilder()
-            .setCustomId(`abilities-${god.Name}-${ability}`)
-            .setLabel(ability == "passive" ? "Passive" : `Ability ${ability}`)
-            .setStyle(ButtonStyle.Primary),
-        )
-    }
+    embed = addAbilityEmbedField(ability, abilityNum, embed)
     
     if (exactMatch) {
-        return ({ embeds: [embed], components: [row] })
+        return ({ embeds: [embed], components: await getButtonRows(god.Name) })
     } 
-    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: [row] })
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: await getButtonRows(god.Name) })
 }
 
 function parseOneAbilityDetails(god, ability) {

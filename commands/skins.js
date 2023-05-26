@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js')
-const { findObjectWithShortenedName, generateCreateSessionUrl, generateGodSkinsUrl } = require('./globalfunctions.js')
+const { findObjectWithShortenedName, generateCreateSessionUrl, generateGodSkinsUrl, getButtonRows } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'skins',
@@ -31,10 +31,10 @@ async function getSkinList(god, exactMatch) {
     sessionId = sessionData.session_id
     const skinRes = await fetch(generateGodSkinsUrl(sessionId, god.id))
     const skinData = await skinRes.json()
-    return (await parseSkins(skinData, exactMatch))
+    return (await parseSkins(skinData, exactMatch, god))
 }
 
-function parseSkins(skins, exactMatch) {
+async function parseSkins(skins, exactMatch, god) {
     let price = ""
     let link = ""
 
@@ -62,7 +62,7 @@ function parseSkins(skins, exactMatch) {
     }
 
     if (exactMatch) {
-        return ({ embeds: [embed] })
+        return ({ embeds: [embed], components: await getButtonRows(god.Name) })
     }
-    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: await getButtonRows(god.Name) })
 }

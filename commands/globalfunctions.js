@@ -1,6 +1,6 @@
 const md5 = require("md5")
 const fs = require('fs')
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const { devId, authKey } = require('../auth.json')
 const config = require('../auth.json')
 
@@ -123,3 +123,29 @@ const processNameString = (name) => {
     return processedString
 }
 module.exports.processNameString = processNameString
+
+exports.getButtonRows = (god) => {
+
+    const abilitiesRow = new ActionRowBuilder()
+    const abilityList = [1, 2, 3, 4, "passive"]
+    for (ability of abilityList) {
+        abilitiesRow.addComponents (
+            new ButtonBuilder()
+            .setCustomId(`abilities-${god}-${ability}`)
+            .setLabel(ability == "passive" ? "Passive" : `Ability ${ability}`)
+            .setStyle(ButtonStyle.Secondary),
+        )
+    }
+
+    const commandLabels = ["Builds", "Stats", "Skins", "Lore"]
+    const commandsRow = new ActionRowBuilder()
+    for (label of commandLabels) {
+        commandsRow.addComponents (
+            new ButtonBuilder()
+            .setCustomId(`${label == "Stats" ?  "god" : label.toLowerCase()}-${god}`)
+            .setLabel(label)
+            .setStyle(ButtonStyle.Primary),
+        )
+    }
+    return [commandsRow, abilitiesRow]
+}

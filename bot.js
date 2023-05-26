@@ -1,7 +1,7 @@
 const { GatewayIntentBits, Client, Collection } = require('discord.js')
 const fs = require('fs')
 const config = require('./config.json')
-const { findObjectWithShortenedName, processNameString } = require('./commands/globalfunctions.js')
+const { findObjectWithShortenedName, processNameString, getAllObjectsOfType } = require('./commands/globalfunctions.js')
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
 client.commands = new Collection()
@@ -35,11 +35,14 @@ client.on('messageCreate', async message => {
     const commandName = args.shift().toLowerCase()
     let command = client.commands.get(commandName) || client.aliases.get(commandName)
     let messageObject
+
     if (!command) {
         //checking if user used ?godname command as shorthand for build
         const godName = [processNameString(message.content.slice(prefix.length).trim())]
         const god = await findObjectWithShortenedName(godName, "god")
+
         if (!god) return
+
         command = client.commands.get("builds")
         console.log(message.author.username + ' used command: ' + command.name)
         messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
@@ -56,21 +59,15 @@ client.on('messageCreate', async message => {
 })
 
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isButton()) return
+    if (!interaction.isButton()) return 
+
+    let interactionArgs = interaction.customId.split("-")
+    console.log(interactionArgs)
+    const command = client.commands.get(interactionArgs.shift())
+    const messageToPass = { guild: interaction.guild, member: interaction.member }
     
-    //user clicked a button
-    if (interaction.customId.startsWith("abilities")) {
-        let interactionArgs = interaction.customId.split("-")
-        interactionArgs.shift()
-        try {
-            let command = client.commands.get("abilities")
-            const messageObject = await command.execute(null, interactionArgs)
-            interaction.update({content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components})
-        } catch (err) {
-            console.log("you messed up abilities button interaction! error: \n")
-            console.log(err)
-        }
-    } else {
-        console.log("recieved unexpected button interaction")
-    }
+    const messageObject = await command.execute(messageToPass, interactionArgs)
+
+    interaction.update({ content: messageObject.content, embeds: messageObject.embeds, components: messageObject.components })
+        .catch(error => console.log(error)) 
 })

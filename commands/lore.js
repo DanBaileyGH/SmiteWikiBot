@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js')
-const { findObjectWithShortenedName } = require('./globalfunctions.js')
+const { findObjectWithShortenedName, getButtonRows } = require('./globalfunctions.js')
 
 module.exports = {
 	name: 'lore',
@@ -25,7 +25,7 @@ async function getGodDetails(godName){
     return (await parseGodLore(god, exactMatch))
 }
 
-function parseGodLore(god, exactMatch){
+async function parseGodLore(god, exactMatch){
     const loreFormatFixed = god.Lore.replace("\\n\\n", ".\\n\\n").replace("..\\n\\n", ".\\n\\n")
     const loreSplitArray = loreFormatFixed.split("\\n\\n")
     let loreSection = ""
@@ -49,8 +49,9 @@ function parseGodLore(god, exactMatch){
             embed.addFields({ name: loreSectionTitle, value: "\u200b", inline: false })
         }
     }
+
     if (exactMatch) {
-        return ({ embeds: [embed] })
+        return ({ embeds: [embed], components: await getButtonRows(god.Name) })
     }
-    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed] })
+    return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components: await getButtonRows(god.Name) })
 }
