@@ -7,7 +7,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 client.commands = new Collection()
 client.aliases = new Collection()
 
-const prefix = ">"
+const prefix = "?"
 
 client.on('ready', function (evt) {
     console.log('ready')
