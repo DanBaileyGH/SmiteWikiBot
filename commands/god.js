@@ -29,7 +29,6 @@ async function parseGodDetails(god, exactMatch) {
     const onFreeRotation = ((god.OnFreeRotation == "true") ? "Yes" : "No")
     let embed = new EmbedBuilder()
     .setTitle(`God Details For ${god.Name}`)
-    .setDescription(`For Ability Descriptions, Use Command ?abilities ${god.Name}`)
     .setTimestamp()
     .setFooter({ text: `Data from the Smite API` })
     .setThumbnail(god.godIcon_URL)

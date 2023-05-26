@@ -7,7 +7,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 client.commands = new Collection()
 client.aliases = new Collection()
 
-const prefix = "?"
+const prefix = ">"
 
 client.on('ready', function (evt) {
     console.log('ready')
@@ -44,7 +44,7 @@ client.on('messageCreate', async message => {
         if (!god) return
 
         command = client.commands.get("builds")
-        console.log(message.author.username + ' used command: ' + command.name)
+        console.log(message.author.username + ' used command: ' + command.name + god.Name)
         messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
     } else {
         //user used actual command
@@ -64,7 +64,7 @@ client.on('interactionCreate', async interaction => {
     let interactionArgs = interaction.customId.split("-")
     console.log(interactionArgs)
     const command = client.commands.get(interactionArgs.shift())
-    const messageToPass = { guild: interaction.guild, member: interaction.member }
+    const messageToPass = { guild: interaction.guild, member: interaction.member, channel: interaction.channel }
     
     const messageObject = await command.execute(messageToPass, interactionArgs)
 

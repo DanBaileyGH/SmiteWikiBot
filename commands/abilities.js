@@ -42,7 +42,6 @@ async function getAbilityDetails(godName, ability) {
 async function parseAbilityDetails(god, exactMatch, abilityNum) {
     let embed = new EmbedBuilder()
     .setTitle(`Ability Details For ${god.Name}`)
-    .setDescription(`For God Stats, Use Command ?god ${god.Name}`)
     .setTimestamp()
     .setFooter({ text: `Data from the Smite API` })
     .setThumbnail(god.godIcon_URL)

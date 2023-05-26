@@ -34,11 +34,27 @@ async function parseGodLore(god, exactMatch){
     let loreSectionContents = ""
     let embed = new EmbedBuilder()
     .setTitle(`Lore For ${god.Name}`)
+    .setDescription("Formatting may be a bit strange thanks to embed restrictions")
     .setTimestamp()
     .setFooter({ text: `Data from the Smite API` })
     .setThumbnail(god.godIcon_URL)
     .addFields({ name: `Lore for ${god.Name}`, value: loreSplitArray[0], inline: false })
 
+    //loops through lore splitting sections until all are small enough for discord
+    let allowedFormat = false 
+    while (!allowedFormat) {
+        allowedFormat = true
+        for (let i = 0; i < loreSplitArray.length; i++) {
+            if (loreSplitArray[i].split(".")[0].length > 256) {
+                allowedFormat = false
+                const index = loreSplitArray[i].indexOf(",")
+                const part1 = loreSplitArray[i].substring(0, index) + ","
+                const part2 = loreSplitArray[i].substring(index + 1)
+                loreSplitArray.splice(i, 1, part1, part2)
+            }
+        }
+    }
+    
     for (loreSection of loreSplitArray) {
         loreSectionArray = loreSection.split(".")
         loreSectionTitle = loreSectionArray[0] + "."
