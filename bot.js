@@ -44,7 +44,7 @@ client.on('messageCreate', async message => {
         if (!god) return
 
         command = client.commands.get("builds")
-        console.log(message.author.username + ' used command: ' + command.name + god.Name)
+        console.log(message.author.username + ' used command: ' + command.name, god.object.Name)
         messageObject = await command.execute(message, message.content.slice(prefix.length).trim().split(' '))
     } else {
         //user used actual command
