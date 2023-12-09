@@ -52,7 +52,11 @@ client.on('messageCreate', async message => {
         if (command.name == "botinfo") {
             args = [await client.guilds.cache.size]
         }
-        messageObject = await command.execute(message, args)
+        if (command.name=="addbuild") {
+            messageObject = await command.execute(message, args, client)
+        } else {
+            messageObject = await command.execute(message, args)
+        }   
     }
     message.channel.send({ content: messageObject.content || null, embeds: messageObject.embeds || null, components: messageObject.components || null })
         .catch(error => console.log(error)) 
