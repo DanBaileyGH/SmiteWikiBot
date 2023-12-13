@@ -1,0 +1,1609 @@
+[
+    {
+        "id": 100,
+        "type": "Build",
+        "gods": [
+            "Achilles",
+            "Chaac",
+            "Cu Chulainn",
+            "Guan Yu",
+            "Hercules",
+            "King Arthur",
+            "Mulan",
+            "Nike",
+            "Odin",
+            "Shiva",
+            "Surtr",
+            "Tyr",
+            "Lancelot",
+            "Ravana",
+            "Thor"
+        ],
+        "role": "Solo",
+        "overview": "Tank/Ability Focused Solo",
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Breastplate of Determination, Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Abyssal Stone\n**Recipe:**  Bountiful Bao\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Absyssal - Beads to be safe, Blink to be aggressive"
+    },
+    {
+        "id": 101,
+        "type": "Build",
+        "gods": [
+            "Amaterasu",
+            "Bellona",
+            "Erlang Shen",
+            "Gilgamesh",
+            "Osiris",
+            "Vamana"
+        ],
+        "role": "Solo",
+        "overview": "Auto Attack Focused Solo",
+        "items": "**Items:** Death's Toll (Death's Embrace), Golden Blade (Spirit Robe), Berserker's Shield, Shogun's Kusari, Qin's Sais, Toxic Blade/Stone of Binding\n**Recipe:**  Golden Gooseberries\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Toxic for anti-healing, otherwise Binding - Beads to be safe, Blink to be aggressive"
+    },
+    {
+        "id": 102,
+        "type": "Build",
+        "gods": [
+            "Sun Wukong",
+            "Camazotz",
+            "Cliodhna",
+            "Pele",
+            "Set",
+            "Tsukuyomi"
+        ],
+        "role": "Solo",
+        "overview": "Bruiser/Aggressive Solo",
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Soul Eater, Gladiator's Shield, Oni Hunter's Garb, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Scorching Blink Rune"
+    },
+    {
+        "id": 103,
+        "type": "Build",
+        "gods": [
+            "Artio",
+            "Cabrakan",
+            "Cerberus",
+            "Jormungandr",
+            "Sobek",
+            "Terra"
+        ],
+        "role": "Solo",
+        "overview": "Tank/Ability Focused Guardian Solo",
+        "items": "**Items:** Conduit Gem (Gem of Focus), Breastplate of Determination, Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Abyssal Stone\n**Recipe:**  Bountiful Bao\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Absyssal - Beads to be safe, Blink to be aggressive"
+    },
+    {
+        "id": 104,
+        "type": "Build",
+        "gods": [
+            "Awilix",
+            "Camazotz",
+            "Da Ji",
+            "Fenrir",
+            "Hun Batz",
+            "Lancelot",
+            "Loki",
+            "Nemesis",
+            "Susano",
+            "Thanatos",
+            "Thor",
+            "Tsukuyomi"
+        ],
+        "role": "Jungle",
+        "overview": "Ability Damage Focused Hydra's Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Serrated Edge, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+    },
+    {
+        "id": 105,
+        "type": "Build",
+        "gods": [
+            "Awilix",
+            "Camazotz",
+            "Da Ji",
+            "Fenrir",
+            "Hun Batz",
+            "Lancelot",
+            "Loki",
+            "Nemesis",
+            "Susano",
+            "Thanatos",
+            "Thor",
+            "Tsukuyomi"
+        ],
+        "role": "Jungle",
+        "overview": "Anti-Healing Ability Damage Focused Hydra's Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Brawler's Beatstick, Serrated Edge, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+    },
+    {
+        "id": 106,
+        "type": "Build",
+        "gods": [
+            "Bastet",
+            "Cliodhna",
+            "Ne Zha",
+            "Pele",
+            "Ravana",
+            "Serqet",
+            "Set"
+        ],
+        "role": "Jungle",
+        "overview": "Ability Damage Focused Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Serrated Edge, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+    },
+    {
+        "id": 107,
+        "type": "Build",
+        "gods": [
+            "Ratatoskr"
+        ],
+        "role": "Jungle",
+        "overview": "Ratatoskr Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Serrated Edge, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+    },
+    {
+        "id": 108,
+        "type": "Build",
+        "gods": [
+            "Ratatoskr"
+        ],
+        "role": "Jungle",
+        "overview": "Anitheal Ratatoskr Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Hydra's Lament, Serrated Edge\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+    },
+    {
+        "id": 109,
+        "type": "Build",
+        "gods": [
+            "Arachne",
+            "Bakasura",
+            "Kali",
+            "Nemesis",
+            "Erlang Shen"
+        ],
+        "role": "Jungle",
+        "overview": "Auto Attack Focused Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Golden Blade, Qin's Sais, The Ferocious Executioner, Serrated Edge, Bloodforge\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+    },
+    {
+        "id": 110,
+        "type": "Build",
+        "gods": [
+            "Ao Kuang",
+            "He Bo",
+            "Maman Brigitte"
+        ],
+        "role": "Jungle",
+        "overview": "Ability Based Mage Jungle",
+        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Doom Orb, Spear of Desolation/Divine Ruin, Polynomicon, Typhon's Fang, Perfected Rod of Tahuti\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+    },
+    {
+        "id": 111,
+        "type": "Build",
+        "gods": [
+            "Anhur",
+            "Apollo",
+            "Artemis",
+            "Chernobog",
+            "Cupid",
+            "Danzaburou",
+            "Hachiman",
+            "Hou Yi",
+            "Ishtar",
+            "Izanami",
+            "Jing Wei"
+        ],
+        "role": "ADC",
+        "overview": "Crit Auto Attack Focused ADC",
+        "items": "**Items:** Gilded Arrow (Ornate Arrow), Devourer's Gauntlet, The Executioner (The Ferocious Executioner), Demon Blade, Deathbringer, Dominance\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Executioner glyph lategame"
+    },
+    {
+        "id": 112,
+        "type": "Build",
+        "gods": [
+            "Anhur",
+            "Apollo",
+            "Artemis",
+            "Cernunnos",
+            "Charybdis",
+            "Chernobog",
+            "Cupid",
+            "Danzaburou",
+            "Hachiman",
+            "Heimdallr",
+            "Hou Yi",
+            "Ishtar",
+            "Izanami",
+            "Jing Wei"
+        ],
+        "role": "ADC",
+        "overview": "Anti-Tank Auto Attack Focused ADC",
+        "items": "**Items:** Death's Toll (Death's Temper), Devourer's Gauntlet, The Executioner (The Ferocious Executioner), Qin's Sais, Dominance, Odysseus' Bow\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Executioner glyph lategame"
+    },
+    {
+        "id": 113,
+        "type": "Build",
+        "gods": [
+            "Ah Muzen Cab",
+            "Chiron",
+            "Martichorus",
+            "Neith",
+            "Skadi"
+        ],
+        "role": "General",
+        "overview": "Ability Focused Hunter (Mid & ADC)",
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Brawler's Beatstick/Soul Eater, Fail-not, The Crusher, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Brawler's for anti-healing/more burst, Soul Eater for more sustain"
+    },
+    {
+        "id": 114,
+        "type": "Build",
+        "gods": [
+            "Ullr"
+        ],
+        "role": "General",
+        "overview": "Ability Focused Ullr (Mid & ADC)",
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Hydra's Lament, Fail-not, The Crusher, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 115,
+        "type": "Build",
+        "gods": [
+            "Freya",
+            "Olorun",
+            "Sol"
+        ],
+        "role": "ADC",
+        "overview": "Magical Auto Attack Focused ADC",
+        "items": "**Items:** Gilded Arrow (Diamond Arrow), Telkhines Ring, Hastened Ring/Cyclopean Ring, Typhon's Fang, Demonic Grip, Rod of Tahuti\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Hastened for more kill potential, Cyclopean for more consistent damage"
+    },
+    {
+        "id": 116,
+        "type": "Build",
+        "gods": [
+            "Ganesha",
+            "Geb",
+            "Khepri",
+            "Kumbhakarna"
+        ],
+        "role": "Support",
+        "overview": "Backline/Peel Support",
+        "items": "**Items:** Sentinel's Gift (Sentinels Embrace), Gauntlet of Thebes, Sovereignty, Heartward Amulet, Reverent Pridwen, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+    },
+    {
+        "id": 117,
+        "type": "Build",
+        "gods": [
+            "Sylvanus",
+            "Terra",
+            "Yemoja"
+        ],
+        "role": "Support",
+        "overview": "Backline/Peel Healer Support",
+        "items": "**Items:** Benevolence (Compassion), Gauntlet of Thebes, Lotus Sickle, Heartward Amulet, Reverent Pridwen, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+    },
+    {
+        "id": 118,
+        "type": "Build",
+        "gods": [
+            "Ares",
+            "Athena",
+            "Atlas",
+            "Bacchus",
+            "Charon",
+            "Kumbhakarna",
+            "Kuzenbo",
+            "Maui",
+            "Sobek",
+            "Terra",
+            "Xing Tian",
+            "Ymir",
+            "Fenrir",
+            "Ne Zha"
+        ],
+        "role": "Support",
+        "overview": "Frontline/Aggressive Support",
+        "items": "**Items:** Sentinel's Gift (Sentinels Embrace), Gauntlet of Thebes, Stone of Binding, Reverent Pridwen, Spectral Armor/Relic Dagger, Sprit Robe\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Scorching Blink Rune\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+    },
+    {
+        "id": 119,
+        "type": "Build",
+        "gods": [
+            "Eset",
+            "Nox"
+        ],
+        "role": "Support",
+        "overview": "Mage Support",
+        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Sprit Robe, Chronos' Pendant, Genji's Guard, Spectral Armor/Stone of Binding\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Binding otherwise"
+    },
+    {
+        "id": 120,
+        "type": "Build",
+        "gods": [
+            "Aphrodite",
+            "Baron Samedi",
+            "Hel"
+        ],
+        "role": "Support",
+        "overview": "Mage Healer Support",
+        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Lotus Sickle, Heartward Amulet, Sprit Robe, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+    },
+    {
+        "id": 121,
+        "type": "Build",
+        "gods": [
+            "Bake Kujira",
+            "Fafnir",
+            "Horus"
+        ],
+        "role": "Support",
+        "overview": "Early Game Aggression / Objective Focused Support",
+        "items": "**Items:** War Flag (War Banner), Gauntlet of Thebes, Stone of Binding, Shogun's Kusari, Spectral Armor/Relic Dagger, Sprit Robe\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Belt of the Berserker\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+    },
+    {
+        "id": 122,
+        "type": "Build",
+        "gods": [
+            "Cliodhna",
+            "Set",
+            "Tsukuyomi"
+        ],
+        "role": "Mid",
+        "overview": "Assassin Mid",
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Soul Eater/Jotunn's Wrath, Brawler's Beatstick, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Soul Eater for more healing, Jotunn's for more cooldown"
+    },
+    {
+        "id": 123,
+        "type": "Build",
+        "gods": [
+            "Chronos",
+            "Kukulkan",
+            "Scylla",
+            "The Morrigan"
+        ],
+        "role": "Mid",
+        "overview": "Polynomicon Mage Mid",
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Calamitous Rod of Tahuti, Obsidian Shard\n**Recipe:** Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+    },
+    {
+        "id": 124,
+        "type": "Build",
+        "gods": [
+            "Baba Yaga",
+            "Eset",
+            "Hera",
+            "Ix Chel",
+            "Nox",
+            "Nu Wa",
+            "Ra",
+            "Raijin",
+            "Yu Huang"
+        ],
+        "role": "Mid",
+        "overview": "Burst Ability Damage Mage Mid",
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Obsidian Shard, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 125,
+        "type": "Build",
+        "gods": [
+            "Agni",
+            "Ah Puch",
+            "Chang'e",
+            "Janus",
+            "Persephone",
+            "Poseidon",
+            "Thoth",
+            "Vulcan",
+            "Zeus"
+        ],
+        "role": "Mid",
+        "overview": "Ultimate-Focused Mage Mid",
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Staff of Myrddin, Perfected Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 126,
+        "type": "Build",
+        "gods": [
+            "Discordia",
+            "He Bo",
+            "Janus",
+            "Merlin",
+            "Morgan Le Fay",
+            "Tiamat"
+        ],
+        "role": "Mid",
+        "overview": "Cooldown-Focused Mage Mid",
+        "items": "**Items:** Conduit Gem (Gem of Focus), Chronos' Pendant, Spear of Desolation, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:** Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 127,
+        "type": "Build",
+        "gods": [
+            "Mercury"
+        ],
+        "role": "Jungle",
+        "overview": "Crit Focused Jungle",
+        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Golden Blade, Rage, Deathbringer, Serrated Edge, Bloodforge\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+    },
+    {
+        "id": 128,
+        "type": "Build",
+        "gods": [
+            "Chronos"
+        ],
+        "role": "ADC",
+        "overview": "Polynomicon Mage ADC",
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Calamitous Rod of Tahuti, Obsidian Shard\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+    },
+    {
+        "id": 129,
+        "type": "Build",
+        "gods": [
+            "Hades"
+        ],
+        "role": "Solo",
+        "overview": "Tainted Polynomicon Solo",
+        "items": "**Items:** Tainted Steel (Tainted Breastplate), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Polynomicon, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+    },
+    {
+        "id": 130,
+        "type": "Build",
+        "gods": [
+            "Zhong Kui"
+        ],
+        "role": "Solo",
+        "overview": "Lifesteal Focused Mage Solo",
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+    },
+    {
+        "id": 131,
+        "type": "Build",
+        "gods": [
+            "Aphrodite",
+            "Baron Samedi",
+            "Hel"
+        ],
+        "role": "Solo",
+        "overview": "Healer Mage Solo",
+        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breastplate of Determination, Genji's Guard, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 132,
+        "type": "Build",
+        "gods": [
+            "Aphrodite",
+            "Baron Samedi",
+            "Hel"
+        ],
+        "role": "Mid",
+        "overview": "Healer Mage Mid",
+        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breasteplate of Determination, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 133,
+        "type": "Build",
+        "gods": [
+            "Anubis",
+            "Zhong Kui"
+        ],
+        "role": "Mid",
+        "overview": "Lifesteal Focused Mage Mid",
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Bancroft's Talon (Bancroft's Claw), Spear of Desolation, Typhon's Fang, Rod of Tahuti, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 134,
+        "type": "Build",
+        "gods": [
+            "Hades",
+            "Sol"
+        ],
+        "role": "Mid",
+        "overview": "Lifesteal Focused Polynomicon Mage Mid",
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Spear of Desolation, Polynomicon, Typhon's Fang, Calamitous Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+    },
+    {
+        "id": 200,
+        "type": "Levels",
+        "gods": [
+            "Ne Zha"
+        ],
+        "role": "Levels",
+        "overview": "Ne Zha",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 201,
+        "type": "Levels",
+        "gods": [
+            "Ah Puch"
+        ],
+        "role": "Levels",
+        "overview": "Ah Puch",
+        "items": "First 5 Levels: 3, 1, 2, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 202,
+        "type": "Levels",
+        "gods": [
+            "Ao Kuang"
+        ],
+        "role": "Levels",
+        "overview": "Ao Kuang",
+        "items": "First 5 Levels: 3, 2/1, 1/2, 3, 4 Maxing Priority: 3 > 2 > 1 > 4"
+    },
+    {
+        "id": 203,
+        "type": "Levels",
+        "gods": [
+            "Baba Yaga"
+        ],
+        "role": "Levels",
+        "overview": "Baba Yaga",
+        "items": "First 5 Levels: 2, 1, 3, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 204,
+        "type": "Levels",
+        "gods": [
+            "Chang'e"
+        ],
+        "role": "Levels",
+        "overview": "Chang'e",
+        "items": "First 5 Levels: 1, 3, 1/2, 2/1, 4 Maxing Priority: 1 > 4 > 3 > 2"
+    },
+    {
+        "id": 205,
+        "type": "Levels",
+        "gods": [
+            "Discordia"
+        ],
+        "role": "Levels",
+        "overview": "Discordia",
+        "items": "First 5 Levels: 1, 2, 1/3, 3/1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 206,
+        "type": "Levels",
+        "gods": [
+            "Maman Brigitte"
+        ],
+        "role": "Levels",
+        "overview": "Maman Brigitte",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 4 > 3 > 2"
+    },
+    {
+        "id": 207,
+        "type": "Levels",
+        "gods": [
+            "Freya"
+        ],
+        "role": "Levels",
+        "overview": "Freya",
+        "items": "First 5 Levels: 2, 3, 2, 1, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 208,
+        "type": "Levels",
+        "gods": [
+            "He Bo"
+        ],
+        "role": "Levels",
+        "overview": "He Bo",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 1 > 3 > 4 > 2"
+    },
+    {
+        "id": 209,
+        "type": "Levels",
+        "gods": [
+            "Hel"
+        ],
+        "role": "Levels",
+        "overview": "Hel",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 1 > 3 > 2 > 4"
+    },
+    {
+        "id": 210,
+        "type": "Levels",
+        "gods": [
+            "Hera"
+        ],
+        "role": "Levels",
+        "overview": "Hera",
+        "items": "First 5 Levels: 1, 2, 1, 3, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 211,
+        "type": "Levels",
+        "gods": [
+            "Janus"
+        ],
+        "role": "Levels",
+        "overview": "Janus",
+        "items": "First 5 Levels: 2, 1, 2, 3, 4 Maxing Priority: 2 > 4 > 3 > 1"
+    },
+    {
+        "id": 212,
+        "type": "Levels",
+        "gods": [
+            "Morgan Le Fay"
+        ],
+        "role": "Levels",
+        "overview": "Morgan Le Fay",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 3 > 4/2 > 2/4"
+    },
+    {
+        "id": 213,
+        "type": "Levels",
+        "gods": [
+            "Nox"
+        ],
+        "role": "Levels",
+        "overview": "Nox",
+        "items": "First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 214,
+        "type": "Levels",
+        "gods": [
+            "Pele"
+        ],
+        "role": "Levels",
+        "overview": "Pele",
+        "items": "First 5 Levels: 3, 1, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 215,
+        "type": "Levels",
+        "gods": [
+            "Agni"
+        ],
+        "role": "Levels",
+        "overview": "Agni",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 216,
+        "type": "Levels",
+        "gods": [
+            "Zeus"
+        ],
+        "role": "Levels",
+        "overview": "Zeus",
+        "items": "First 5 Levels : 2, 1, 3, 3, 4 Maxing Priority: 4 > 3 > 1 > 2"
+    },
+    {
+        "id": 217,
+        "type": "Levels",
+        "gods": [
+            "Ymir"
+        ],
+        "role": "Levels",
+        "overview": "Ymir",
+        "items": "First 5 levels: 2, 3, 1, 2, 4 Maxing Priority: 3 > 4 > 2 > 1"
+    },
+    {
+        "id": 218,
+        "type": "Levels",
+        "gods": [
+            "Yemoja"
+        ],
+        "role": "Levels",
+        "overview": "Yemoja",
+        "items": "First 5 levels: 1, 3, 1, 2, 4 Maxing Priority: 2 > 3 > 1 > 4"
+    },
+    {
+        "id": 219,
+        "type": "Levels",
+        "gods": [
+            "Arachne"
+        ],
+        "role": "Levels",
+        "overview": "Arachne",
+        "items": "First 5 Levels: 3, 1, 1, 2, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 220,
+        "type": "Levels",
+        "gods": [
+            "Awilix"
+        ],
+        "role": "Levels",
+        "overview": "Awilix",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 221,
+        "type": "Levels",
+        "gods": [
+            "Bakasura"
+        ],
+        "role": "Levels",
+        "overview": "Bakasura",
+        "items": "First 5 Levels: 1, 2, 3, 3, 4 Maxing Priority: 3 > 2 > 4 > 1"
+    },
+    {
+        "id": 222,
+        "type": "Levels",
+        "gods": [
+            "Bastet"
+        ],
+        "role": "Levels",
+        "overview": "Bastet",
+        "items": "First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 223,
+        "type": "Levels",
+        "gods": [
+            "Fenrir"
+        ],
+        "role": "Levels",
+        "overview": "Fenrir",
+        "items": "Jungle: First 5 Levels: 3, 1, 3/1, 2, 4 Maxing Priority: 3/1 > 3/1 > 4 > 2 (Max 3 if their team has a low amount of hard cc, otherwise max 1)\nSupport: First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 224,
+        "type": "Levels",
+        "gods": [
+            "Odin"
+        ],
+        "role": "Levels",
+        "overview": "Odin",
+        "items": "First 5 Levels: 1, 2, 3, 2, 4 Maxing Priority: 2 > 1 > 3 > 4"
+    },
+    {
+        "id": 225,
+        "type": "Levels",
+        "gods": [
+            "Hun Batz"
+        ],
+        "role": "Levels",
+        "overview": "Hun Batz",
+        "items": "First 5 Levels: 3, 2, 1, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 226,
+        "type": "Levels",
+        "gods": [
+            "Kali"
+        ],
+        "role": "Levels",
+        "overview": "Kali",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 2 > 3 > 4 > 1"
+    },
+    {
+        "id": 227,
+        "type": "Levels",
+        "gods": [
+            "Nu Wa"
+        ],
+        "role": "Levels",
+        "overview": "Nu Wa",
+        "items": "First 5 Levels: 3, 1/2, 2/1, 3, 4 Maxing Priority: 3 > 4 > 2 > 1"
+    },
+    {
+        "id": 228,
+        "type": "Levels",
+        "gods": [
+            "Lancelot"
+        ],
+        "role": "Levels",
+        "overview": "Lancelot",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 229,
+        "type": "Levels",
+        "gods": [
+            "Olorun"
+        ],
+        "role": "Levels",
+        "overview": "Olorun",
+        "items": "First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 230,
+        "type": "Levels",
+        "gods": [
+            "Loki"
+        ],
+        "role": "Levels",
+        "overview": "Loki",
+        "items": "First 5 Levels: 3, 2, 1, 3, 4 Maxing Priority: 4 > 3 > 1 > 2"
+    },
+    {
+        "id": 231,
+        "type": "Levels",
+        "gods": [
+            "Mercury"
+        ],
+        "role": "Levels",
+        "overview": "Mercury",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 232,
+        "type": "Levels",
+        "gods": [
+            "Persephone"
+        ],
+        "role": "Levels",
+        "overview": "Persephone",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 233,
+        "type": "Levels",
+        "gods": [
+            "Nemesis"
+        ],
+        "role": "Levels",
+        "overview": "Nemesis",
+        "items": "First 5 Levels: 2, 1, 2, 3, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 234,
+        "type": "Levels",
+        "gods": [
+            "Guan Yu"
+        ],
+        "role": "Levels",
+        "overview": "Guan Yu",
+        "items": "First 5 levels : 3, 2, 1, 3, 4 Maxing Priority: 3 > 1 > 4 > 2"
+    },
+    {
+        "id": 235,
+        "type": "Levels",
+        "gods": [
+            "Geb"
+        ],
+        "role": "Levels",
+        "overview": "Geb",
+        "items": "First 5 levels: 2, 3, 1, 3, 4 Maxing Priority: 3 > 4 > 2 > 1"
+    },
+    {
+        "id": 236,
+        "type": "Levels",
+        "gods": [
+            "Horus"
+        ],
+        "role": "Levels",
+        "overview": "Horus",
+        "items": "Solo: First 5 levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 3 > 2 > 4 \nSupport: First 5 levels: 1, 2, 3, 2, 4 Maxing Priority: 2 > 3 > 1 > 4"
+    },
+    {
+        "id": 237,
+        "type": "Levels",
+        "gods": [
+            "Fafnir"
+        ],
+        "role": "Levels",
+        "overview": "Fafnir",
+        "items": "First 5 levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 238,
+        "type": "Levels",
+        "gods": [
+            "Eset"
+        ],
+        "role": "Levels",
+        "overview": "Eset",
+        "items": "Mid: First 5 Levels: 1, 2, 1/3, 3/1, 4 Maxing Priority: 2 > 1 > 4 > 3\nSupport: First 5 Levels: 1, 3, 2, 3, 4 Maxing Priority: 3 > 4 > 2 > 1"
+    },
+    {
+        "id": 239,
+        "type": "Levels",
+        "gods": [
+            "Chaac"
+        ],
+        "role": "Levels",
+        "overview": "Chaac",
+        "items": "First 5 levels: 1, 2, 3, 1, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 240,
+        "type": "Levels",
+        "gods": [
+            "Cerberus"
+        ],
+        "role": "Levels",
+        "overview": "Cerberus",
+        "items": "First 5 levels: 2, 1, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 241,
+        "type": "Levels",
+        "gods": [
+            "Cabrakan"
+        ],
+        "role": "Levels",
+        "overview": "Cabrakan",
+        "items": "First 5 levels: 3, 1, 2, 2, 4 Maxing Priority: 2 > 4 > 1 > 3"
+    },
+    {
+        "id": 242,
+        "type": "Levels",
+        "gods": [
+            "Bacchus"
+        ],
+        "role": "Levels",
+        "overview": "Bacchus",
+        "items": "First 5 levels: 3, 2, 1, 1, 4 Maxing priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 243,
+        "type": "Levels",
+        "gods": [
+            "Atlas"
+        ],
+        "role": "Levels",
+        "overview": "Atlas",
+        "items": "First 5 levels: 3, 2, 1, 3, 4 Maxing Priority: 3 > 4 > 1 > 2"
+    },
+    {
+        "id": 244,
+        "type": "Levels",
+        "gods": [
+            "Athena"
+        ],
+        "role": "Levels",
+        "overview": "Athena",
+        "items": "First 5 levels: 3, 2, 1, 2, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 245,
+        "type": "Levels",
+        "gods": [
+            "Artio"
+        ],
+        "role": "Levels",
+        "overview": "Artio",
+        "items": "First 5 levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 2 > 3 > 4"
+    },
+    {
+        "id": 246,
+        "type": "Levels",
+        "gods": [
+            "Ares"
+        ],
+        "role": "Levels",
+        "overview": "Ares",
+        "items": "First 5 levels: 3, 1, 2, 1, 4 Maxing Priority: 1 > 4 > 3 > 2"
+    },
+    {
+        "id": 247,
+        "type": "Levels",
+        "gods": [
+            "Amaterasu"
+        ],
+        "role": "Levels",
+        "overview": "Amaterasu",
+        "items": "First 5 levels: 2, 3, 1, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 248,
+        "type": "Levels",
+        "gods": [
+            "Scylla"
+        ],
+        "role": "Levels",
+        "overview": "Scylla",
+        "items": "First 5 levels: 2, 1, 2, 3, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 249,
+        "type": "Levels",
+        "gods": [
+            "Ratatoskr"
+        ],
+        "role": "Levels",
+        "overview": "Ratatoskr",
+        "items": "Jungle: First 5 Levels: 3, 1, 2, 3, 4 Maxing Priority: 4 > 3 > 2 > 1\nSolo: First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 250,
+        "type": "Levels",
+        "gods": [
+            "Serqet"
+        ],
+        "role": "Levels",
+        "overview": "Serqet",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 251,
+        "type": "Levels",
+        "gods": [
+            "Set"
+        ],
+        "role": "Levels",
+        "overview": "Set",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 252,
+        "type": "Levels",
+        "gods": [
+            "Susano"
+        ],
+        "role": "Levels",
+        "overview": "Susano",
+        "items": "First 5 Levels: 3, 2, 1, 1, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 253,
+        "type": "Levels",
+        "gods": [
+            "Thanatos"
+        ],
+        "role": "Levels",
+        "overview": "Thanatos",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 254,
+        "type": "Levels",
+        "gods": [
+            "Thor"
+        ],
+        "role": "Levels",
+        "overview": "Thor",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 255,
+        "type": "Levels",
+        "gods": [
+            "Tsukuyomi"
+        ],
+        "role": "Levels",
+        "overview": "Tsukuyomi",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 256,
+        "type": "Levels",
+        "gods": [
+            "Zhong Kui"
+        ],
+        "role": "Levels",
+        "overview": "Zhong Kui",
+        "items": "First 5 Levels: 1, 2, 3, 2, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 257,
+        "type": "Levels",
+        "gods": [
+            "Vamana"
+        ],
+        "role": "Levels",
+        "overview": "Vamana",
+        "items": "First 5 Levels: 3, 2, 1, 2, 4 Maxing Priority: 2 > 3 > 4 > 1"
+    },
+    {
+        "id": 258,
+        "type": "Levels",
+        "gods": [
+            "Sun Wukong"
+        ],
+        "role": "Levels",
+        "overview": "Sun Wukong",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 4 > 3 > 2"
+    },
+    {
+        "id": 259,
+        "type": "Levels",
+        "gods": [
+            "Shiva"
+        ],
+        "role": "Levels",
+        "overview": "Shiva",
+        "items": "First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 260,
+        "type": "Levels",
+        "gods": [
+            "Nike"
+        ],
+        "role": "Levels",
+        "overview": "Nike",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 261,
+        "type": "Levels",
+        "gods": [
+            "Gilgamesh"
+        ],
+        "role": "Levels",
+        "overview": "Gilgamesh",
+        "items": "First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 262,
+        "type": "Levels",
+        "gods": [
+            "Hercules"
+        ],
+        "role": "Levels",
+        "overview": "Hercules",
+        "items": "First 5 Levels: 2, 1, 3, 1, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 263,
+        "type": "Levels",
+        "gods": [
+            "Achilles"
+        ],
+        "role": "Levels",
+        "overview": "Achilles",
+        "items": "Jungle: First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 1 > 3 > 2 > 4\nSolo: First 5 Levels: 1, 3, 2, 3, 4 Maxing Priority: 3 > 1 > 2 > 4"
+    },
+    {
+        "id": 264,
+        "type": "Levels",
+        "gods": [
+            "Camazotz"
+        ],
+        "role": "Levels",
+        "overview": "Camazotz",
+        "items": "Jungle: First 5 Levels: 2, 1, 3, 2, 4 Maxing Priority: 4 > 2 > 1 > 3\nSolo: First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 265,
+        "type": "Levels",
+        "gods": [
+            "Maui"
+        ],
+        "role": "Levels",
+        "overview": "Maui",
+        "items": "First 5 levels: 3, 1, 2, 2, 4 Maxing Priority: 2 > 3 > 4 > 1"
+    },
+    {
+        "id": 266,
+        "type": "Levels",
+        "gods": [
+            "Aphrodite"
+        ],
+        "role": "Levels",
+        "overview": "Aphrodite",
+        "items": "Support: First 5 Levels: 3, 1, 2, 3, 4 Maxing Priority: 3 > 1 > 4 > 2\nMid: First 5 Levels: 3, 1/2, 2/1, 3, 4 Maxing Priority: 3 > 2 > 1 > 4"
+    },
+    {
+        "id": 267,
+        "type": "Levels",
+        "gods": [
+            "Jing Wei"
+        ],
+        "role": "Levels",
+        "overview": "Jing Wei",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 268,
+        "type": "Levels",
+        "gods": [
+            "Ah Muzen Cab"
+        ],
+        "role": "Levels",
+        "overview": "Ah Muzen Cab",
+        "items": "First 5 Levels: 2, 3, 1, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 269,
+        "type": "Levels",
+        "gods": [
+            "Anhur"
+        ],
+        "role": "Levels",
+        "overview": "Anhur",
+        "items": "First 5 Levels: 2, 3, 2, 1, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 270,
+        "type": "Levels",
+        "gods": [
+            "Artemis"
+        ],
+        "role": "Levels",
+        "overview": "Artemis",
+        "items": "First 5 Levels: 3, 2, 1, 3, 4 Maxing Priority: 4 > 3 > 2 > 1"
+    },
+    {
+        "id": 271,
+        "type": "Levels",
+        "gods": [
+            "Cernunnos"
+        ],
+        "role": "Levels",
+        "overview": "Cernunnos",
+        "items": "First 5 Levels: 2, 3, 2, 1, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 272,
+        "type": "Levels",
+        "gods": [
+            "Charybdis"
+        ],
+        "role": "Levels",
+        "overview": "Charybdis",
+        "items": "First 5 Levels: 1, 3, 2, 2, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 273,
+        "type": "Levels",
+        "gods": [
+            "Chernobog"
+        ],
+        "role": "Levels",
+        "overview": "Chernobog",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 274,
+        "type": "Levels",
+        "gods": [
+            "Danzaburou"
+        ],
+        "role": "Levels",
+        "overview": "Danzaburou",
+        "items": "First 5 Levels: 1, 2, 1, 3, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 275,
+        "type": "Levels",
+        "gods": [
+            "Hachiman"
+        ],
+        "role": "Levels",
+        "overview": "Hachiman",
+        "items": "First 5 Levels: 2, 3, 2, 1, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 276,
+        "type": "Levels",
+        "gods": [
+            "Heimdallr"
+        ],
+        "role": "Levels",
+        "overview": "Heimdallr",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 277,
+        "type": "Levels",
+        "gods": [
+            "Hou Yi"
+        ],
+        "role": "Levels",
+        "overview": "Hou Yi",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 278,
+        "type": "Levels",
+        "gods": [
+            "Ishtar"
+        ],
+        "role": "Levels",
+        "overview": "Ishtar",
+        "items": "First 5 Levels: 1, 3, 2, 2, 4 Maxing Priority: 4 > 2 > 3 > 1"
+    },
+    {
+        "id": 279,
+        "type": "Levels",
+        "gods": [
+            "Izanami"
+        ],
+        "role": "Levels",
+        "overview": "Izanami",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 280,
+        "type": "Levels",
+        "gods": [
+            "Martichoras"
+        ],
+        "role": "Levels",
+        "overview": "Martichoras",
+        "items": "First 5 Levels: 1, 2, 1, 3, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 281,
+        "type": "Levels",
+        "gods": [
+            "Medusa"
+        ],
+        "role": "Levels",
+        "overview": "Medusa",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 282,
+        "type": "Levels",
+        "gods": [
+            "Neith"
+        ],
+        "role": "Levels",
+        "overview": "Neith",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 283,
+        "type": "Levels",
+        "gods": [
+            "Rama"
+        ],
+        "role": "Levels",
+        "overview": "Rama",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 284,
+        "type": "Levels",
+        "gods": [
+            "Skadi"
+        ],
+        "role": "Levels",
+        "overview": "Skadi",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 285,
+        "type": "Levels",
+        "gods": [
+            "Xbalanque"
+        ],
+        "role": "Levels",
+        "overview": "Xbalanque",
+        "items": "First 5 Levels: 1, 3, 2, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 286,
+        "type": "Levels",
+        "gods": [
+            "Cupid"
+        ],
+        "role": "Levels",
+        "overview": "Cupid",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 3 > 4 > 2"
+    },
+    {
+        "id": 287,
+        "type": "Levels",
+        "gods": [
+            "Chiron"
+        ],
+        "role": "Levels",
+        "overview": "Chiron",
+        "items": "First 5 Levels: 1, 2/3, 3/2, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 288,
+        "type": "Levels",
+        "gods": [
+            "Ra"
+        ],
+        "role": "Levels",
+        "overview": "Ra",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 3 > 2"
+    },
+    {
+        "id": 289,
+        "type": "Levels",
+        "gods": [
+            "Raijin"
+        ],
+        "role": "Levels",
+        "overview": "Raijin",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 290,
+        "type": "Levels",
+        "gods": [
+            "Sol"
+        ],
+        "role": "Levels",
+        "overview": "Sol",
+        "items": "First 5 levels: 2, 1/3, 3/1, 2, 4 Maxing Priority: 2 > 4 > 1 > 3"
+    },
+    {
+        "id": 291,
+        "type": "Levels",
+        "gods": [
+            "The Morrigan"
+        ],
+        "role": "Levels",
+        "overview": "The Morrigan",
+        "items": "First 5 levels: 2, 1, 2, 3, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    },
+    {
+        "id": 292,
+        "type": "Levels",
+        "gods": [
+            "Thoth"
+        ],
+        "role": "Levels",
+        "overview": "Thoth",
+        "items": "First 5 levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 293,
+        "type": "Levels",
+        "gods": [
+            "Vulcan"
+        ],
+        "role": "Levels",
+        "overview": "Vulcan",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 4 > 3 > 2"
+    },
+    {
+        "id": 294,
+        "type": "Levels",
+        "gods": [
+            "Ravana"
+        ],
+        "role": "Levels",
+        "overview": "Ravana",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 295,
+        "type": "Levels",
+        "gods": [
+            "Apollo"
+        ],
+        "role": "Levels",
+        "overview": "Apollo",
+        "items": "First 5 Levels: 1, 3, 1, 2, 4 Maxing Priority: 1 > 2 > 3 > 4"
+    },
+    {
+        "id": 296,
+        "type": "Levels",
+        "gods": [
+            "Merlin"
+        ],
+        "role": "Levels",
+        "overview": "Merlin",
+        "items": "(Start match in Arcane) First 5 Levels: 1, 2, 2, 3, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 297,
+        "type": "Levels",
+        "gods": [
+            "Kukulkan"
+        ],
+        "role": "Levels",
+        "overview": "Kukulkan",
+        "items": "First 5 Levels: 3, 1, 3, 2, 4 Maxing Priority: 1 > 4 > 3 > 2 (put a third point in the 3 before maxing 1)"
+    },
+    {
+        "id": 298,
+        "type": "Levels",
+        "gods": [
+            "Sobek"
+        ],
+        "role": "Levels",
+        "overview": "Sobek",
+        "items": "First 5 levels: 3, 1, 2, 3, 4 Maxing Priority: 3 > 4 > 2 > 1"
+    },
+    {
+        "id": 299,
+        "type": "Levels",
+        "gods": [
+            "Ganesha"
+        ],
+        "role": "Levels",
+        "overview": "Ganesha",
+        "items": "First 5 levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 300,
+        "type": "Levels",
+        "gods": [
+            "Tiamat"
+        ],
+        "role": "Levels",
+        "overview": "Tiamat",
+        "items": "First 5 Levels: 1, 2, 3, 1, 4 Maxing Priority: 1 > 2 > 4 > 3"
+    },
+    {
+        "id": 301,
+        "type": "Levels",
+        "gods": [
+            "Xing Tian"
+        ],
+        "role": "Levels",
+        "overview": "Xing Tian",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 4 > 1 > 2 > 3"
+    },
+    {
+        "id": 302,
+        "type": "Levels",
+        "gods": [
+            "Ullr"
+        ],
+        "role": "Levels",
+        "overview": "Ullr",
+        "items": "First 5 Levels: 1, 3, 1, 3, 1 Maxing Priority: 1/3 > 1/3 > 2 > 4 (Can put a point into your 2 before maxing 1/3 if you think you need the movement speed)"
+    },
+    {
+        "id": 303,
+        "type": "Levels",
+        "gods": [
+            "Cu Chulainn"
+        ],
+        "role": "Levels",
+        "overview": "Cu Chulainn",
+        "items": "First 5 levels: 1, 3, 1, 3, 4 Maxing Priority: 4 > 1 > 3 > 2 (DO NOT put points in your 2 unless it's the only option left)"
+    },
+    {
+        "id": 304,
+        "type": "Levels",
+        "gods": [
+            "Poseidon"
+        ],
+        "role": "Levels",
+        "overview": "Poseidon",
+        "items": "First 5 Levels: 3, 1, 2, 3, 4 Maxing Priority: 4 > 3 > 2 > 1"
+    },
+    {
+        "id": 305,
+        "type": "Levels",
+        "gods": [
+            "Baron Samedi"
+        ],
+        "role": "Levels",
+        "overview": "Baron Samedi",
+        "items": "Mid: First 5 Levels: 1, 2, 2/3, 3/2, 4 Maxing Priority: 2 > 1 > 4 > 3\nSupp: First 5 Levels: 1, 2/3, 3/2, 2, 4 Maxing Priority: 2 > 1 > 3 > 4\nSolo: First 5 Levels: 1, 2, 3, 2, 4 Maxing Priority: 2 > 1 > 3 > 4"
+    },
+    {
+        "id": 306,
+        "type": "Levels",
+        "gods": [
+            "Hades"
+        ],
+        "role": "Levels",
+        "overview": "Hades",
+        "items": "Solo: First 5 Levels: 3, 1, 2, 3, 4 Maxing Priority: 3 > 4 > 2 > 1\nMid: First 5 Levels: 3, 1, 3/2, 2/3, 4 Maxing Priority: 3 > 1 > 4 > 2"
+    },
+    {
+        "id": 307,
+        "type": "Levels",
+        "gods": [
+            "Da Ji"
+        ],
+        "role": "Levels",
+        "overview": "Da Ji",
+        "items": "First 5 Levels: 2, 3, 1, 2, 4 Maxing Priority: 4 > 1 > 3 > 2 (Get a third point in the 2 before maxing 4 and 1)"
+    },
+    {
+        "id": 308,
+        "type": "Levels",
+        "gods": [
+            "Chronos"
+        ],
+        "role": "Levels",
+        "overview": "Chronos",
+        "items": "First 5 Levels: 1, 3, 2, 1, 4 Maxing Priority: 1 > 2/3 > 3/2 > 4"
+    },
+    {
+        "id": 309,
+        "type": "Levels",
+        "gods": [
+            "Bake Kujira"
+        ],
+        "role": "Levels",
+        "overview": "Bake Kujira",
+        "items": "First 4 Levels: 2, 3, 1, 2, 4 Maxing Priority: 4 > 2 > 1 > 3"
+    },
+    {
+        "id": 310,
+        "type": "Levels",
+        "gods": [
+            "Mulan"
+        ],
+        "role": "Levels",
+        "overview": "Mulan",
+        "items": "First 5 Levels: 1, 2, 3, 2, 4 Maxing Priority: 2 > 1 > 4 > 3"
+    }
+]

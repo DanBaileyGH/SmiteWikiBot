@@ -16,6 +16,8 @@ module.exports = {
             const embed = new EmbedBuilder().setDescription("Please Enter a Build ID")
             return ({ embeds: [embed] }) 
         }
+        const embed = new EmbedBuilder().setDescription("Editing builds disabled currently sorry!")
+        return ({ embeds: [embed] }) 
         return (await findBuild(args))
 	}
 }

@@ -20,6 +20,8 @@ module.exports = {
             const embed = new EmbedBuilder().setDescription("Please Enter a God")
             return ({ embeds: [embed] }) 
         }
+        const embed = new EmbedBuilder().setDescription("Adding builds disabled currently sorry!")
+        return ({ embeds: [embed] }) 
         const author = message.author.username
         return (await findGod(args, author, client))
 	}

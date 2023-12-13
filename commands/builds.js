@@ -39,13 +39,15 @@ async function getGodForBuild(godName) {
 
 async function parseGodBuilds(god, exactMatch) {
     let godBuildList = []
-    const buildsData = await fs.readFileSync('builds.json')
+    const buildsData = await fs.readFileSync('newbuildscombined.json')
     const buildList = await JSON.parse(buildsData)
 
     for (build of buildList) {
-        if (processNameString(build.god) == processNameString(god.Name)) {
-            godBuildList.push(build)
-        }   
+        for (godName of build.gods) {
+            if (processNameString(godName) == processNameString(god.Name)) {
+                godBuildList.push(build)
+            }   
+        }
     }
     if (godBuildList.length == 0) {
         const embed = new EmbedBuilder().setDescription("Couldnt find any builds for that god - we will add one soon!")
@@ -57,10 +59,11 @@ async function parseGodBuilds(god, exactMatch) {
     .setTimestamp()
     .setFooter({ text: `Builds From the Smite Server Mentors` })
     .setThumbnail(god.godIcon_URL)
+    .setDescription("These are NOT intended to be current, to-the-minute meta builds.\nThey are cookie-cutter builds intended to be solid in any scenario.")
 
     let embedList = []
     for (build of godBuildList) {
-        embedList.push({ "role" : build.role == "Levels" ? `Leveling order` : build.role, "data" : `${build.items} \nID [${build.id}]` })
+        embedList.push({ "role" : (build.role == "Levels" ? `Leveling Order` : build.role) + " - " + build.overview, "data" : build.items })
     }
     //sorts the builds so they're arranged alphabetically in roles (ADC, Jungle, Mid, Solo, Support)
     embedList = embedList.sort((a, b) => {
@@ -71,10 +74,10 @@ async function parseGodBuilds(god, exactMatch) {
             return 1
         }
         
-        if (a.role === 'Leveling order' && b.role !== 'Leveling order') {
+        if (a.role.includes('Leveling Order') && !b.role.includes('Leveling Order')) {
             return 1
         }
-        if (a.role !== 'Leveling order' && b.role === 'Leveling order') {
+        if (!a.role.includes('Leveling Order') && b.role.includes('Leveling Order')) {
             return -1
         }
             
@@ -86,7 +89,7 @@ async function parseGodBuilds(god, exactMatch) {
     }
 
     if (exactMatch) {
-        return ({ embeds: [embed], components:await getButtonRows(god.Name) })
+        return ({ embeds: [embed], components: await getButtonRows(god.Name) })
     }
     return ({ content: "Couldnt find exact match for what you entered, partial match found:", embeds: [embed], components:await getButtonRows(god.Name) })
 }
