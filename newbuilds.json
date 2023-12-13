@@ -60,6 +60,7 @@
             "Artio",
             "Cabrakan",
             "Cerberus",
+            "Cthulhu",
             "Jormungandr",
             "Sobek",
             "Terra"
@@ -186,7 +187,10 @@
             "Hou Yi",
             "Ishtar",
             "Izanami",
-            "Jing Wei"
+            "Jing Wei",
+            "Medusa",
+            "Rama",
+            "Xbalanque"
         ],
         "role": "ADC",
         "overview": "Crit Auto Attack Focused ADC",
@@ -209,7 +213,10 @@
             "Hou Yi",
             "Ishtar",
             "Izanami",
-            "Jing Wei"
+            "Jing Wei",
+            "Medusa",
+            "Rama",
+            "Xbalanque"
         ],
         "role": "ADC",
         "overview": "Anti-Tank Auto Attack Focused ADC",
@@ -221,7 +228,8 @@
         "gods": [
             "Ah Muzen Cab",
             "Chiron",
-            "Martichorus",
+            "Martichoras",
+            "Medusa",
             "Neith",
             "Skadi"
         ],
@@ -293,7 +301,8 @@
            "Xing Tian",
            "Ymir",
            "Fenrir",
-           "Ne Zha"
+           "Ne Zha",
+           "Serqet"
         ],
         "role": "Support",
         "overview": "Frontline/Aggressive Support",
