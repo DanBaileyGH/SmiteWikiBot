@@ -88,27 +88,6 @@
         ],
         "role": "Jungle",
         "overview": "Ability Damage Focused Hydra's Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Serrated Edge, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
-    },
-    {
-        "id": 105,
-        "type": "Build",
-        "gods": [
-            "Awilix",
-            "Camazotz",
-            "Da Ji",
-            "Fenrir",
-            "Hun Batz",
-            "Lancelot",
-            "Loki",
-            "Nemesis",
-            "Susano",
-            "Thanatos",
-            "Thor",
-            "Tsukuyomi"
-        ],
-        "role": "Jungle",
-        "overview": "Anti-Healing Ability Damage Focused Hydra's Jungle",
         "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Brawler's Beatstick, Serrated Edge, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
     },
     {
@@ -128,23 +107,13 @@
         "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Serrated Edge, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
     },
     {
-        "id": 107,
-        "type": "Build",
-        "gods": [
-            "Ratatoskr"
-        ],
-        "role": "Jungle",
-        "overview": "Ratatoskr Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Serrated Edge, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
-    },
-    {
         "id": 108,
         "type": "Build",
         "gods": [
             "Ratatoskr"
         ],
         "role": "Jungle",
-        "overview": "Anitheal Ratatoskr Jungle",
+        "overview": "Ratatoskr Jungle",
         "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Hydra's Lament, Serrated Edge\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
     },
     {
@@ -447,7 +416,7 @@
         ],
         "role": "Solo",
         "overview": "Tainted Polynomicon Solo",
-        "items": "**Items:** Tainted Steel (Tainted Breastplate), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Polynomicon, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+        "items": "**Items:** Tainted Steel (Tainted Breastplate), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Polynomicon, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Bancroft's glyph lategame"
     },
     {
         "id": 130,
@@ -457,7 +426,7 @@
         ],
         "role": "Solo",
         "overview": "Lifesteal Focused Mage Solo",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Bancroft's glyph lategame"
     },
     {
         "id": 131,
@@ -481,7 +450,7 @@
         ],
         "role": "Mid",
         "overview": "Healer Mage Mid",
-        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breasteplate of Determination, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breastplate of Determination, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
     },
     {
         "id": 133,
@@ -492,7 +461,7 @@
         ],
         "role": "Mid",
         "overview": "Lifesteal Focused Mage Mid",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Bancroft's Talon (Bancroft's Claw), Spear of Desolation, Typhon's Fang, Rod of Tahuti, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Bancroft's Talon (Bancroft's Claw), Spear of Desolation, Typhon's Fang, Rod of Tahuti, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Bancroft's glyph lategame"
     },
     {
         "id": 134,
@@ -503,7 +472,7 @@
         ],
         "role": "Mid",
         "overview": "Lifesteal Focused Polynomicon Mage Mid",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Spear of Desolation, Polynomicon, Typhon's Fang, Calamitous Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Spear of Desolation, Polynomicon, Typhon's Fang, (Calamitous) Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
     },
     {
         "id": 200,
