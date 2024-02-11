@@ -21,7 +21,7 @@
         ],
         "role": "Solo",
         "overview": "Tank/Ability Focused Solo",
-        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Breastplate of Determination, Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Abyssal Stone\n**Recipe:**  Bountiful Bao\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Absyssal - Beads to be safe, Blink to be aggressive"
+        "items": "**Items:** Warrior's Axe (Sundering Axe), Breastplate of Determination, Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Archdruid's Fury\n**Shard:**  Horn Shard\n**Relics:** Teleport Fragment, Purification Beads/Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Absyssal - Beads to be safe, Blink to be aggressive"
     },
     {
         "id": 101,
@@ -36,7 +36,7 @@
         ],
         "role": "Solo",
         "overview": "Auto Attack Focused Solo",
-        "items": "**Items:** Death's Toll (Death's Embrace), Golden Blade (Spirit Robe), Berserker's Shield, Shogun's Kusari, Qin's Sais, Toxic Blade/Stone of Binding\n**Recipe:**  Golden Gooseberries\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Toxic for anti-healing, otherwise Binding - Beads to be safe, Blink to be aggressive"
+        "items": "**Items:** Warrior's Axe (Axe of Animosity), Phalanx, Berserker's Shield, Shogun's Kusari, Qin's Sais, The Executioner(Envenomed Executioner)/Spirit Robe\n**Shard:**  Golden Shard\n**Relics:** Teleport Fragment, Purification Beads/Blink Rune\n**Notes:** Buy Executioner for anti-healing/more damage, otherwise Spirit - Beads to be safe, Blink to be aggressive"
     },
     {
         "id": 102,
@@ -51,7 +51,7 @@
         ],
         "role": "Solo",
         "overview": "Bruiser/Aggressive Solo",
-        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Soul Eater, Gladiator's Shield, Oni Hunter's Garb, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Scorching Blink Rune"
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Jotunn's Wrath (Jotunn's Vigor), Gladiator's Shield, Oni Hunter's Garb, Heartseeker\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Buy Jotunn's Glyph ASAP"
     },
     {
         "id": 103,
@@ -67,7 +67,7 @@
         ],
         "role": "Solo",
         "overview": "Tank/Ability Focused Guardian Solo",
-        "items": "**Items:** Conduit Gem (Gem of Focus), Breastplate of Determination, Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Abyssal Stone\n**Recipe:**  Bountiful Bao\n**Relics:** Heroic Teleport, Temporal Beads/Scorching Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Absyssal - Beads to be safe, Blink to be aggressive"
+        "items": "**Items:** Conduit Gem (Gem of Focus), Breastplate of Valor (Breastplate of Determination), Gladiator's Shield, Oni Hunter's Garb, Stone of Binding, Spectral Armor/Archdruid's Fury\n**Shard:**  Horn Shard\n**Relics:** Teleport Fragment, Purification Beads/Blink Rune\n**Notes:** Buy Spectral against crit, otherwise Archdruid - Beads to be safe, Blink to be aggressive"
     },
     {
         "id": 104,
@@ -88,7 +88,7 @@
         ],
         "role": "Jungle",
         "overview": "Ability Damage Focused Hydra's Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Brawler's Beatstick, Serrated Edge, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Brawler's Beatstick, Serrated Edge, Heartseeker\n**Shard:**  Vibrant Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Buy Jotunn's glyph midgame (around 4th item)"
     },
     {
         "id": 106,
@@ -104,7 +104,7 @@
         ],
         "role": "Jungle",
         "overview": "Ability Damage Focused Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Serrated Edge, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Jotunn's Wrath (Jotunn's Vigor), Transcendence, Brawler's Beatstick, Serrated Edge, Heartseeker \n**Shard:**  Vibrant Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Buy Jotunn's glyph midgame (around 4th item)"
     },
     {
         "id": 108,
@@ -114,7 +114,7 @@
         ],
         "role": "Jungle",
         "overview": "Ratatoskr Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Hydra's Lament, Serrated Edge\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Buy Jotunn's glyph lategame"
+        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Thistlethorn Acorn, Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Hydra's Lament, Serrated Edge\n**Shard:**  Vibrant Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Buy Jotunn's glyph midgame (around 4th item)"
     },
     {
         "id": 109,
@@ -128,7 +128,7 @@
         ],
         "role": "Jungle",
         "overview": "Auto Attack Focused Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Golden Blade, Qin's Sais, The Ferocious Executioner, Serrated Edge, Bloodforge\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+        "items": "**Items:** Eye of the Jungle (Seer of the Jungle), Atalanta's Bow, Qin's Sais, The Executioner(Envenomed Executioner), Serrated Edge, Bloodforge\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Buy Exectioner glyph ASAP if you need antiheal, lategame otherwise"
     },
     {
         "id": 110,
@@ -140,7 +140,7 @@
         ],
         "role": "Jungle",
         "overview": "Ability Based Mage Jungle",
-        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Doom Orb, Spear of Desolation/Divine Ruin, Polynomicon, Typhon's Fang, Perfected Rod of Tahuti\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+        "items": "**Items:** Bumba's Dagger (Bumba's Spear), Doom Orb, Spear of Desolation/Divine Ruin, Polynomicon, Typhon's Fang, Perfected Rod of Tahuti\n**Shard:**  Vibrant Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
     },
     {
         "id": 111,
@@ -163,7 +163,7 @@
         ],
         "role": "ADC",
         "overview": "Crit Auto Attack Focused ADC",
-        "items": "**Items:** Gilded Arrow (Ornate Arrow), Devourer's Gauntlet, The Executioner (The Ferocious Executioner), Demon Blade, Deathbringer, Dominance\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Executioner glyph lategame"
+        "items": "**Items:** Gilded Arrow (Ornate Arrow), Devourer's Gauntlet, The Executioner (Envenomed Executioner), Demon Blade, Dominance, Deathbringer (Devoted Deathbringer) \n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Executioner glyph ASAP if you need antiheal, otherwise after Ornate & Devoted Deathbringer"
     },
     {
         "id": 112,
@@ -188,8 +188,8 @@
             "Xbalanque"
         ],
         "role": "ADC",
-        "overview": "Anti-Tank Auto Attack Focused ADC",
-        "items": "**Items:** Death's Toll (Death's Temper), Devourer's Gauntlet, The Executioner (The Ferocious Executioner), Qin's Sais, Dominance, Odysseus' Bow\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Executioner glyph lategame"
+        "overview": "Anti-Tank Auto Attack Focused ADC (Experimental)",
+        "items": "**Items:** Manikin Scepter (Manikin Mace), Devourer's Gauntlet, The Executioner (Envenomed Executioner), Qin's Sais, Titan's Bane, Odysseus' Bow\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Executioner glyph ASAP if you need antiheal, otherwise lategame"
     },
     {
         "id": 113,
@@ -204,7 +204,7 @@
         ],
         "role": "General",
         "overview": "Ability Focused Hunter (Mid & ADC)",
-        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Brawler's Beatstick/Soul Eater, Fail-not, The Crusher, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Brawler's for anti-healing/more burst, Soul Eater for more sustain"
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Jotunn's Wrath (Jotunn's Vigor), Fail-not, Heartseeker, Titan's Bane\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Jotunn's glyph ASAP"
     },
     {
         "id": 114,
@@ -214,7 +214,7 @@
         ],
         "role": "General",
         "overview": "Ability Focused Ullr (Mid & ADC)",
-        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Hydra's Lament, Fail-not, The Crusher, Heartseeker\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Jotunn's Wrath (Jotunn's Vigor), Hydra's Lament, Fail-not, Heartseeker\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Jotunn's glyph ASAP"
     },
     {
         "id": 115,
@@ -226,7 +226,7 @@
         ],
         "role": "ADC",
         "overview": "Magical Auto Attack Focused ADC",
-        "items": "**Items:** Gilded Arrow (Diamond Arrow), Telkhines Ring, Hastened Ring/Cyclopean Ring, Typhon's Fang, Demonic Grip, Rod of Tahuti\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Hastened for more kill potential, Cyclopean for more consistent damage"
+        "items": "**Items:** Gilded Arrow (Diamond Arrow), Telkhines Ring, Hastened Ring/Cyclopean Ring, Typhon's Fang, Demonic Grip, Rod of Tahuti (Perfected Rod of Tahuti)\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Hastened for more kill potential, Cyclopean for more consistent damage"
     },
     {
         "id": 116,
@@ -239,7 +239,7 @@
         ],
         "role": "Support",
         "overview": "Backline/Peel Support",
-        "items": "**Items:** Sentinel's Gift (Sentinels Embrace), Gauntlet of Thebes, Sovereignty, Heartward Amulet, Reverent Pridwen, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+        "items": "**Items:** Sentinel's Gift (Sentinels Embrace), Gauntlet of Thebes, Sovereignty, Pridwen (Reverent Pridwen), Relic Dagger (Eldritch Dagger), Spectral Armor/Midgardian Mail\n**Shard:**  Sturdy Shard\n**Relics:** Horrific Emblem, Heavenly Wings\n**Notes:** Get Spectral if the enemy team has crit, Midgardian otherwise - buy glyphs ASAP"
     },
     {
         "id": 117,
@@ -251,7 +251,7 @@
         ],
         "role": "Support",
         "overview": "Backline/Peel Healer Support",
-        "items": "**Items:** Benevolence (Compassion), Gauntlet of Thebes, Lotus Sickle, Heartward Amulet, Reverent Pridwen, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+        "items": "**Items:** Benevolence (Compassion), Gauntlet of Thebes, Lotus Sickle, Pridwen (Reverent Pridwen), Relic Dagger (Eldritch Dagger), Spectral Armor/Winged Blade\n**Shard:**  Sturdy Shard\n**Relics:** Meditation Cloak, Heavenly Wings\n**Notes:** Get Spectral if the enemy team has crit, Winged otherwise - buy glyphs ASAP"
     },
     {
         "id": 118,
@@ -261,7 +261,10 @@
            "Athena",
            "Atlas",
            "Bacchus",
+           "Bake Kujira",
            "Charon",
+           "Fafnir",
+           "Horus",
            "Kumbhakarna",
            "Kuzenbo",
            "Maui",
@@ -275,10 +278,21 @@
         ],
         "role": "Support",
         "overview": "Frontline/Aggressive Support",
-        "items": "**Items:** Sentinel's Gift (Sentinels Embrace), Gauntlet of Thebes, Stone of Binding, Reverent Pridwen, Spectral Armor/Relic Dagger, Sprit Robe\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Scorching Blink Rune\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+        "items": "**Items:** War Flag (Spartan Flag), Gauntlet of Thebes, Mystical Mail, Pridwen (Reverent Pridwen), Relic Dagger (Eldritch Dagger), Spectral Armor/Sprit Robe\n**Shard:**  Sturdy Shard\n**Relics:** Horrific Emblem, Blink Rune\n**Notes:** Get Spectral if the enemy team has crit, Spirit otherwise - buy glyphs ASAP"
     },
     {
         "id": 119,
+        "type": "Build",
+        "gods": [
+            "Fafnir",
+            "Horus"
+        ],
+        "role": "Support",
+        "overview": "Aggressive Team Buffing Support",
+        "items": "**Items:** War Flag (War Banner), Gauntlet of Thebes, Mystical Mail, Shogun's Kusari, Relic Dagger (Eldritch Dagger), Spectral Armor/Sprit Robe\n**Shard:**  Sturdy Shard\n**Relics:** Horrific Emblem, Blink Rune\n**Notes:** Get Spectral if the enemy team has crit, Spirit otherwise - buy Relic glyph ASAP"
+    },
+    {
+        "id": 120,
         "type": "Build",
         "gods": [
            "Eset",
@@ -286,10 +300,10 @@
         ],
         "role": "Support",
         "overview": "Mage Support",
-        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Sprit Robe, Chronos' Pendant, Genji's Guard, Spectral Armor/Stone of Binding\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Binding otherwise"
+        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Sprit Robe, Relic Dagger (Elritch Dagger), Genji's Guard, Spectral Armor/Stone of Binding\n**Shard:**  Sturdy Shard\n**Relics:** Meditation Cloak, Heavenly Wings\n**Notes:** Get Spectral if the enemy team has crit, Binding otherwise"
     },
     {
-        "id": 120,
+        "id": 121,
         "type": "Build",
         "gods": [
            "Aphrodite",
@@ -298,19 +312,7 @@
         ],
         "role": "Support",
         "overview": "Mage Healer Support",
-        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Lotus Sickle, Heartward Amulet, Sprit Robe, Spectral Armor/Relic Dagger\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Entangling Wings\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
-    },
-    {
-        "id": 121,
-        "type": "Build",
-        "gods": [
-           "Bake Kujira",
-           "Fafnir",
-           "Horus"
-        ],
-        "role": "Support",
-        "overview": "Early Game Aggression / Objective Focused Support",
-        "items": "**Items:** War Flag (War Banner), Gauntlet of Thebes, Stone of Binding, Shogun's Kusari, Spectral Armor/Relic Dagger, Sprit Robe\n**Recipe:**  Sturdy Stew\n**Relics:** Fortified Shell, Belt of the Berserker\n**Notes:** Get Spectral if the enemy team has crit, Relic Dagger otherwise"
+        "items": "**Items:** Protector's Mask (Lono's Mask), Gauntlet of Thebes, Lotus Sickle, Sprit Robe, Relic Dagger (Elritch Dagger), Spectral Armor/Stone of Binding\n**Shard:**  Sturdy Shard\n**Relics:** Meditation Cloak, Heavenly Wings\n**Notes:** Get Spectral if the enemy team has crit, Binding otherwise"
     },
     {
         "id": 122,
@@ -322,7 +324,7 @@
         ],
         "role": "Mid",
         "overview": "Assassin Mid",
-        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Soul Eater/Jotunn's Wrath, Brawler's Beatstick, The Crusher, Heartseeker\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Soul Eater for more healing, Jotunn's for more cooldown"
+        "items": "**Items:** Bluestone Pendant (Bluestone Brooch), Transcendence, Jotunn's Wrath (Jotunn's Vigor), Brawler's Beatstick, Heartseeker, Titan's Bane\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Jotunn's glyph ASAP"
     },
     {
         "id": 123,
@@ -335,7 +337,7 @@
         ],
         "role": "Mid",
         "overview": "Polynomicon Mage Mid",
-        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Calamitous Rod of Tahuti, Obsidian Shard\n**Recipe:** Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Rod of Tahuti (Calamitous Rod of Tahuti), Obsidian Shard\n**Shard:** Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Divine if you need antiheal, Desolation otherwise - get Tahuti glyph ASAP"
     },
     {
         "id": 124,
@@ -353,7 +355,7 @@
         ],
         "role": "Mid",
         "overview": "Burst Ability Damage Mage Mid",
-        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Obsidian Shard, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Obsidian Shard, Soul Reaver\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet"
     },
     {
         "id": 125,
@@ -371,7 +373,7 @@
         ],
         "role": "Mid",
         "overview": "Ultimate-Focused Mage Mid",
-        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Staff of Myrddin, Perfected Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation, Divine Ruin, Staff of Myrddin, Perfected Rod of Tahuti\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet"
     },
     {
         "id": 126,
@@ -386,7 +388,7 @@
         ],
         "role": "Mid",
         "overview": "Cooldown-Focused Mage Mid",
-        "items": "**Items:** Conduit Gem (Gem of Focus), Chronos' Pendant, Spear of Desolation, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:** Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Conduit Gem (Gem of Focus), Chronos' Pendant, Spear of Desolation, Divine Ruin, Charon's Coin, Soul Reaver\n**Shard:** Horn Shard\n**Relics:** Purification Beads, Aegis Amulet"
     },
     {
         "id": 127,
@@ -396,7 +398,7 @@
         ],
         "role": "Jungle",
         "overview": "Crit Focused Jungle",
-        "items": "**Items:** Eye of the Jungle (Protector of the Jungle), Golden Blade, Rage, Deathbringer, Serrated Edge, Bloodforge\n**Recipe:**  Golden Gooseberries\n**Relics:** Temporal Beads, Corrupted Blink Rune"
+        "items": "**Items:** Eye of the Jungle (Seer of the Jungle), Golden Blade, Rage, Deathbringer (Devoted Deathbringer), Serrated Edge, Bloodforge\n**Shard:**  Golden Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Get Deathbringer glyph ASAP"
     },
     {
         "id": 128,
@@ -406,7 +408,7 @@
         ],
         "role": "ADC",
         "overview": "Polynomicon Mage ADC",
-        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Calamitous Rod of Tahuti, Obsidian Shard\n**Recipe:**  Party Punch\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Divine if you need antiheal, Desolation otherwise"
+        "items": "**Items:** Sands of Time (Pendulum of Ages), Book of Thoth, Spear of Desolation/Divine Ruin, Polynomicon, Rod of Tahuti(Calamitous Rod of Tahuti), Obsidian Shard\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Divine if you need antiheal, Desolation otherwise - get Tahuti glyph ASAP"
     },
     {
         "id": 129,
@@ -416,7 +418,7 @@
         ],
         "role": "Solo",
         "overview": "Tainted Polynomicon Solo",
-        "items": "**Items:** Tainted Steel (Tainted Breastplate), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Polynomicon, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Bancroft's glyph lategame"
+        "items": "**Items:** Tainted Steel (Tainted Breastplate), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Polynomicon, Mantle of Discord\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Get Bancroft's glyph midgame (around 4th item)"
     },
     {
         "id": 130,
@@ -426,7 +428,7 @@
         ],
         "role": "Solo",
         "overview": "Lifesteal Focused Mage Solo",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Corrupted Blink Rune\n**Notes:** Get Bancroft's glyph lategame"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Bancroft's Talon (Bancroft's Claw), Typhon's Fang, Divine Ruin, Mantle of Discord\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Blink Rune\n**Notes:** Get Bancroft's glyph midgame (around 4th item)"
     },
     {
         "id": 131,
@@ -438,7 +440,7 @@
         ],
         "role": "Solo",
         "overview": "Healer Mage Solo",
-        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breastplate of Determination, Genji's Guard, Divine Ruin, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Sands of Time (The Alternate Timeline), Book of Thoth, Breastplate of Valor (Breastplate of Determination), Genji's Guard, Divine Ruin, Mantle of Discord\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Breastplate glyph ASAP"
     },
     {
         "id": 132,
@@ -450,7 +452,7 @@
         ],
         "role": "Mid",
         "overview": "Healer Mage Mid",
-        "items": "**Items:** Sands of Time (Alternate Timeline), Book of Thoth, Breastplate of Determination, Divine Ruin, Charon's Coin, Soul Reaver\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Sands of Time (The Alternate Timeline), Book of Thoth, Breastplate of Valor (Breastplate of Determination), Divine Ruin, Charon's Coin, Soul Reaver\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Breastplate glyph ASAP"
     },
     {
         "id": 133,
@@ -461,7 +463,7 @@
         ],
         "role": "Mid",
         "overview": "Lifesteal Focused Mage Mid",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Bancroft's Talon (Bancroft's Claw), Spear of Desolation, Typhon's Fang, Rod of Tahuti, Mantle of Discord\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration\n**Notes:** Get Bancroft's glyph lategame"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Bancroft's Talon (Bancroft's Claw), Spear of Desolation, Typhon's Fang, Rod of Tahuti (Perfected Rod of Tahuti), Mantle of Discord\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet\n**Notes:** Get Bancroft's glyph midgame (around 4th item)"
     },
     {
         "id": 134,
@@ -472,6 +474,6 @@
         ],
         "role": "Mid",
         "overview": "Lifesteal Focused Polynomicon Mage Mid",
-        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Spear of Desolation, Polynomicon, Typhon's Fang, (Calamitous) Rod of Tahuti\n**Recipe:**  Bountiful Bao\n**Relics:** Temporal Beads, Aegis of Acceleration"
+        "items": "**Items:** Vampiric Shroud (Sacrificial Shroud), Book of Thoth, Spear of Desolation, Polynomicon, Typhon's Fang, Rod of Tahuti (Calamitous Rod of Tahuti)\n**Shard:**  Horn Shard\n**Relics:** Purification Beads, Aegis Amulet"
     }
 ]

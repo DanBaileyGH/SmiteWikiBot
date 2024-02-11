@@ -59,7 +59,7 @@ async function parseGodBuilds(god, exactMatch) {
     .setTimestamp()
     .setFooter({ text: `Builds From the Smite Server Mentors` })
     .setThumbnail(god.godIcon_URL)
-    .setDescription("These are NOT intended to be current, to-the-minute meta builds.\nThey are cookie-cutter builds intended to be solid in any scenario.")
+    .setDescription("ALL BUILDS UPDATED FOR SEASON/YEAR 11\nThese are NOT intended to be current, to-the-minute meta builds.\nThey are cookie-cutter builds intended to be solid in any game/scenario.")
 
     let embedList = []
     for (build of godBuildList) {
